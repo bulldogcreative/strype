@@ -1,0 +1,24 @@
+{
+    "name": "bulldog/strype",
+    "description": "Wrapper for Stripe",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Levi Durfee",
+            "email": "levi.durfee@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bulldog\\Strype\\": "src/"
+        }
+    },
+    "require": {
+        "stripe/stripe-php": "^6.19",
+        "phpunit/phpunit": "^7.4"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^2.5"
+    }
+}
