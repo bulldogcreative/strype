@@ -15,10 +15,10 @@
         }
     },
     "require": {
-        "stripe/stripe-php": "^6.19",
-        "phpunit/phpunit": "^7.4"
+        "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
-        "vlucas/phpdotenv": "^2.5"
+        "vlucas/phpdotenv": "^2.5",
+        "phpunit/phpunit": "^7.4"
     }
 }
