@@ -15,10 +15,13 @@
         }
     },
     "require": {
-        "guzzlehttp/guzzle": "~6.0"
+        "stripe/stripe-php": "^6.19"
     },
     "require-dev": {
         "vlucas/phpdotenv": "^2.5",
         "phpunit/phpunit": "^7.4"
+    },
+    "scripts": {
+        "fix": "php-cs-fixer fix ./src --rules=@Symfony"
     }
 }
