@@ -16,7 +16,7 @@
     },
     "require": {
         "stripe/stripe-php": "^6.19",
-        "php": "^7.2",
+        "php": "^7.1",
         "bulldog/id": "^1.0"
     },
     "require-dev": {
