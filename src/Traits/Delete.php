@@ -15,6 +15,7 @@ trait Delete
     {
         $this->stripe('retrieve', $id);
         $this->response->delete();
+        $this->deleted = true;
 
         return $this;
     }

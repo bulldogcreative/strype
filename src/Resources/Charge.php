@@ -26,9 +26,15 @@ class Charge extends Resource implements ChargeInterface, RetrieveInterface, Upd
         return $this;
     }
 
-    public function capture(string $id)
+    public function capture(string $id = null)
     {
-        $this->stripe('retrieve', $id);
+        if(!is_null($id)) {
+            $this->stripe('retrieve', $id);
+            $this->response->capture();
+
+            return $this;
+        }
+
         $this->response->capture();
 
         return $this;

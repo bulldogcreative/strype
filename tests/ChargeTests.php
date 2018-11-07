@@ -53,7 +53,17 @@ class ChargeTests extends TestCase
         ], $this->id->get(12));
         $retrieved = $this->strype->charge()->retrieve($charge->getId());
         $this->assertFalse($retrieved->captured);
-        $retrieved->getResponse()->capture();
+        $retrieved->capture($charge->getId());
+
+        $retrieved = $this->strype->charge()->retrieve($charge->getId());
+        $this->assertTrue($retrieved->captured);
+
+        $charge = $this->strype->charge()->create($this->customer, 5000, [
+            'capture' => false,
+        ], $this->id->get(12));
+        $retrieved = $this->strype->charge()->retrieve($charge->getId());
+        $this->assertFalse($retrieved->captured);
+        $retrieved->capture();
         $retrieved = $this->strype->charge()->retrieve($charge->getId());
         $this->assertTrue($retrieved->captured);
     }

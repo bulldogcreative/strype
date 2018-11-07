@@ -18,6 +18,9 @@
         <testsuite name="Customer">
             <file>tests/CustomerTests.php</file>
         </testsuite>
+        <testsuite name="Dispute">
+            <file>tests/DisputeTests.php</file>
+        </testsuite>
         <testsuite name="Event">
             <file>tests/EventTests.php</file>
         </testsuite>
@@ -35,6 +38,9 @@
         </testsuite>
         <testsuite name="Refund">
             <file>tests/RefundTests.php</file>
+        </testsuite>
+        <testsuite name="Trait">
+            <file>tests/TraitTests.php</file>
         </testsuite>
     </testsuites>
     <filter>

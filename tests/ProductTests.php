@@ -27,6 +27,7 @@ class ProductTests extends TestCase
         $this->assertEquals('Blue', $product->description);
         $this->assertEquals('Sweater', $product->name);
         $this->assertEquals('good', $product->type);
+        $this->assertEquals('Sweater', $good->getName());
         $product->getResponse()->delete();
     }
 
@@ -37,6 +38,7 @@ class ProductTests extends TestCase
         $this->assertEquals('product', $product->object);
         $this->assertEquals('Sweater Repair', $product->name);
         $this->assertEquals('service', $product->type);
+        $this->assertEquals('Sweater Repair', $service->getName());
         $product->getResponse()->delete();
     }
 
