@@ -12,6 +12,7 @@ use Bulldog\Strype\Resources\FileLink;
 use Bulldog\Strype\Resources\Payout;
 use Bulldog\Strype\Resources\Product;
 use Bulldog\Strype\Resources\Refund;
+use Bulldog\Strype\Resources\Token;
 use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 
 /**
@@ -84,5 +85,10 @@ class Strype
     public function refund()
     {
         return new Refund();
+    }
+
+    public function token()
+    {
+        return new Token();
     }
 }

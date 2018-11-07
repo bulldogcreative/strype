@@ -31,10 +31,21 @@ class DisputeTests extends TestCase
         $dispute = $this->strype->dispute()->retrieve('abc123');
     }
 
+    public function testCloseDispute()
+    {
+        $customer = $this->strype->customer()->create('levi@example.com', 'tok_createDispute');
+        $charge = $this->strype->charge()->create($customer, 500, [], $this->id->get(12));
+
+        $disputes = $this->strype->dispute()->listAll(['limit' => 1]);
+        $this->assertEquals('dispute', $disputes->getResponse()->data[0]->object);
+        $result = $disputes->data[0]->close();
+        $this->assertEquals('lost', $result->status);
+    }
+
     /**
      * @expectedException Stripe\Error\InvalidRequest
      */
-    public function testCloseDispute()
+    public function testCloseDisputeWithException()
     {
         $dispute = $this->strype->dispute()->close('abc123');
     }

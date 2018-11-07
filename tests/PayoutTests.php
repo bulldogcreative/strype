@@ -23,11 +23,19 @@ class PayoutTests extends TestCase
     /**
      * @expectedException \Stripe\Error\InvalidRequest
      */
-    public function testCreatePayout()
+    public function testCreatePayoutWithException()
     {
         // Make the payout amount really high, so it'll hopefully throw an exception
         $payout = $this->strype->payout()->create(50000000, [], $this->id->get(12));
         $this->assertEquals('payout', $payout->object);
+    }
+
+    public function testCreatePayout()
+    {
+        $customer = $this->strype->customer()->create('levi@example.com', 'tok_bypassPending');
+        $charge = $this->strype->charge()->create($customer, 5000);
+        $payout = $this->strype->payout()->create(500, [], $this->id->get(12));
+        $this->assertEquals('transfer', $payout->object);
     }
 
     public function testListAllAndRetrievePayouts()
@@ -38,11 +46,24 @@ class PayoutTests extends TestCase
 
         foreach ($payouts->data as $payout) {
             $this->assertEquals('transfer', $payout->object);
-            $this->assertEquals('STRIPE PAYOUT', $payout->description);
             $this->assertEquals('paid', $payout->status);
 
             $retrievedPayout = $this->strype->payout()->retrieve($payout->id);
             $this->assertEquals($payout->amount, $retrievedPayout->amount);
         }
+    }
+
+    public function testUpdatePayout()
+    {
+        $customer = $this->strype->customer()->create('levi@example.com', 'tok_bypassPending');
+        $charge = $this->strype->charge()->create($customer, 5000);
+        $payout = $this->strype->payout()->create(500, [], $this->id->get(12));
+        $result = $this->strype->payout()->update($payout->getId(), [
+            'metadata' => [
+                'order_id' => '1234'
+            ]
+        ]);
+        $payout = $this->strype->payout()->retrieve($payout->getId());
+        $this->assertEquals('1234', $payout->metadata['order_id']);
     }
 }
