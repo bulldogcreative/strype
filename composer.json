@@ -22,7 +22,8 @@
     "require-dev": {
         "vlucas/phpdotenv": "^2.5",
         "phpunit/phpunit": "^7.4",
-        "symfony/var-dumper": "^4.1"
+        "symfony/var-dumper": "^4.1",
+        "php-coveralls/php-coveralls": "^2.1"
     },
     "scripts": {
         "fix": "php-cs-fixer fix ./src --rules=@Symfony && php-cs-fixer fix ./tests --rules=@Symfony"
