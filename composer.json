@@ -15,13 +15,16 @@
         }
     },
     "require": {
-        "stripe/stripe-php": "^6.19"
+        "stripe/stripe-php": "^6.19",
+        "php": "^7.2",
+        "bulldog/id": "^1.0"
     },
     "require-dev": {
         "vlucas/phpdotenv": "^2.5",
-        "phpunit/phpunit": "^7.4"
+        "phpunit/phpunit": "^7.4",
+        "symfony/var-dumper": "^4.1"
     },
     "scripts": {
-        "fix": "php-cs-fixer fix ./src --rules=@Symfony"
+        "fix": "php-cs-fixer fix ./src --rules=@Symfony && php-cs-fixer fix ./tests --rules=@Symfony"
     }
 }

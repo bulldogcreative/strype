@@ -9,13 +9,32 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Tests">
-            <directory suffix="Tests.php">./tests</directory>
+        <testsuite name="Balance">
+            <file>tests/BalanceTests.php</file>
+        </testsuite>
+        <testsuite name="Charge">
+            <file>tests/ChargeTests.php</file>
+        </testsuite>
+        <testsuite name="Customer">
+            <file>tests/CustomerTests.php</file>
+        </testsuite>
+        <testsuite name="Event">
+            <file>tests/EventTests.php</file>
+        </testsuite>
+        <testsuite name="File">
+            <file>tests/FileTests.php</file>
+        </testsuite>
+        <testsuite name="FileLink">
+            <file>tests/FileLinkTests.php</file>
+        </testsuite>
+        <testsuite name="Payout">
+            <file>tests/PayoutTests.php</file>
+        </testsuite>
+        <testsuite name="Product">
+            <file>tests/ProductTests.php</file>
+        </testsuite>
+        <testsuite name="Refund">
+            <file>tests/RefundTests.php</file>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
 </phpunit>
