@@ -1,0 +1,12 @@
+language: php
+php:
+  - '7.1'
+  - '7.2'
+install:
+    - flags="--ansi --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
+    - composer install $flags
+before_script:
+    - composer require satooshi/php-coveralls '~1.0'
+script: phpunit --coverage-clover clover.xml
+after_script:
+    - vendor/bin/coveralls -v
