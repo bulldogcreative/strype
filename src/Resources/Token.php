@@ -51,6 +51,8 @@ class Token extends Resource implements TokenInterface, RetrieveInterface
     public function createAccount($arguments = [], $key = null)
     {
         $this->stripe('create', $arguments, $key);
+
+        return $this;
     }
 
     protected function stripe(string $method, $arguments, $idempotencyKey = null)

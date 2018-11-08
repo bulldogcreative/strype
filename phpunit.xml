@@ -42,6 +42,9 @@
         <testsuite name="Trait">
             <file>tests/TraitTests.php</file>
         </testsuite>
+        <testsuite name="Token">
+            <file>tests/TokenTests.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
