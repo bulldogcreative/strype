@@ -1,16 +1,16 @@
 <?php
 
-namespace Bulldog\Strype\Resources;
+namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Resource;
+use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Resources\FileInterface;
+use Bulldog\Strype\Contracts\Requests\FileInterface;
 use Bulldog\Strype\Contracts\Resources\FilesInterface;
 
-class File extends Resource implements FileInterface, RetrieveInterface, ListAllInterface
+class File extends Request implements FileInterface, RetrieveInterface, ListAllInterface
 {
     use Retrieve, ListAll;
 

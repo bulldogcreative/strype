@@ -1,13 +1,13 @@
 <?php
 
-namespace Bulldog\Strype\Resources;
+namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Resource;
+use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Resources\BalanceInterface;
+use Bulldog\Strype\Contracts\Requests\BalanceInterface;
 
-class Balance extends Resource implements BalanceInterface, RetrieveInterface
+class Balance extends Request implements BalanceInterface, RetrieveInterface
 {
     use Retrieve;
 

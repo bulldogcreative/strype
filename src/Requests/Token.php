@@ -1,13 +1,13 @@
 <?php
 
-namespace Bulldog\Strype\Resources;
+namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Resource;
+use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Resources\TokenInterface;
+use Bulldog\Strype\Contracts\Requests\TokenInterface;
 
-class Token extends Resource implements TokenInterface, RetrieveInterface
+class Token extends Request implements TokenInterface, RetrieveInterface
 {
     use Retrieve;
 
@@ -42,7 +42,7 @@ class Token extends Resource implements TokenInterface, RetrieveInterface
         $this->stripe('create', [
             'pii' => [
                 'personal_id_number' => $personalIdNumber,
-            ]
+            ],
             ], $key);
 
         return $this;

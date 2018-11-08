@@ -46,7 +46,7 @@ class ProductTests extends TestCase
     {
         $good = new Good('Sweater', ['description' => 'Blue']);
         $product = $this->strype->product()->create($good, $this->id->get(12));
-        
+
         $retrieved = $this->strype->product()->retrieve($product->getId());
         $this->assertEquals($product->description, $retrieved->description);
         $retrieved->getResponse()->delete();
@@ -58,7 +58,7 @@ class ProductTests extends TestCase
         $product = $this->strype->product()->create($good, $this->id->get(12));
 
         $updateProduct = $this->strype->product()->update($product->getId(), ['description' => 'orange']);
-        
+
         $retrieved = $this->strype->product()->retrieve($product->getId());
         $this->assertEquals('orange', $retrieved->description);
         $product->getResponse()->delete();
@@ -66,13 +66,13 @@ class ProductTests extends TestCase
 
     public function testListAll()
     {
-        for($i=0; $i<10; $i++) {
-            $good[$i] = new Good('Sweater ' . $i, ['description' => 'Blue']);
+        for ($i = 0; $i < 10; ++$i) {
+            $good[$i] = new Good('Sweater '.$i, ['description' => 'Blue']);
             $product[$i] = $this->strype->product()->create($good[$i], $this->id->get(12));
         }
         $products = $this->strype->product()->listAll(['limit' => 3]);
         $this->assertEquals(3, count($products->data));
-        for($i=0; $i<10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $product[$i]->getResponse()->delete();
         }
     }

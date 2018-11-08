@@ -1,17 +1,17 @@
 <?php
 
-namespace Bulldog\Strype\Resources;
+namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Resource;
+use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Resources\DisputeInterface;
+use Bulldog\Strype\Contracts\Requests\DisputeInterface;
 
-class Dispute extends Resource implements DisputeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
+class Dispute extends Request implements DisputeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
 {
     use Retrieve, Update, ListAll;
 

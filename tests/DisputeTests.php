@@ -24,7 +24,7 @@ class DisputeTests extends TestCase
     }
 
     /**
-     * @expectedException Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Error\InvalidRequest
      */
     public function testRetrieveDistpute()
     {
@@ -43,7 +43,7 @@ class DisputeTests extends TestCase
     }
 
     /**
-     * @expectedException Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Error\InvalidRequest
      */
     public function testCloseDisputeWithException()
     {
@@ -51,7 +51,7 @@ class DisputeTests extends TestCase
     }
 
     /**
-     * @expectedException Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Error\InvalidRequest
      */
     public function testUpdateDispute()
     {

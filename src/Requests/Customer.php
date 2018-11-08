@@ -1,8 +1,8 @@
 <?php
 
-namespace Bulldog\Strype\Resources;
+namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Resource;
+use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\Delete;
@@ -11,7 +11,7 @@ use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Resources\CustomerInterface;
+use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 
 /**
  * Class Customer.
@@ -21,7 +21,7 @@ use Bulldog\Strype\Contracts\Resources\CustomerInterface;
  * Bulldog\Strype\Contracts\RetrieveInterface;
  * Bulldog\Strype\Contracts\UpdateInterface;
  */
-class Customer extends Resource implements CustomerInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
+class Customer extends Request implements CustomerInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
 {
     use Retrieve, Update, Delete, ListAll;
 

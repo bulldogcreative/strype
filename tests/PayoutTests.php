@@ -60,8 +60,8 @@ class PayoutTests extends TestCase
         $payout = $this->strype->payout()->create(500, [], $this->id->get(12));
         $result = $this->strype->payout()->update($payout->getId(), [
             'metadata' => [
-                'order_id' => '1234'
-            ]
+                'order_id' => '1234',
+            ],
         ]);
         $payout = $this->strype->payout()->retrieve($payout->getId());
         $this->assertEquals('1234', $payout->metadata['order_id']);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bulldog\Strype\Contracts\Resources;
+namespace Bulldog\Strype\Contracts\Requests;
 
 interface PayoutInterface
 {

@@ -54,12 +54,12 @@ class TokenTests extends TestCase
     public function testCreateAccount()
     {
         $token = $this->strype->token()->createAccount([
-            "account" => [
-                "legal_entity" => [
-                    "first_name" => "Jane",
-                    "last_name" => "Doe",
-                ]
-            ]
+            'account' => [
+                'legal_entity' => [
+                    'first_name' => 'Jane',
+                    'last_name' => 'Doe',
+                ],
+            ],
         ], $this->id->get(12));
         $this->assertEquals('token', $token->object);
     }

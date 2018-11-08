@@ -1,17 +1,17 @@
 <?php
 
-namespace Bulldog\Strype\Resources;
+namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Resource;
+use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Contracts\Resources\PayoutInterface;
+use Bulldog\Strype\Contracts\Requests\PayoutInterface;
 
-class Payout extends Resource implements PayoutInterface, RetrieveInterface, ListAllInterface, UpdateInterface
+class Payout extends Request implements PayoutInterface, RetrieveInterface, ListAllInterface, UpdateInterface
 {
     use Retrieve, Update, ListAll;
 

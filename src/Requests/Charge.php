@@ -1,18 +1,18 @@
 <?php
 
-namespace Bulldog\Strype\Resources;
+namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Resource;
+use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Resources\ChargeInterface;
-use Bulldog\Strype\Contracts\Resources\CustomerInterface;
+use Bulldog\Strype\Contracts\Requests\ChargeInterface;
+use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 
-class Charge extends Resource implements ChargeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
+class Charge extends Request implements ChargeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
 {
     use Retrieve, Update, ListAll;
 
@@ -28,7 +28,7 @@ class Charge extends Resource implements ChargeInterface, RetrieveInterface, Upd
 
     public function capture(string $id = null)
     {
-        if(!is_null($id)) {
+        if (!is_null($id)) {
             $this->stripe('retrieve', $id);
             $this->response->capture();
 
