@@ -45,6 +45,9 @@
         <testsuite name="Token">
             <file>tests/TokenTests.php</file>
         </testsuite>
+        <testsuite name="Coupon">
+            <file>tests/CouponTests.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

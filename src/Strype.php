@@ -13,6 +13,7 @@ use Bulldog\Strype\Requests\Payout;
 use Bulldog\Strype\Requests\Product;
 use Bulldog\Strype\Requests\Refund;
 use Bulldog\Strype\Requests\Token;
+use Bulldog\Strype\Requests\Coupon;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 
 /**
@@ -90,5 +91,10 @@ class Strype
     public function token()
     {
         return new Token();
+    }
+
+    public function coupon()
+    {
+        return new Coupon();
     }
 }
