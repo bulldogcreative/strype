@@ -19,6 +19,12 @@ class InvoiceItemTests extends TestCase
         $this->id = new ObjectId();
     }
 
+    public function testCreateInvoiceItem()
+    {
+        $invoiceItem = $this->strype->invoiceItem()->create($this->customer);
+        $this->assertEquals('invoiceitem', $invoiceItem->object);
+    }
+
     public function tearDown()
     {
         $this->customer->getResponse()->delete();
