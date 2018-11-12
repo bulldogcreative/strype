@@ -32,6 +32,19 @@ class InvoiceTests extends TestCase
         $this->assertEquals(2500, $invoice->total);
     }
 
+    public function testCreateInvoiceAndSend()
+    {
+        $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
+            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+        );
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
+        );
+        $this->assertEquals('invoice', $invoice->object);
+        $this->assertEquals($this->customer->getCustomerId(), $invoice->customer);
+        $this->assertEquals(2500, $invoice->total);
+    }
+
     public function tearDown()
     {
         $this->customer->getResponse()->delete();
