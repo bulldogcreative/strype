@@ -6,7 +6,7 @@ use Bulldog\Strype\Contracts\Resources\SubscriptionBillingInterface;
 
 interface InvoiceInterface
 {
-    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key);
+    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], string $key = null);
 
     public function finalize(string $invoiceid);
 

@@ -17,7 +17,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
 {
     use Retrieve, Update, ListAll;
 
-    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key)
+    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], string $key = null)
     {
         $arguments = array_merge($arguments, $type->getBilling());
         $arguments['customer'] = $customer->getCustomerId();
