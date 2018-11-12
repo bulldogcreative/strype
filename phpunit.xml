@@ -48,6 +48,12 @@
         <testsuite name="Coupon">
             <file>tests/CouponTests.php</file>
         </testsuite>
+        <testsuite name="Discount">
+            <file>tests/DiscountTests.php</file>
+        </testsuite>
+        <testsuite name="Subscription">
+            <file>tests/SubscriptionTests.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

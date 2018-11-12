@@ -7,7 +7,7 @@ namespace Bulldog\Strype;
  */
 abstract class Request
 {
-    protected $id;
+    public $id;
 
     protected $response;
 
