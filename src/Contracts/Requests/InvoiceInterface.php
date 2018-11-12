@@ -22,5 +22,5 @@ interface InvoiceInterface
 
     public function upcoming(CustomerInterface $customer, array $arguments = []);
 
-    public function retrieveUpcomingLineItems(array $arguments = []);
+    public function retrieveUpcomingLineItems(CustomerInterface $customer, array $arguments = []);
 }

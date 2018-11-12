@@ -28,44 +28,69 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function finalize(string $invoiceid)
+    public function finalizeInvoice(string $invoiceid)
     {
+        $this->stripe('retrieve', $invoiceid);
+        $this->response->finalizeInvoice();
 
+        return $this;
     }
 
     public function pay(string $invoiceid)
     {
+        $this->stripe('retrieve', $invoiceid);
+        $this->response->pay();
 
+        return $this;
     }
 
     public function sendInvoice(string $invoiceid)
     {
+        $this->stripe('retrieve', $invoiceid);
+        $this->response->sendInvoice();
 
+        return $this;
     }
 
     public function voidInvoice(string $invoiceid)
     {
+        $this->stripe('retrieve', $invoiceid);
+        $this->response->voidInvoice();
 
+        return $this;
     }
 
     public function markUncollectable(string $invoiceid)
     {
+        $this->stripe('retrieve', $invoiceid);
+        $this->response->markUncollectable();
 
+        return $this;
     }
 
     public function retrieveLineItems(string $invoiceid, array $arguments = [])
     {
+        $this->stripe('retrieve', $invoiceid);
+        $this->lines = $this->response->lines($arguments);
 
+        return $this;
     }
 
     public function upcoming(CustomerInterface $customer, array $arguments = [])
     {
+        $arguments['customer'] = $customer->getCustomerId();
+        $this->stripe('upcoming', $arguments);
 
+        return $this;
     }
 
     public function retrieveUpcomingLineItems(CustomerInterface $customer, array $arguments = [])
     {
+        $arguments['customer'] = $customer->getCustomerId();
+        $this->response = \Stripe\Invoice::retrieve('upcoming')->lines->all($arguments);
+        $this->setProperties();
 
+        return $this;
     }
 
     protected function stripe(string $method, $arguments, $idempotencyKey = null)
