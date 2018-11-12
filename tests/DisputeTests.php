@@ -46,7 +46,18 @@ class DisputeTests extends TestCase
     {
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_createDispute');
         $charge = $this->strype->charge()->create($customer, 500, [], $this->id->get(12));
-        $dispute = $this->strype->dispute()->listAll(['limit' => 1])->data[0];
+        $disputes = $this->strype->dispute()->listAll();
+
+        // Was randomly getting errors during testing on Travis-CI. So we loop
+        // through the disputes to find one that needs a response, then we use
+        // that dispute for the remainder of this test.
+        //
+        // https://github.com/bulldogcreative/strype/issues/6
+        foreach($disputes->data as $data) {
+            if($data->status == "needs_response") {
+                $dispute = $data;
+            }
+        }
 
         $updated = $this->strype->dispute()->update($dispute->id, [
             'evidence' => [
