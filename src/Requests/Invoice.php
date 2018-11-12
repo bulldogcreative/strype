@@ -17,7 +17,11 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
 {
     public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key)
     {
+        $arguments = array_merge($arguments, $type->getBilling());
+        $arguments['customer'] = $customer->getCustomerId();
+        $this->stripe('create', $arguments, $key);
 
+        return $this;
     }
 
     public function finalize(string $invoiceid)
