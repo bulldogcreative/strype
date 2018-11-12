@@ -16,7 +16,7 @@ interface InvoiceInterface
 
     public function voidInvoice(string $invoiceid);
 
-    public function markUncollectable(string $invoiceid);
+    public function markUncollectible(string $invoiceid);
 
     public function retrieveLineItems(string $invoiceid, array $arguments = []);
 

@@ -31,7 +31,8 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     public function finalizeInvoice(string $invoiceid)
     {
         $this->stripe('retrieve', $invoiceid);
-        $this->response->finalizeInvoice();
+        $this->response = $this->response->finalizeInvoice();
+        $this->setProperties();
 
         return $this;
     }
@@ -39,7 +40,8 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     public function pay(string $invoiceid)
     {
         $this->stripe('retrieve', $invoiceid);
-        $this->response->pay();
+        $this->response = $this->response->pay();
+        $this->setProperties();
 
         return $this;
     }
@@ -47,7 +49,8 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     public function sendInvoice(string $invoiceid)
     {
         $this->stripe('retrieve', $invoiceid);
-        $this->response->sendInvoice();
+        $this->response = $this->response->sendInvoice();
+        $this->setProperties();
 
         return $this;
     }
@@ -55,15 +58,17 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     public function voidInvoice(string $invoiceid)
     {
         $this->stripe('retrieve', $invoiceid);
-        $this->response->voidInvoice();
+        $this->response = $this->response->voidInvoice();
+        $this->setProperties();
 
         return $this;
     }
 
-    public function markUncollectable(string $invoiceid)
+    public function markUncollectible(string $invoiceid)
     {
         $this->stripe('retrieve', $invoiceid);
-        $this->response->markUncollectable();
+        $this->response = $this->response->markUncollectible();
+        $this->setProperties();
 
         return $this;
     }
@@ -71,7 +76,8 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     public function retrieveLineItems(string $invoiceid, array $arguments = [])
     {
         $this->stripe('retrieve', $invoiceid);
-        $this->lines = $this->response->lines($arguments);
+        $this->response = $this->lines = $this->response->lines->all($arguments);
+        $this->setProperties();
 
         return $this;
     }
@@ -79,7 +85,8 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     public function upcoming(CustomerInterface $customer, array $arguments = [])
     {
         $arguments['customer'] = $customer->getCustomerId();
-        $this->stripe('upcoming', $arguments);
+        $this->response = $this->stripe('upcoming', $arguments);
+        $this->setProperties();
 
         return $this;
     }

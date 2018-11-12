@@ -77,6 +77,94 @@ class InvoiceTests extends TestCase
         $this->assertTrue($invoice->deleted);
     }
 
+    public function testFinalizeInvoice()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+        );
+        $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
+        $this->assertEquals('open', $updated->status);
+    }
+
+    public function testPayInvoice()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+        );
+        $updated = $this->strype->invoice()->pay($invoice->id);
+        $this->assertEquals('paid', $updated->status);
+    }
+
+    public function testSendInvoiceForManualPayment()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
+        );
+        $updated = $this->strype->invoice()->sendInvoice($invoice->id);
+        $this->assertEquals('invoice', $updated->object);
+    }
+
+    public function testVoidInvoice()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+        );
+        $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
+
+        $voidedInvoice = $this->strype->invoice()->voidInvoice($updated->id);
+        $this->assertEquals('void', $voidedInvoice->status);
+    }
+
+    public function testMarkInvoiceAsUncollectable()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+        );
+        $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
+        $invoice = $this->strype->invoice()->markUncollectible($invoice->id);
+        $this->assertEquals('uncollectible', $invoice->status);
+    }
+
+    public function testReceiveInvoiceLineItems()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+        );
+
+        $lineItems = $this->strype->invoice()->retrieveLineItems($invoice->id);
+        $this->assertCount(1, $lineItems->data);
+    }
+
+    /**
+     * @expectedException Stripe\Error\InvalidRequest
+     */
+    public function testRetrieveUpcomingInvoice()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
+        );
+        $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
+        $upcoming = $this->strype->invoice()->upcoming($this->customer);
+    }
+
+    /**
+     * @expectedException Stripe\Error\InvalidRequest
+     */
+    public function testRetrieveUpcomingInvoiceLineItems()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
+        );
+        $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
+        $upcoming = $this->strype->invoice()->retrieveUpcomingLineItems($this->customer);
+    }
+
+    public function testListAllInvoices()
+    {
+        $invoices = $this->strype->invoice()->listAll(['limit' => 1]);
+        $this->assertCount(1, $invoices->data);
+    }
+
     public function tearDown()
     {
         $this->customer->getResponse()->delete();
