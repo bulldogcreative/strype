@@ -13,12 +13,13 @@ use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Requests\InvoiceItemInterface;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
+use Bulldog\Strype\Contracts\Resources\InvoiceItemTypeInterface;
 
 class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
 {
     use Retrieve, Update, ListAll, Delete;
 
-    public function create(CustomerInterface $customer, array $arguments = [], $key = null, string $currency = 'usd')
+    public function create(CustomerInterface $customer, InvoiceItemTypeInterface $type, array $arguments = [], $key = null, string $currency = 'usd')
     {
         $arguments['customer'] = $customer->getCustomerId();
         $arguments['currency'] = $currency;
