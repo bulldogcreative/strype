@@ -15,6 +15,8 @@ use Bulldog\Strype\Contracts\Resources\SubscriptionBillingInterface;
 
 class Invoice extends Request implements InvoiceInterface, RetrieveInterface, UpdateInterface, ListAllInterface
 {
+    use Retrieve, Update, ListAll;
+
     public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key)
     {
         $arguments = array_merge($arguments, $type->getBilling());
