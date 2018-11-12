@@ -38,8 +38,22 @@ class DisputeTests extends TestCase
 
         $disputes = $this->strype->dispute()->listAll(['limit' => 1]);
         $this->assertEquals('dispute', $disputes->getResponse()->data[0]->object);
-        $result = $disputes->data[0]->close();
-        $this->assertEquals('lost', $result->status);
+        $result = $this->strype->dispute()->close($disputes->data[0]->id);
+        $this->assertEquals('needs_response', $result->status);
+    }
+
+    public function testUpdateDispute()
+    {
+        $customer = $this->strype->customer()->create('levi@example.com', 'tok_createDispute');
+        $charge = $this->strype->charge()->create($customer, 500, [], $this->id->get(12));
+        $dispute = $this->strype->dispute()->listAll(['limit' => 1])->data[0];
+
+        $updated = $this->strype->dispute()->update($dispute->id, [
+            'evidence' => [
+                'product_description' => 'reindeer tracks'
+            ],
+        ]);
+        $this->assertEquals('reindeer tracks', $updated->evidence['product_description']);
     }
 
     /**
@@ -53,7 +67,7 @@ class DisputeTests extends TestCase
     /**
      * @expectedException \Stripe\Error\InvalidRequest
      */
-    public function testUpdateDispute()
+    public function testUpdateDisputeWithException()
     {
         $this->strype->dispute()->update('abc123', ['description' => 'Santa']);
     }
