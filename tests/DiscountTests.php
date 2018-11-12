@@ -65,7 +65,7 @@ class DiscountTests extends TestCase
                 ['plan' => $plan->id],
             ],
             [
-                'coupon' => $coupon->id
+                'coupon' => $coupon->id,
             ]
         );
 

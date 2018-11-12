@@ -50,7 +50,7 @@ class DisputeTests extends TestCase
 
         $updated = $this->strype->dispute()->update($dispute->id, [
             'evidence' => [
-                'product_description' => 'reindeer tracks'
+                'product_description' => 'reindeer tracks',
             ],
         ]);
         $this->assertEquals('reindeer tracks', $updated->evidence['product_description']);

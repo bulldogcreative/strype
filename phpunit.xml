@@ -57,6 +57,9 @@
         <testsuite name="InvoiceItem">
             <file>tests/InvoiceItemTests.php</file>
         </testsuite>
+        <testsuite name="Invoice">
+            <file>tests/InvoiceTests.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
