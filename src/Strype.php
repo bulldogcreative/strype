@@ -16,6 +16,7 @@ use Bulldog\Strype\Requests\Token;
 use Bulldog\Strype\Requests\Coupon;
 use Bulldog\Strype\Requests\Discount;
 use Bulldog\Strype\Requests\Subscription;
+use Bulldog\Strype\Requests\InvoiceItem;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 
 /**
@@ -108,5 +109,10 @@ class Strype
     public function subscription()
     {
         return new Subscription();
+    }
+
+    public function invoiceItem()
+    {
+        return new InvoiceItem();
     }
 }
