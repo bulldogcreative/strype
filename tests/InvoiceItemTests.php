@@ -62,7 +62,7 @@ class InvoiceItemTests extends TestCase
             new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
         );
         $updated = $this->strype->invoiceItem()->update($invoiceItem->id, [
-            'amount' => 3500
+            'amount' => 3500,
         ]);
         $this->assertEquals('invoiceitem', $updated->object);
         $this->assertEquals(3500, $updated->amount);
@@ -84,7 +84,7 @@ class InvoiceItemTests extends TestCase
     public function testListAllInvoiceItems()
     {
         $items = $this->strype->invoiceItem()->listAll(['limit' => 3]);
-        foreach($items->data as $item) {
+        foreach ($items->data as $item) {
             $this->assertEquals('invoiceitem', $item->object);
         }
         $this->assertCount(3, $items->data);
