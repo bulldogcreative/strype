@@ -6,5 +6,5 @@ interface DiscountInterface
 {
     public function deleteCustomerDiscount(CustomerInterface $customerid);
 
-    public function deleteSubscriptionDiscount(string $subscriptionid);
+    public function deleteSubscriptionDiscount(SubscriptionInterface $subscription, $key = null);
 }
