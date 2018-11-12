@@ -25,6 +25,10 @@ class InvoiceItemTests extends TestCase
             new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
         );
         $this->assertEquals('invoiceitem', $invoiceItem->object);
+        $this->assertEquals(2500, $invoiceItem->amount);
+        $this->assertEquals($this->customer->getCustomerId(), $invoiceItem->customer);
+        $this->assertEquals('usd', $invoiceItem->currency);
+        $this->assertInternalType('int', $invoiceItem->amount);
     }
 
     public function tearDown()
