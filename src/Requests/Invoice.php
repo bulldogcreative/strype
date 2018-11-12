@@ -86,7 +86,6 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     {
         $arguments['customer'] = $customer->getCustomerId();
         $this->response = $this->stripe('upcoming', $arguments);
-        $this->setProperties();
 
         return $this;
     }
