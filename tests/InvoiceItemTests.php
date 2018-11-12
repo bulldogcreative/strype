@@ -21,7 +21,9 @@ class InvoiceItemTests extends TestCase
 
     public function testCreateInvoiceItem()
     {
-        $invoiceItem = $this->strype->invoiceItem()->create($this->customer);
+        $invoiceItem = $this->strype->invoiceItem()->create($this->customer, [
+            'amount' => 2500
+        ]);
         $this->assertEquals('invoiceitem', $invoiceItem->object);
     }
 
