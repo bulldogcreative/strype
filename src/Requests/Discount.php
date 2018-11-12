@@ -17,10 +17,11 @@ class Discount extends Request implements DiscountInterface
         return $this;
     }
 
-    public function deleteSubscriptionDiscount(SubscriptionInterface $subscription, $key = null)
+    public function deleteSubscriptionDiscount(SubscriptionInterface $subscription)
     {
-        $this->subscription($subscription->getId(), $key);
+        $this->subscription($subscription->getId());
         $this->response->deleteDiscount();
+        $this->deleted = true;
 
         return $this;
     }

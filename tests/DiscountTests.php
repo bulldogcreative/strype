@@ -42,4 +42,34 @@ class DiscountTests extends TestCase
         $customer = $this->strype->customer()->retrieve($newCustomer->getCustomerId());
         $this->assertEquals($customer->discount, null);
     }
+
+    public function testDeleteSubscriptionDiscount()
+    {
+        $duration = new \Bulldog\Strype\Resources\Coupons\Duration\Forever();
+        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
+
+        $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
+        $plan = \Stripe\Plan::create([
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => 'Gold special',
+            ],
+            'currency' => 'usd',
+            'id' => 'gold-special'.$this->id->get(12),
+        ]);
+        $subscription = $this->strype->subscription()->create(
+            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            [
+                ['plan' => $plan->id],
+            ],
+            [
+                'coupon' => $coupon->id
+            ]
+        );
+
+        $discount = $this->strype->discount()->deleteSubscriptionDiscount($subscription);
+        $this->assertTrue($discount->deleted);
+    }
 }
