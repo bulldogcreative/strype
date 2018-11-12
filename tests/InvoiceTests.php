@@ -142,22 +142,17 @@ class InvoiceTests extends TestCase
         $this->assertEquals('upcoming', $upcoming->billing_reason);
     }
 
-    /**
-     * @expectedException Stripe\Error\InvalidRequest
-     */
-    public function testRetrieveUpcomingInvoiceLineItems()
-    {
-        $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
-        );
-        $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
-        $upcoming = $this->strype->invoice()->retrieveUpcomingLineItems($this->customer);
-    }
-
     public function testListAllInvoices()
     {
         $invoices = $this->strype->invoice()->listAll(['limit' => 1]);
         $this->assertCount(1, $invoices->data);
+    }
+
+    public function testRetrieveUpcomingInvoiceLineItems()
+    {
+        $customer = $this->strype->customer()->retrieve('cus_DxiWAfQMgD1WJy');
+        $upcoming = $this->strype->invoice()->retrieveUpcomingLineItems($customer);
+        $this->assertCount(1, $upcoming->data);
     }
 
     public function tearDown()

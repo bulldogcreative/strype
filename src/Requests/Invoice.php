@@ -92,8 +92,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
 
     public function retrieveUpcomingLineItems(CustomerInterface $customer, array $arguments = [])
     {
-        $arguments['customer'] = $customer->getCustomerId();
-        $this->response = \Stripe\Invoice::retrieve('upcoming')->lines->all($arguments);
+        $this->response = \Stripe\Invoice::upcoming(['customer' => $customer->getCustomerId()])->lines->all($arguments);
         $this->setProperties();
 
         return $this;
