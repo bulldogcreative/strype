@@ -1,6 +1,6 @@
 <?php
 
-namespace Bulldog\Strype\Resources\Products;
+namespace Bulldog\Strype\Resources\InvoiceItems;
 
 use Bulldog\Strype\Contracts\Resources\InvoiceItemTypeInterface;
 
