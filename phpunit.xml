@@ -54,6 +54,9 @@
         <testsuite name="Subscription">
             <file>tests/SubscriptionTests.php</file>
         </testsuite>
+        <testsuite name="InvoiceItem">
+            <file>tests/InvoiceItemTests.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
