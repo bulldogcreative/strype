@@ -21,18 +21,18 @@ class SubscriptionTests extends TestCase
     {
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $plan = \Stripe\Plan::create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => "Gold special"
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => 'Gold special',
             ],
-            "currency" => "usd",
-            "id" => "gold-special".$this->id->get(12)
+            'currency' => 'usd',
+            'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically,
+            $customer, new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically(),
             [
-                ['plan' => $plan->id]
+                ['plan' => $plan->id],
             ]
         );
         $this->assertEquals('subscription', $subscription->object);
@@ -44,18 +44,18 @@ class SubscriptionTests extends TestCase
     {
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $plan = \Stripe\Plan::create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => "Gold special"
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => 'Gold special',
             ],
-            "currency" => "usd",
-            "id" => "gold-special".$this->id->get(12)
+            'currency' => 'usd',
+            'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
             $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
             [
-                ['plan' => $plan->id]
+                ['plan' => $plan->id],
             ]
         );
         $this->assertEquals('subscription', $subscription->object);
@@ -67,18 +67,18 @@ class SubscriptionTests extends TestCase
     {
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $plan = \Stripe\Plan::create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => "Gold special"
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => 'Gold special',
             ],
-            "currency" => "usd",
-            "id" => "gold-special".$this->id->get(12)
+            'currency' => 'usd',
+            'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
             $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
             [
-                ['plan' => $plan->id]
+                ['plan' => $plan->id],
             ]
         );
 
@@ -91,18 +91,18 @@ class SubscriptionTests extends TestCase
     {
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $plan = \Stripe\Plan::create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => "Gold special"
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => 'Gold special',
             ],
-            "currency" => "usd",
-            "id" => "gold-special".$this->id->get(12)
+            'currency' => 'usd',
+            'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
             $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
             [
-                ['plan' => $plan->id]
+                ['plan' => $plan->id],
             ]
         );
 
@@ -116,18 +116,18 @@ class SubscriptionTests extends TestCase
     {
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $plan = \Stripe\Plan::create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => "Gold special"
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => 'Gold special',
             ],
-            "currency" => "usd",
-            "id" => "gold-special".$this->id->get(12)
+            'currency' => 'usd',
+            'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
             $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
             [
-                ['plan' => $plan->id]
+                ['plan' => $plan->id],
             ]
         );
 
@@ -138,7 +138,7 @@ class SubscriptionTests extends TestCase
     public function testListAllSubscriptions()
     {
         $subscriptions = $this->strype->subscription()->listAll(['limit' => 3]);
-        foreach($subscriptions->data as $subscription) {
+        foreach ($subscriptions->data as $subscription) {
             $this->assertEquals('subscription', $subscription->object);
         }
         $this->assertEquals(3, count($subscriptions->data));

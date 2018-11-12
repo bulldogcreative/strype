@@ -18,7 +18,7 @@ class DiscountTests extends TestCase
     }
 
     /**
-     * @expectedException Stripe\Error\InvalidRequest
+     * @expectedException \Stripe\Error\InvalidRequest
      */
     public function testDeleteCustomerDiscountWithNoDiscount()
     {
