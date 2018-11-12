@@ -21,10 +21,15 @@ class InvoiceTests extends TestCase
 
     public function testCreateInvoiceAndChargeAutomatically()
     {
+        $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
+            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+        );
         $invoice = $this->strype->invoice()->create($this->customer,
             new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
         );
-        dump($invoice);
+        $this->assertEquals('invoice', $invoice->object);
+        $this->assertEquals($this->customer->getCustomerId(), $invoice->customer);
+        $this->assertEquals(2500, $invoice->total);
     }
 
     public function tearDown()
