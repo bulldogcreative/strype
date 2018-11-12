@@ -11,19 +11,20 @@ class InvoiceTests extends TestCase
     public $strype;
     public $customer;
     public $id;
+    public $invoiceItem;
 
     public function setUp()
     {
         $this->strype = new Strype(getenv('STRIPE_API_KEY'));
         $this->customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $this->id = new ObjectId();
+        $this->invoiceItem = $this->strype->invoiceItem()->create($this->customer,
+            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+        );
     }
 
     public function testCreateInvoiceAndChargeAutomatically()
     {
-        $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
-        );
         $invoice = $this->strype->invoice()->create($this->customer,
             new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
         );
@@ -34,9 +35,6 @@ class InvoiceTests extends TestCase
 
     public function testCreateInvoiceAndSend()
     {
-        $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
-        );
         $invoice = $this->strype->invoice()->create($this->customer,
             new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
         );
