@@ -59,4 +59,12 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     {
 
     }
+
+    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    {
+        $this->response = \Stripe\Invoice::{$method}($arguments, [
+            'idempotency_key' => $idempotencyKey,
+        ]);
+        $this->setProperties();
+    }
 }
