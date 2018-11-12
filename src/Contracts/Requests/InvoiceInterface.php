@@ -8,7 +8,7 @@ interface InvoiceInterface
 {
     public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], string $key = null);
 
-    public function finalize(string $invoiceid);
+    public function finalizeInvoice(string $invoiceid);
 
     public function pay(string $invoiceid);
 
