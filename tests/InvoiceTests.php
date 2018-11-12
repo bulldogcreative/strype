@@ -68,6 +68,15 @@ class InvoiceTests extends TestCase
         $this->assertEquals('New sled', $updated->description);
     }
 
+    public function testDeleteInvoice()
+    {
+        $invoice = $this->strype->invoice()->create($this->customer,
+            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+        );
+        $invoice = $this->strype->invoice()->delete($invoice->id);
+        $this->assertTrue($invoice->deleted);
+    }
+
     public function tearDown()
     {
         $this->customer->getResponse()->delete();
