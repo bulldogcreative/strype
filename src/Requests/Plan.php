@@ -21,7 +21,7 @@ class Plan extends Request implements PlanInterface, RetrieveInterface, ListAllI
      * Creating a plan has complicated requirements. So for now, it'll accept an
      * array.
      *
-     * @param array $arguments
+     * @param array  $arguments
      * @param string $key
      */
     public function create(array $arguments, $key = null)

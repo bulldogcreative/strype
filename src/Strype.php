@@ -124,7 +124,7 @@ class Strype
 
     public function invoice()
     {
-        return new Invoice;
+        return new Invoice();
     }
 
     public function plan()

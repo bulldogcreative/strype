@@ -19,8 +19,8 @@ class PlanTests extends TestCase
 
     public function testCreatePlan()
     {
-        $planName = "Gold special" . $this->id->get(12);
-        $planId = "gold-special" . $this->id->get(12);
+        $planName = 'Gold special'.$this->id->get(12);
+        $planId = 'gold-special'.$this->id->get(12);
         $plan = $this->createPlan($planName, $planId);
 
         $this->assertEquals('plan', $plan->object);
@@ -33,7 +33,7 @@ class PlanTests extends TestCase
 
     public function testRetrievePlan()
     {
-        $name = 'Testing plan ' . $this->id->get(12);
+        $name = 'Testing plan '.$this->id->get(12);
         $id = $this->id->get(12);
         $this->createPlan($name, $id);
 
@@ -48,12 +48,12 @@ class PlanTests extends TestCase
 
     public function testUpdatePlan()
     {
-        $name = 'Testing plan ' . $this->id->get(12);
+        $name = 'Testing plan '.$this->id->get(12);
         $id = $this->id->get(12);
         $this->createPlan($name, $id);
 
         $plan = $this->strype->plan()->update($id, [
-            'nickname' => 'elite'
+            'nickname' => 'elite',
         ]);
         $this->assertEquals('plan', $plan->object);
         $this->assertEquals(5000, $plan->amount);
@@ -65,7 +65,7 @@ class PlanTests extends TestCase
 
     public function testDeletePlan()
     {
-        $name = 'Testing plan ' . $this->id->get(12);
+        $name = 'Testing plan '.$this->id->get(12);
         $id = $this->id->get(12);
         $this->createPlan($name, $id);
 
@@ -81,7 +81,7 @@ class PlanTests extends TestCase
 
     public function testListAllPlans()
     {
-        $name = 'Testing plan ' . $this->id->get(12);
+        $name = 'Testing plan '.$this->id->get(12);
         $id = $this->id->get(12);
         $this->createPlan($name, $id);
 
@@ -99,13 +99,13 @@ class PlanTests extends TestCase
     public function createPlan($name, $id)
     {
         return $this->strype->plan()->create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => $name
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => $name,
             ],
-            "currency" => "usd",
-            "id" => $id
+            'currency' => 'usd',
+            'id' => $id,
         ]);
     }
 }
