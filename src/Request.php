@@ -11,7 +11,7 @@ abstract class Request
 
     protected $response;
 
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
