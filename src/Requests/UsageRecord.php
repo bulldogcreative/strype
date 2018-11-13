@@ -18,6 +18,14 @@ class UsageRecord extends Request implements UsageRecordInterface
         return $this;
     }
 
+    public function usageRecordSummaries(SubscriptionItemInterface $subscriptionItem, array $arguments = [])
+    {
+        $this->stripe('retrieve', $subscriptionItem->getId());
+        $this->response = $this->response->usageRecordSummaries($arguments);
+
+        return $this;
+    }
+
     protected function stripe(string $method, $arguments, $idempotencyKey = null)
     {
         $this->response = \Stripe\UsageRecord::{$method}($arguments, [
