@@ -76,12 +76,24 @@ class PlanTests extends TestCase
         $this->assertEquals($name, $plan->name);
         $this->assertEquals($id, $plan->getId());
         $this->assertTrue($plan->deleted);
+        $this->assertNull($plan->nickname);
     }
 
     public function testListAllPlans()
     {
-        $plans = $this->strype->plan()->listAll(['limit' => 1]);
+        $name = 'Testing plan ' . $this->id->get(12);
+        $id = $this->id->get(12);
+        $this->createPlan($name, $id);
+
+        $plans = $this->strype->plan()->listAll([
+            'limit' => 1,
+        ]);
         $this->assertCount(1, $plans->data);
+        $this->assertEquals('plan', $plans->data[0]->object);
+        $this->assertEquals(5000, $plans->data[0]->amount);
+        $this->assertEquals('usd', $plans->data[0]->currency);
+        $this->assertEquals($name, $plans->data[0]->name);
+        $this->assertEquals($id, $plans->data[0]->id);
     }
 
     public function createPlan($name, $id)
