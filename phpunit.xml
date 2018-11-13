@@ -66,6 +66,9 @@
         <testsuite name="SubscriptionItem">
             <file>tests/SubscriptionItemTests.php</file>
         </testsuite>
+        <testsuite name="UsageRecord">
+            <file>tests/UsageRecordTests.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

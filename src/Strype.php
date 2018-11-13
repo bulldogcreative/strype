@@ -22,6 +22,7 @@ use Bulldog\Strype\Requests\InvoiceItem;
 use Bulldog\Strype\Requests\Invoice;
 use Bulldog\Strype\Requests\Plan;
 use Bulldog\Strype\Requests\SubscriptionItem;
+use Bulldog\Strype\Requests\UsageRecord;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 
 /**
@@ -134,5 +135,10 @@ class Strype
     public function subscriptionItem()
     {
         return new SubscriptionItem();
+    }
+
+    public function usageRecord()
+    {
+        return new UsageRecord();
     }
 }
