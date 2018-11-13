@@ -17,4 +17,12 @@ class UsageRecord extends Request implements UsageRecordInterface
 
         return $this;
     }
+
+    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    {
+        $this->response = \Stripe\UsageRecord::{$method}($arguments, [
+            'idempotency_key' => $idempotencyKey,
+        ]);
+        $this->setProperties();
+    }
 }
