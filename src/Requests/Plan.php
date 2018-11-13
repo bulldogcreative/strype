@@ -11,7 +11,7 @@ use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
-use Bulldog\Strype\Contracts\Requests\PayoutInterface;
+use Bulldog\Strype\Contracts\Requests\PlanInterface;
 
 class Plan extends Request implements PlanInterface, RetrieveInterface, ListAllInterface, UpdateInterface, DeleteInterface
 {
