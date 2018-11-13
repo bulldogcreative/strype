@@ -40,6 +40,20 @@ class SubscriptionItemTests extends TestCase
         $this->assertEquals('subscription_item', $si->object);
     }
 
+    public function testUpdateSubscriptionItem()
+    {
+        $subscription = $this->createSubscription($this->createPlan()['plan']);
+        $subscriptionItem = $this->createSubscriptionItem($subscription, $this->createPlan()['plan']);
+
+        $si = $this->strype->subscriptionItem()->update($subscriptionItem->id, [
+            'metadata' => [
+                'notes' => 'yellow'
+            ]
+        ]);
+        $this->assertEquals('subscription_item', $si->object);
+        $this->assertEquals('yellow', $si->metadata['notes']);
+    }
+
     public function createPlan()
     {
         $name = "Gold special" . $this->id->get(12);
