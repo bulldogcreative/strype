@@ -63,6 +63,15 @@ class SubscriptionItemTests extends TestCase
         $this->assertTrue($si->deleted);
     }
 
+    public function testListAllSubscriptionItem()
+    {
+        $subscription = $this->createSubscription($this->createPlan()['plan']);
+        $sis = $this->strype->subscriptionItem()->listAll([
+            'subscription' => $subscription->id,
+        ]);
+        $this->assertEquals('subscription_item', $sis->data[0]->object);
+    }
+
     public function createPlan()
     {
         $name = "Gold special" . $this->id->get(12);
