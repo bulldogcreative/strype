@@ -16,4 +16,19 @@ class PlanTests extends TestCase
         $this->strype = new Strype(getenv('STRIPE_API_KEY'));
         $this->id = new ObjectId();
     }
+
+    public function testCreatePlan()
+    {
+        $plan = $this->strype->plan()->create([
+            "amount" => 5000,
+            "interval" => "month",
+            "product" => [
+                "name" => "Gold special"
+            ],
+            "currency" => "usd",
+            "id" => "gold-special"
+        ]);
+
+        dump($plan);
+    }
 }
