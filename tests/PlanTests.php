@@ -28,6 +28,7 @@ class PlanTests extends TestCase
         $this->assertEquals('usd', $plan->currency);
         $this->assertEquals($planName, $plan->name);
         $this->assertEquals($planId, $plan->getId());
+        $this->assertNull($plan->nickname);
     }
 
     public function testRetrievePlan()
@@ -42,6 +43,7 @@ class PlanTests extends TestCase
         $this->assertEquals('usd', $plan->currency);
         $this->assertEquals($name, $plan->name);
         $this->assertEquals($id, $plan->getId());
+        $this->assertNull($plan->nickname);
     }
 
     public function testUpdatePlan()
