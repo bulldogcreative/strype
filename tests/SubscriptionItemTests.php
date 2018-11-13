@@ -28,6 +28,16 @@ class SubscriptionItemTests extends TestCase
 
         $this->assertEquals($plan['name'], $subscriptionItem->plan->name);
         $this->assertEquals($subscription->getId(), $subscriptionItem->subscription);
+        $this->assertEquals('subscription_item', $subscriptionItem->object);
+    }
+
+    public function testRetrieveSubscriptionItem()
+    {
+        $subscription = $this->createSubscription($this->createPlan()['plan']);
+        $subscriptionItem = $this->createSubscriptionItem($subscription, $this->createPlan()['plan']);
+
+        $si = $this->strype->subscriptionItem()->retrieve($subscriptionItem->id);
+        $this->assertEquals('subscription_item', $si->object);
     }
 
     public function createPlan()
