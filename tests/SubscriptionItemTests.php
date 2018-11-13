@@ -54,6 +54,15 @@ class SubscriptionItemTests extends TestCase
         $this->assertEquals('yellow', $si->metadata['notes']);
     }
 
+    public function testDeleteSubscriptionItem()
+    {
+        $subscription = $this->createSubscription($this->createPlan()['plan']);
+        $subscriptionItem = $this->createSubscriptionItem($subscription, $this->createPlan()['plan']);
+
+        $si = $this->strype->subscriptionItem()->delete($subscriptionItem->id);
+        $this->assertTrue($si->deleted);
+    }
+
     public function createPlan()
     {
         $name = "Gold special" . $this->id->get(12);
