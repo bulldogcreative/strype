@@ -19,16 +19,22 @@ class PlanTests extends TestCase
 
     public function testCreatePlan()
     {
+        $planName = "Gold special" . $this->id->get(12);
+        $planId = "gold-special" . $this->id->get(12);
         $plan = $this->strype->plan()->create([
             "amount" => 5000,
             "interval" => "month",
             "product" => [
-                "name" => "Gold special"
+                "name" => $planName
             ],
             "currency" => "usd",
-            "id" => "gold-special"
+            "id" => $planId
         ]);
 
-        dump($plan);
+        $this->assertEquals('plan', $plan->object);
+        $this->assertEquals(5000, $plan->amount);
+        $this->assertEquals('usd', $plan->currency);
+        $this->assertEquals($planName, $plan->name);
+        $this->assertEquals($planId, $plan->getId());
     }
 }
