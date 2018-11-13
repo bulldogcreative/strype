@@ -53,8 +53,8 @@ class DisputeTests extends TestCase
         // that dispute for the remainder of this test.
         //
         // https://github.com/bulldogcreative/strype/issues/6
-        foreach($disputes->data as $data) {
-            if($data->status == "needs_response") {
+        foreach ($disputes->data as $data) {
+            if ('needs_response' == $data->status) {
                 $dispute = $data;
             }
         }

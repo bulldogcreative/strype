@@ -17,27 +17,27 @@ class UsageRecordTests extends TestCase
         $this->strype = new Strype(getenv('STRIPE_API_KEY'));
         $this->id = new ObjectId();
 
-        $name = "Gold special" . $this->id->get(12);
-        $id = "gold-special" . $this->id->get(12);
+        $name = 'Gold special'.$this->id->get(12);
+        $id = 'gold-special'.$this->id->get(12);
         $plan = $this->strype->plan()->create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => $name
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => $name,
             ],
-            "currency" => "usd",
-            "id" => $id,
-            'usage_type' => 'metered'
+            'currency' => 'usd',
+            'id' => $id,
+            'usage_type' => 'metered',
         ]);
         $plan2 = $this->strype->plan()->create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => $name
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => $name,
             ],
-            "currency" => "usd",
-            "id" => $this->id->get(12),
-            'usage_type' => 'metered'
+            'currency' => 'usd',
+            'id' => $this->id->get(12),
+            'usage_type' => 'metered',
         ]);
         $subscription = $this->strype->subscription()->create(
             $this->strype->customer()->create('levi@example.com', 'tok_mastercard'),

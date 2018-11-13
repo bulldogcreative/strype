@@ -47,8 +47,8 @@ class SubscriptionItemTests extends TestCase
 
         $si = $this->strype->subscriptionItem()->update($subscriptionItem->id, [
             'metadata' => [
-                'notes' => 'yellow'
-            ]
+                'notes' => 'yellow',
+            ],
         ]);
         $this->assertEquals('subscription_item', $si->object);
         $this->assertEquals('yellow', $si->metadata['notes']);
@@ -74,16 +74,16 @@ class SubscriptionItemTests extends TestCase
 
     public function createPlan()
     {
-        $name = "Gold special" . $this->id->get(12);
-        $id = "gold-special" . $this->id->get(12);
+        $name = 'Gold special'.$this->id->get(12);
+        $id = 'gold-special'.$this->id->get(12);
         $plan = $this->strype->plan()->create([
-            "amount" => 5000,
-            "interval" => "month",
-            "product" => [
-                "name" => $name
+            'amount' => 5000,
+            'interval' => 'month',
+            'product' => [
+                'name' => $name,
             ],
-            "currency" => "usd",
-            "id" => $id
+            'currency' => 'usd',
+            'id' => $id,
         ]);
 
         return [
@@ -111,7 +111,7 @@ class SubscriptionItemTests extends TestCase
             $plan,
             $subscription,
             [
-                'quantity' => $quantity
+                'quantity' => $quantity,
             ],
             $this->id->get(12)
         );
