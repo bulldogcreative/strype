@@ -10,15 +10,13 @@ class UsageRecordTests extends TestCase
 {
     public $strype;
     public $id;
+    public $subscriptionItem;
 
     public function setUp()
     {
         $this->strype = new Strype(getenv('STRIPE_API_KEY'));
         $this->id = new ObjectId();
-    }
 
-    public function testCreateUsageRecord()
-    {
         $name = "Gold special" . $this->id->get(12);
         $id = "gold-special" . $this->id->get(12);
         $plan = $this->strype->plan()->create([
@@ -48,15 +46,25 @@ class UsageRecordTests extends TestCase
                 ['plan' => $plan->id],
             ]
         );
-        $subscriptionItem = $this->strype->subscriptionItem()->create(
+        $this->subscriptionItem = $this->strype->subscriptionItem()->create(
             $plan2,
             $subscription,
             [],
             $this->id->get(12)
         );
+    }
 
-        $usageRecord = $this->strype->usageRecord()->create(100, $subscriptionItem, time());
+    public function testCreateUsageRecord()
+    {
+        $usageRecord = $this->strype->usageRecord()->create(100, $this->subscriptionItem, time());
         $this->assertStringStartsWith('mbur_', $usageRecord->id);
         $this->assertEquals('usage_record', $usageRecord->object);
+    }
+
+    public function testUsageRecordSummaries()
+    {
+        $response = $this->strype->usageRecord()->usageRecordSummaries($this->subscriptionItem);
+        $this->assertStringStartsWith('sis_', $response->getResponse()->data[0]->id);
+        $this->assertEquals('subscription_item', $response->object);
     }
 }

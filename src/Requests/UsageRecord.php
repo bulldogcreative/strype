@@ -20,7 +20,8 @@ class UsageRecord extends Request implements UsageRecordInterface
 
     public function usageRecordSummaries(SubscriptionItemInterface $subscriptionItem, array $arguments = [])
     {
-        $this->stripe('retrieve', $subscriptionItem->getId());
+        $this->response = \Stripe\SubscriptionItem::retrieve($subscriptionItem->getId());
+        $this->setProperties();
         $this->response = $this->response->usageRecordSummaries($arguments);
 
         return $this;
