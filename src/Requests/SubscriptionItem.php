@@ -23,4 +23,12 @@ class SubscriptionItem extends Request implements SubscriptionItemInterface, Ret
     {
 
     }
+
+    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    {
+        $this->response = \Stripe\SubscriptionItem::{$method}($arguments, [
+            'idempotency_key' => $idempotencyKey,
+        ]);
+        $this->setProperties();
+    }
 }
