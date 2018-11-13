@@ -63,6 +63,9 @@
         <testsuite name="Plan">
             <file>tests/PlanTests.php</file>
         </testsuite>
+        <testsuite name="SubscriptionItem">
+            <file>tests/SubscriptionItemTests.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
