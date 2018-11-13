@@ -19,6 +19,17 @@ class SubscriptionItemTests extends TestCase
         $this->customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
     }
 
+    public function testCreateSubscriptionItem()
+    {
+        $subscription = $this->createSubscription($this->createPlan()['plan']);
+
+        $plan = $this->createPlan();
+        $subscriptionItem = $this->createSubscriptionItem($subscription, $plan['plan']);
+
+        $this->assertEquals($plan['name'], $subscriptionItem->plan->name);
+        $this->assertEquals($subscription->getId(), $subscriptionItem->subscription);
+    }
+
     public function createPlan()
     {
         $name = "Gold special" . $this->id->get(12);
@@ -43,7 +54,7 @@ class SubscriptionItemTests extends TestCase
     public function createSubscription($plan)
     {
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically(),
+            $this->customer, new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically(),
             [
                 ['plan' => $plan->id],
             ]
@@ -55,12 +66,14 @@ class SubscriptionItemTests extends TestCase
     public function createSubscriptionItem($subscription, $plan, $quantity = 2)
     {
         $subscriptionItem = $this->strype->subscriptionItem()->create(
-            $subscription->getId(),
-            $plan->getId(),
+            $plan,
+            $subscription,
             [
                 'quantity' => $quantity
             ],
             $this->id->get(12)
         );
+
+        return $subscriptionItem;
     }
 }
