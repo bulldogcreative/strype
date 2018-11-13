@@ -21,7 +21,11 @@ class SubscriptionItem extends Request implements SubscriptionItemInterface, Ret
 
     public function create(PlanInterface $plan, SubscriptionInterface $subscription, array $arguments = [], $key = null)
     {
+        $arguments['plan'] = $plan->getId();
+        $arguments['subscription'] = $subscription->getId();
+        $this->stripe('create', $arguments, $key);
 
+        return $this;
     }
 
     protected function stripe(string $method, $arguments, $idempotencyKey = null)
