@@ -5,7 +5,7 @@ namespace Bulldog\Strype\Contracts\Requests;
 /**
  * Interface CustomerInterface.
  */
-interface CustomerInterface
+interface CustomerInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
     /**
      * @param string $email

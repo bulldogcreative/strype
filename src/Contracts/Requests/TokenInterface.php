@@ -2,7 +2,7 @@
 
 namespace Bulldog\Strype\Contracts\Requests;
 
-interface TokenInterface
+interface TokenInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
     public function createCard($number, $expMonth, $expYear, $cvc, $arguments = [], $key = null);
 
