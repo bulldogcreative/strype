@@ -118,4 +118,9 @@ class SubscriptionItemTests extends TestCase
 
         return $subscriptionItem;
     }
+
+    public function tearDown()
+    {
+        $this->customer->getResponse()->delete();
+    }
 }
