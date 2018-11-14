@@ -13,7 +13,7 @@ class Token extends Request implements TokenInterface, RetrieveInterface
 {
     use Retrieve;
 
-    public function createCard($number, $expMonth, $expYear, $cvc, $arguments = [], $key = null)
+    public function createCard($number, int $expMonth, int $expYear, int $cvc, $arguments = [], $key = null)
     {
         $arguments['card']['number'] = $number;
         $arguments['card']['exp_month'] = $expMonth;
@@ -25,7 +25,7 @@ class Token extends Request implements TokenInterface, RetrieveInterface
         return $this;
     }
 
-    public function createBankAccount($country, $currency, $accountHolderName, $accountHolderType, $routingNumber, $accountNumber, $arguments = [], $key = null)
+    public function createBankAccount($country, $currency, string $accountHolderName, $accountHolderType, $routingNumber, $accountNumber, $arguments = [], $key = null)
     {
         $arguments['bank_account']['country'] = $country;
         $arguments['bank_account']['currency'] = $currency;
