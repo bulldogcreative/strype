@@ -9,13 +9,13 @@ class Amount implements CouponTypeInterface
     protected $amount;
     protected $currency;
 
-    public function __construct($amount, $currency = 'usd')
+    public function __construct(int $amount, string $currency = 'usd')
     {
         $this->amount = $amount;
         $this->currency = $currency;
     }
 
-    public function getCouponType()
+    public function getCouponType() : array
     {
         return [
             'amount_off' => $this->amount,

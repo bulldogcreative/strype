@@ -4,5 +4,5 @@ namespace Bulldog\Strype\Contracts\Resources;
 
 interface CouponDurationInterface
 {
-    public function getCouponData();
+    public function getCouponData() : array;
 }

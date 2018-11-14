@@ -9,7 +9,7 @@ class Good implements ProductTypeInterface
     protected $name;
     protected $arguments;
 
-    public function __construct($name, array $arguments = [])
+    public function __construct(string $name, array $arguments = [])
     {
         $this->name = $name;
         $this->arguments = $arguments;

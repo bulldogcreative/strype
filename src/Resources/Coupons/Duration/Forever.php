@@ -6,7 +6,7 @@ use Bulldog\Strype\Contracts\Resources\CouponDurationInterface;
 
 class Forever implements CouponDurationInterface
 {
-    public function getCouponData()
+    public function getCouponData() : array
     {
         return ['duration' => 'forever'];
     }

@@ -20,7 +20,7 @@ class BusinessLogo implements FilesInterface
         return $this->file;
     }
 
-    public function getPurpose()
+    public function getPurpose() : string
     {
         return $this->purpose;
     }

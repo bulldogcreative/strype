@@ -8,7 +8,7 @@ class SendInvoice implements SubscriptionBillingInterface
 {
     public $daysUntilDue;
 
-    public function __construct($daysUntilDue)
+    public function __construct(int $daysUntilDue)
     {
         $this->daysUntilDue = $daysUntilDue;
     }

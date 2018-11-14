@@ -20,7 +20,7 @@ class PciDocument implements FilesInterface
         return $this->file;
     }
 
-    public function getPurpose()
+    public function getPurpose() : string
     {
         return $this->purpose;
     }
