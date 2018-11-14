@@ -17,7 +17,7 @@ class Payout extends Request implements PayoutInterface, RetrieveInterface, List
 {
     use Retrieve, Update, ListAll;
 
-    public function create(int $amount, $arguments = [], $key = null, $currency = 'usd')
+    public function create(int $amount, $arguments = [], $key = null, string $currency = 'usd')
     {
         $arguments['amount'] = $amount;
         $arguments['currency'] = $currency;

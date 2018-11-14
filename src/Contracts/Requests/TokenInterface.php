@@ -6,9 +6,9 @@ namespace Bulldog\Strype\Contracts\Requests;
 
 interface TokenInterface
 {
-    public function createCard($number, $expMonth, $expYear, $cvc, $arguments = [], $key = null);
+    public function createCard($number, int $expMonth, int $expYear, int $cvc, $arguments = [], $key = null);
 
-    public function createBankAccount($country, $currency, $accountHolderName, $accountHolderType, $routingNumber, $accountNumber, $arguments = [], $key = null);
+    public function createBankAccount($country, $currency, string $accountHolderName, $accountHolderType, $routingNumber, $accountNumber, $arguments = [], $key = null);
 
     public function createPii($personalIdNumber, $key = null);
 
