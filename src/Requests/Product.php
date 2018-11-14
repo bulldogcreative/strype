@@ -27,7 +27,7 @@ class Product extends Request implements ProductInterface, RetrieveInterface, Li
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Product::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

@@ -34,7 +34,7 @@ class Payout extends Request implements PayoutInterface, RetrieveInterface, List
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Payout::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

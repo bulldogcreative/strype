@@ -38,7 +38,7 @@ class Subscription extends Request implements SubscriptionInterface, RetrieveInt
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Subscription::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

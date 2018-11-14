@@ -26,7 +26,7 @@ class File extends Request implements FileInterface, RetrieveInterface, ListAllI
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\File::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

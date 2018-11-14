@@ -31,7 +31,7 @@ class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInter
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\InvoiceItem::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

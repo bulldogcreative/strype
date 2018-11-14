@@ -100,7 +100,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Invoice::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

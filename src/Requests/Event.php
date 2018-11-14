@@ -15,7 +15,7 @@ class Event extends Request implements EventInterface, RetrieveInterface, ListAl
 {
     use Retrieve, ListAll;
 
-    protected function stripe(string $method, $arguments)
+    protected function stripe(string $method, $arguments) : void
     {
         $this->response = \Stripe\Event::{$method}($arguments);
         $this->setProperties();

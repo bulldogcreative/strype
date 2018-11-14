@@ -46,7 +46,7 @@ class Customer extends Request implements CustomerInterface, RetrieveInterface, 
         return $this->id;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Customer::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,
