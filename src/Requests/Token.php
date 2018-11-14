@@ -13,7 +13,7 @@ class Token extends Request implements TokenInterface, RetrieveInterface
 {
     use Retrieve;
 
-    public function createCard($number, $expMonth, $expYear, $cvc, $arguments = [], $key = null)
+    public function createCard($number, int $expMonth, int $expYear, int $cvc, $arguments = [], $key = null)
     {
         $arguments['card']['number'] = $number;
         $arguments['card']['exp_month'] = $expMonth;
