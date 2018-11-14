@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Resources\Products;
 
 use Bulldog\Strype\Contracts\Resources\ProductTypeInterface;

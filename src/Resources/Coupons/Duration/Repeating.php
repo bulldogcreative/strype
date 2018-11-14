@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Resources\Coupons\Duration;
 
 use Bulldog\Strype\Contracts\Resources\CouponDurationInterface;

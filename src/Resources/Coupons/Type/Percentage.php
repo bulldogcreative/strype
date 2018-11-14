@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Resources\Coupons\Type;
 
 use Bulldog\Strype\Contracts\Resources\CouponTypeInterface;
