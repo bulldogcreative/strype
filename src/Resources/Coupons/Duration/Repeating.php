@@ -15,7 +15,7 @@ class Repeating implements CouponDurationInterface
         $this->durationInMonths = $durationInMonths;
     }
 
-    public function getCouponData() : array
+    public function getCouponData(): array
     {
         return [
             'duration' => 'repeating',

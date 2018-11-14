@@ -8,7 +8,7 @@ use Bulldog\Strype\Contracts\Resources\CouponDurationInterface;
 
 class Once implements CouponDurationInterface
 {
-    public function getCouponData() : array
+    public function getCouponData(): array
     {
         return ['duration' => 'once'];
     }

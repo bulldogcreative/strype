@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Request;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 use Bulldog\Strype\Contracts\Requests\DiscountInterface;
 use Bulldog\Strype\Contracts\Requests\SubscriptionInterface;
+use Bulldog\Strype\Request;
 
 class Discount extends Request implements DiscountInterface
 {
@@ -28,7 +28,7 @@ class Discount extends Request implements DiscountInterface
         return $this;
     }
 
-    protected function customer($id, $idempotencyKey = null) : void
+    protected function customer($id, $idempotencyKey = null): void
     {
         $this->response = \Stripe\Customer::retrieve($id, [
             'idempotency_key' => $idempotencyKey,
@@ -36,7 +36,7 @@ class Discount extends Request implements DiscountInterface
         $this->setProperties();
     }
 
-    protected function subscription($id, $idempotencyKey = null) : void
+    protected function subscription($id, $idempotencyKey = null): void
     {
         $this->response = \Stripe\Subscription::retrieve($id, [
             'idempotency_key' => $idempotencyKey,

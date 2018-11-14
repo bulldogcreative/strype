@@ -2,9 +2,9 @@
 
 namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Request;
 use Bulldog\Strype\Contracts\Requests\SubscriptionItemInterface;
 use Bulldog\Strype\Contracts\Requests\UsageRecordInterface;
+use Bulldog\Strype\Request;
 
 class UsageRecord extends Request implements UsageRecordInterface
 {

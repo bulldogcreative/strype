@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
+use Bulldog\Strype\Contracts\Requests\BalanceInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Requests\BalanceInterface;
 
 class Balance extends Request implements BalanceInterface, RetrieveInterface
 {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
+use Bulldog\Strype\Contracts\Requests\TokenInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Requests\TokenInterface;
 
 class Token extends Request implements TokenInterface, RetrieveInterface
 {
@@ -57,7 +57,7 @@ class Token extends Request implements TokenInterface, RetrieveInterface
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
+    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
     {
         $this->response = \Stripe\Token::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

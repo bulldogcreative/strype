@@ -8,5 +8,5 @@ interface FilesInterface
 {
     public function getFile();
 
-    public function getPurpose() : string;
+    public function getPurpose(): string;
 }

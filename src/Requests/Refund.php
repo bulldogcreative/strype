@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Request;
-use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Traits\ListAll;
-use Bulldog\Strype\Traits\Update;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Contracts\Requests\ChargeInterface;
 use Bulldog\Strype\Contracts\Requests\RefundInterface;
+use Bulldog\Strype\Contracts\Traits\ListAllInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
+use Bulldog\Strype\Contracts\Traits\UpdateInterface;
+use Bulldog\Strype\Request;
+use Bulldog\Strype\Traits\ListAll;
+use Bulldog\Strype\Traits\Retrieve;
+use Bulldog\Strype\Traits\Update;
 
 class Refund extends Request implements RefundInterface, RetrieveInterface, ListAllInterface, UpdateInterface
 {
@@ -26,7 +26,7 @@ class Refund extends Request implements RefundInterface, RetrieveInterface, List
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
+    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
     {
         $this->response = \Stripe\Refund::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

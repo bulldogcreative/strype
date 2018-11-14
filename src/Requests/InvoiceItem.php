@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Request;
-use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Traits\Update;
-use Bulldog\Strype\Traits\Delete;
-use Bulldog\Strype\Traits\ListAll;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
+use Bulldog\Strype\Contracts\Requests\CustomerInterface;
+use Bulldog\Strype\Contracts\Requests\InvoiceItemInterface;
+use Bulldog\Strype\Contracts\Resources\InvoiceItemTypeInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Requests\InvoiceItemInterface;
-use Bulldog\Strype\Contracts\Requests\CustomerInterface;
-use Bulldog\Strype\Contracts\Resources\InvoiceItemTypeInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
+use Bulldog\Strype\Contracts\Traits\UpdateInterface;
+use Bulldog\Strype\Request;
+use Bulldog\Strype\Traits\Delete;
+use Bulldog\Strype\Traits\ListAll;
+use Bulldog\Strype\Traits\Retrieve;
+use Bulldog\Strype\Traits\Update;
 
 class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
 {
@@ -31,7 +31,7 @@ class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInter
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
+    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
     {
         $this->response = \Stripe\InvoiceItem::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,
