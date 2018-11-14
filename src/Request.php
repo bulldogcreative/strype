@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype;
 
 /**
@@ -11,7 +13,7 @@ abstract class Request
 
     protected $response;
 
-    public function getId()
+    public function getId() : int
     {
         return $this->id;
     }
@@ -24,7 +26,7 @@ abstract class Request
     /**
      * Set the response data as properties on the class.
      */
-    protected function setProperties()
+    protected function setProperties() : void
     {
         // Loop through the response object
         foreach ($this->response->keys() as $key) {

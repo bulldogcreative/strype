@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Request;
@@ -23,7 +25,7 @@ class Dispute extends Request implements DisputeInterface, RetrieveInterface, Up
         return $this;
     }
 
-    protected function stripe(string $method, $arguments)
+    protected function stripe(string $method, $arguments) : void
     {
         $this->response = \Stripe\Dispute::{$method}($arguments);
         $this->setProperties();

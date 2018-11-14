@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Resources\Files;
 
 use Bulldog\Strype\Contracts\Resources\FilesInterface;
@@ -20,7 +22,7 @@ class DisputeEvidence implements FilesInterface
         return $this->file;
     }
 
-    public function getPurpose()
+    public function getPurpose() : string
     {
         return $this->purpose;
     }

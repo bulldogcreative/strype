@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Request;
@@ -15,7 +17,7 @@ class Payout extends Request implements PayoutInterface, RetrieveInterface, List
 {
     use Retrieve, Update, ListAll;
 
-    public function create(int $amount, $arguments = [], $key = null, $currency = 'usd')
+    public function create(int $amount, $arguments = [], $key = null, string $currency = 'usd')
     {
         $arguments['amount'] = $amount;
         $arguments['currency'] = $currency;
@@ -32,7 +34,7 @@ class Payout extends Request implements PayoutInterface, RetrieveInterface, List
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Payout::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

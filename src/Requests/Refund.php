@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Request;
@@ -24,7 +26,7 @@ class Refund extends Request implements RefundInterface, RetrieveInterface, List
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Refund::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

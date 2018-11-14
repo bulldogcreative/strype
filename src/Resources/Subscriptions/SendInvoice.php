@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Resources\Subscriptions;
 
 use Bulldog\Strype\Contracts\Resources\SubscriptionBillingInterface;
@@ -8,7 +10,7 @@ class SendInvoice implements SubscriptionBillingInterface
 {
     public $daysUntilDue;
 
-    public function __construct($daysUntilDue)
+    public function __construct(int $daysUntilDue)
     {
         $this->daysUntilDue = $daysUntilDue;
     }

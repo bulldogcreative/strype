@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Request;
@@ -55,7 +57,7 @@ class Token extends Request implements TokenInterface, RetrieveInterface
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Token::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

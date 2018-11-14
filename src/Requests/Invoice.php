@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Request;
@@ -19,7 +21,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
 {
     use Retrieve, Update, ListAll, Delete;
 
-    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], string $key = null)
+    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key = null)
     {
         $arguments = array_merge($arguments, $type->getBilling());
         $arguments['customer'] = $customer->getCustomerId();
@@ -98,7 +100,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Invoice::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Contracts\Requests;
 
 use Bulldog\Strype\Contracts\Resources\SubscriptionBillingInterface;
 
 interface InvoiceInterface
 {
-    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], string $key = null);
+    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key = null);
 
     public function finalizeInvoice(string $invoiceid);
 

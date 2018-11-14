@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Request;
@@ -36,7 +38,7 @@ class Subscription extends Request implements SubscriptionInterface, RetrieveInt
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Subscription::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

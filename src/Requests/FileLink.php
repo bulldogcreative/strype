@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Request;
@@ -23,7 +25,7 @@ class FileLink extends Request implements FileLinkInterface, RetrieveInterface, 
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\FileLink::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

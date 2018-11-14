@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Request;
@@ -27,7 +29,7 @@ class Coupon extends Request implements CouponInterface, RetrieveInterface, Upda
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
     {
         $this->response = \Stripe\Coupon::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

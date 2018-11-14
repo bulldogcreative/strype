@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bulldog\Strype\Resources\Products;
 
 use Bulldog\Strype\Contracts\Resources\ProductTypeInterface;
@@ -9,7 +11,7 @@ class Good implements ProductTypeInterface
     protected $name;
     protected $arguments;
 
-    public function __construct($name, array $arguments = [])
+    public function __construct(string $name, array $arguments = [])
     {
         $this->name = $name;
         $this->arguments = $arguments;
