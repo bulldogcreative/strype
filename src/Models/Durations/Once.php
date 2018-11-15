@@ -2,9 +2,9 @@
 
 namespace Bulldog\Strype\Models\Durations;
 
-use Bulldog\Strype\Contracts\Models\DurationInterface;
+use Bulldog\Strype\Contracts\Models\DurationTypeInterface;
 
-class Once implements DurationInterface
+class Once implements DurationTypeInterface
 {
     public function toArray(): array
     {

@@ -2,9 +2,9 @@
 
 namespace Bulldog\Strype\Models\Durations;
 
-use Bulldog\Strype\Contracts\Models\DurationInterface;
+use Bulldog\Strype\Contracts\Models\DurationTypeInterface;
 
-class Repeating implements DurationInterface
+class Repeating implements DurationTypeInterface
 {
     protected $duration;
     protected $units;

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Bulldog\Strype\Contracts\Requests;
 
 use Bulldog\Strype\Contracts\Models\CouponTypeInterface;
-use Bulldog\Strype\Contracts\Models\DurationInterface;
+use Bulldog\Strype\Contracts\Models\DurationTypeInterface;
 
 interface CouponInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
-    public function create(DurationInterface $duration, CouponTypeInterface $type, array $arguments = [], string $key = null): CouponInterface;
+    public function create(DurationTypeInterface $duration, CouponTypeInterface $type, array $arguments = [], string $key = null): CouponInterface;
 }
