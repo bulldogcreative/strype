@@ -10,6 +10,4 @@ namespace Bulldog\Strype\Contracts\Requests;
 interface CustomerInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
     public function create(string $email, string $token, array $arguments = [], string $key = null): CustomerInterface;
-
-    public function getCustomerId(): string;
 }
