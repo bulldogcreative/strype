@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Contracts\Requests\FileInterface;
-use Bulldog\Strype\Contracts\Resources\FilesInterface;
+use Bulldog\Strype\Contracts\Models\FileTypeInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Request;
@@ -16,7 +16,7 @@ class File extends Request implements FileInterface, RetrieveInterface, ListAllI
 {
     use Retrieve, ListAll;
 
-    public function create(FilesInterface $file, array $arguments = [], $key = null): FileInterface
+    public function create(FileTypeInterface $file, array $arguments = [], $key = null): FileInterface
     {
         $arguments['purpose'] = $file->getPurpose();
         $arguments['file'] = $file->getFile();

@@ -2,7 +2,7 @@
 
 namespace Bulldog\Strype\Contracts\Models;
 
-interface FileInterface
+interface FileTypeInterface
 {
     public function getFile();
 
