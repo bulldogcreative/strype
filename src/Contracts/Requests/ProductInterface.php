@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Contracts\Requests;
 
-use Bulldog\Strype\Contracts\Resources\ProductTypeInterface;
+use Bulldog\Strype\Contracts\Models\ProductTypeInterface;
 
 interface ProductInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
