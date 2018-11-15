@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Contracts\Requests;
 
-use Bulldog\Strype\Contracts\Resources\InvoiceItemTypeInterface;
+use Bulldog\Strype\Contracts\Models\InvoiceItemTypeInterface;
 
 interface InvoiceItemInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
