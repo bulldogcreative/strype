@@ -29,8 +29,8 @@ class DiscountTests extends TestCase
 
     public function testDeleteCustomerDiscount()
     {
-        $duration = new \Bulldog\Strype\Resources\Coupons\Duration\Forever();
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $duration = new \Bulldog\Strype\Models\Duration\Forever();
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
 
         $newCustomer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard', [
@@ -45,8 +45,8 @@ class DiscountTests extends TestCase
 
     public function testDeleteSubscriptionDiscount()
     {
-        $duration = new \Bulldog\Strype\Resources\Coupons\Duration\Forever();
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $duration = new \Bulldog\Strype\Models\Duration\Forever();
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
 
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
