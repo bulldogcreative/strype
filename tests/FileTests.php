@@ -4,12 +4,12 @@ include 'boot.php';
 
 use PHPUnit\Framework\TestCase;
 use Bulldog\Strype\Strype;
-use Bulldog\Strype\Resources\Files\BusinessLogo;
-use Bulldog\Strype\Resources\Files\CustomerSignature;
-use Bulldog\Strype\Resources\Files\DisputeEvidence;
-use Bulldog\Strype\Resources\Files\IdentityDocument;
-use Bulldog\Strype\Resources\Files\PciDocument;
-use Bulldog\Strype\Resources\Files\TaxDocumentUserUpload;
+use Bulldog\Strype\Models\Files\BusinessLogo;
+use Bulldog\Strype\Models\Files\CustomerSignature;
+use Bulldog\Strype\Models\Files\DisputeEvidence;
+use Bulldog\Strype\Models\Files\IdentityDocument;
+use Bulldog\Strype\Models\Files\PciDocument;
+use Bulldog\Strype\Models\Files\TaxDocumentUserUpload;
 use Bulldog\id\ObjectId;
 
 class FileTests extends TestCase
