@@ -31,18 +31,18 @@ class CouponTests extends TestCase
 
     public function testResourceCouponTypes()
     {
-        $amount = (new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd'))->getCouponType();
+        $amount = (new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd'))->toArray();
         $this->assertEquals(1000, $amount['amount_off']);
         $this->assertEquals('usd', $amount['currency']);
 
-        $percentage = (new \Bulldog\Strype\Resources\Coupons\Type\Percentage(10))->getCouponType();
+        $percentage = (new \Bulldog\Strype\Models\Coupons\Percent(10))->toArray();
         $this->assertEquals(10, $percentage['percent_off']);
     }
 
     public function testCreateCoupon()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Forever();
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $this->assertEquals('coupon', $coupon->object);
         $this->assertEquals('forever', $coupon->duration);
@@ -53,7 +53,7 @@ class CouponTests extends TestCase
     public function testCreateCouponForeverAndPercent()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Forever();
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Percentage(10);
+        $type = new \Bulldog\Strype\Models\Coupons\Percent(10);
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $this->assertEquals('coupon', $coupon->object);
         $this->assertEquals(10, $coupon->percent_off);
@@ -62,7 +62,7 @@ class CouponTests extends TestCase
     public function testCreateCouponForeverAndAmount()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Forever();
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $this->assertEquals('coupon', $coupon->object);
         $this->assertEquals(1000, $coupon->amount_off);
@@ -72,7 +72,7 @@ class CouponTests extends TestCase
     public function testCreateCouponOnceAndPercent()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Once();
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Percentage(10);
+        $type = new \Bulldog\Strype\Models\Coupons\Percent(10);
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $this->assertEquals('coupon', $coupon->object);
         $this->assertEquals(10, $coupon->percent_off);
@@ -81,7 +81,7 @@ class CouponTests extends TestCase
     public function testCreateCouponOnceAndAmount()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Once();
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $this->assertEquals('coupon', $coupon->object);
         $this->assertEquals(1000, $coupon->amount_off);
@@ -91,7 +91,7 @@ class CouponTests extends TestCase
     public function testCreateCouponRepeatAndPercent()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Repeating(12);
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Percentage(10);
+        $type = new \Bulldog\Strype\Models\Coupons\Percent(10);
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $this->assertEquals('coupon', $coupon->object);
         $this->assertEquals(10, $coupon->percent_off);
@@ -101,7 +101,7 @@ class CouponTests extends TestCase
     public function testCreateCouponRepeatAndAmount()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Repeating(12);
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $this->assertEquals('coupon', $coupon->object);
         $this->assertEquals(1000, $coupon->amount_off);
@@ -112,7 +112,7 @@ class CouponTests extends TestCase
     public function testRetrieveCoupon()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Repeating(12);
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
 
         $retrieved = $this->strype->coupon()->retrieve($coupon->getId());
@@ -125,7 +125,7 @@ class CouponTests extends TestCase
     public function testUpdateCoupon()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Repeating(12);
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $coupon->update($coupon->getId(), ['metadata' => ['order_id' => '6735']]);
 
@@ -139,7 +139,7 @@ class CouponTests extends TestCase
     public function testDeleteCoupon()
     {
         $duration = new \Bulldog\Strype\Models\Duration\Repeating(12);
-        $type = new \Bulldog\Strype\Resources\Coupons\Type\Amount(1000, 'usd');
+        $type = new \Bulldog\Strype\Models\Coupons\Amount(1000, 'usd');
         $coupon = $this->strype->coupon()->create($duration, $type, [], $this->id->get(12));
         $coupon->delete($coupon->getId());
 

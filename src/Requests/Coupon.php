@@ -6,7 +6,7 @@ namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Contracts\Requests\CouponInterface;
 use Bulldog\Strype\Contracts\Models\DurationInterface;
-use Bulldog\Strype\Contracts\Resources\CouponTypeInterface;
+use Bulldog\Strype\Contracts\Models\CouponTypeInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
@@ -23,7 +23,7 @@ class Coupon extends Request implements CouponInterface, RetrieveInterface, Upda
 
     public function create(DurationInterface $duration, CouponTypeInterface $type, array $arguments = [], string $key = null): CouponInterface
     {
-        $arguments = array_merge($arguments, $duration->toArray(), $type->getCouponType());
+        $arguments = array_merge($arguments, $duration->toArray(), $type->toArray());
         $this->stripe('create', $arguments, $key);
 
         return $this;
