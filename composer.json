@@ -23,9 +23,10 @@
         "vlucas/phpdotenv": "^2.5",
         "phpunit/phpunit": "^7.4",
         "symfony/var-dumper": "^4.1",
-        "php-coveralls/php-coveralls": "^2.1"
+        "php-coveralls/php-coveralls": "^2.1",
+        "friendsofphp/php-cs-fixer": "^2.13"
     },
     "scripts": {
-        "fix": "php-cs-fixer fix ./src --rules=@Symfony && php-cs-fixer fix ./tests --rules=@Symfony"
+        "fix": "php-cs-fixer fix"
     }
 }
