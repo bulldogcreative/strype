@@ -21,6 +21,8 @@ class Plan extends Request implements PlanInterface, RetrieveInterface, ListAllI
      * Creating a plan has complicated requirements. So for now, it'll accept an
      * array.
      *
+     * @TODO redo
+     *
      * @param array  $arguments
      * @param string $key
      */

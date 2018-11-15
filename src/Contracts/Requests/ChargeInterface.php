@@ -9,7 +9,7 @@ namespace Bulldog\Strype\Contracts\Requests;
  */
 interface ChargeInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
-    public function create(CustomerInterface $customer, int $amount, array $arguments = [], $key = null, string $currency = 'usd');
+    public function create(CustomerInterface $customer, int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): ChargeInterface;
 
-    public function capture(string $id);
+    public function capture(string $id = null): ChargeInterface;
 }

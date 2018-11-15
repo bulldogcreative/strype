@@ -6,5 +6,5 @@ namespace Bulldog\Strype\Contracts\Requests;
 
 interface RefundInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
-    public function create(ChargeInterface $charge, array $arguments = [], $key = null);
+    public function create(ChargeInterface $charge, array $arguments = [], string $key = null): RefundInterface;
 }

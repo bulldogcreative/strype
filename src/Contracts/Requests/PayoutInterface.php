@@ -6,7 +6,7 @@ namespace Bulldog\Strype\Contracts\Requests;
 
 interface PayoutInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
-    public function create(int $amount, $arguments = [], $key = null, string $currency = 'usd');
+    public function create(int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): PayoutInterface;
 
-    public function cancel(string $id);
+    public function cancel(string $id): PayoutInterface;
 }
