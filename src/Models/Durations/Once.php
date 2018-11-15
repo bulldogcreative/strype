@@ -2,7 +2,7 @@
 
 namespace Bulldog\Strype\Models\Durations;
 
-use Bulldog\Strype\Contracts\Models\DurationsInterface;
+use Bulldog\Strype\Contracts\Models\DurationInterface;
 
 class Once implements DurationInterface
 {
