@@ -22,7 +22,7 @@ class InvoiceItemTests extends TestCase
     public function testCreateInvoiceItemWithAmount()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
         );
         $this->assertEquals('invoiceitem', $invoiceItem->object);
         $this->assertEquals(2500, $invoiceItem->amount);
@@ -34,7 +34,7 @@ class InvoiceItemTests extends TestCase
     public function testCreateInvoiceItemWithQuantity()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Quantity(5, 500)
+            new \Bulldog\Strype\Models\InvoiceItems\Quantity(5, 500)
         );
         $this->assertEquals('invoiceitem', $invoiceItem->object);
         $this->assertEquals(2500, $invoiceItem->amount);
@@ -46,7 +46,7 @@ class InvoiceItemTests extends TestCase
     public function testRetrieveInvoiceItem()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
         );
         $retrieved = $this->strype->invoiceItem()->retrieve($invoiceItem->id);
         $this->assertEquals('invoiceitem', $retrieved->object);
@@ -59,7 +59,7 @@ class InvoiceItemTests extends TestCase
     public function testUpdateInvoiceItem()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
         );
         $updated = $this->strype->invoiceItem()->update($invoiceItem->id, [
             'amount' => 3500,
@@ -74,7 +74,7 @@ class InvoiceItemTests extends TestCase
     public function testDeleteInvoiceItem()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
         );
         $deleted = $this->strype->invoiceItem()->delete($invoiceItem->id);
         $this->assertEquals('invoiceitem', $deleted->object);
