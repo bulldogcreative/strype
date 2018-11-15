@@ -4,7 +4,7 @@ namespace Bulldog\Strype\Models;
 
 use Bulldog\Strype\Contracts\Models\FileTypeInterface;
 
-class File implements FileTypeInterface
+abstract class File implements FileTypeInterface
 {
     protected $file;
     protected $purpose;
