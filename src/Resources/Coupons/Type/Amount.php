@@ -17,7 +17,7 @@ class Amount implements CouponTypeInterface
         $this->currency = $currency;
     }
 
-    public function getCouponType() : array
+    public function getCouponType(): array
     {
         return [
             'amount_off' => $this->amount,

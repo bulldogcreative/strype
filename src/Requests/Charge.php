@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Request;
-use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Traits\Update;
-use Bulldog\Strype\Traits\ListAll;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Requests\ChargeInterface;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
+use Bulldog\Strype\Contracts\Traits\ListAllInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
+use Bulldog\Strype\Contracts\Traits\UpdateInterface;
+use Bulldog\Strype\Request;
+use Bulldog\Strype\Traits\ListAll;
+use Bulldog\Strype\Traits\Retrieve;
+use Bulldog\Strype\Traits\Update;
 
 class Charge extends Request implements ChargeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
 {
     use Retrieve, Update, ListAll;
 
-    public function create(CustomerInterface $customer, int $amount, array $arguments = [], $key = null, string $currency = 'usd')
+    public function create(CustomerInterface $customer, int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): ChargeInterface
     {
         $arguments['customer'] = $customer->getCustomerId();
         $arguments['amount'] = $amount;
@@ -28,7 +28,7 @@ class Charge extends Request implements ChargeInterface, RetrieveInterface, Upda
         return $this;
     }
 
-    public function capture(string $id = null)
+    public function capture(string $id = null): ChargeInterface
     {
         if (!is_null($id)) {
             $this->stripe('retrieve', $id);
@@ -42,7 +42,7 @@ class Charge extends Request implements ChargeInterface, RetrieveInterface, Upda
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Charge::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

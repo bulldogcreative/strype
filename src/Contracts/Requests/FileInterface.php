@@ -8,5 +8,5 @@ use Bulldog\Strype\Contracts\Resources\FilesInterface;
 
 interface FileInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
-    public function create(FilesInterface $file, $arguments = [], $key = null);
+    public function create(FilesInterface $file, array $arguments = [], $key = null): FileInterface;
 }

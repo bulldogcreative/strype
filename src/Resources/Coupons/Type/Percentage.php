@@ -15,7 +15,7 @@ class Percentage implements CouponTypeInterface
         $this->percentage = $percentage;
     }
 
-    public function getCouponType() : array
+    public function getCouponType(): array
     {
         return [
             'percent_off' => $this->percentage,
