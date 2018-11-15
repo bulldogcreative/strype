@@ -11,7 +11,7 @@ class Percent implements CouponTypeInterface
 
     public function __construct(int $percentage, string $currency = 'usd')
     {
-        if($percentage > 100 || 0 > $percentage) {
+        if ($percentage > 100 || 0 > $percentage) {
             throw new \InvalidArgumentException('A positive float larger than 0, and smaller or equal to 100');
         }
 

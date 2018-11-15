@@ -6,5 +6,4 @@ use Bulldog\Strype\Contracts\Support\Arrayable;
 
 interface CouponTypeInterface extends Arrayable
 {
-
 }
