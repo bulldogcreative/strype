@@ -22,7 +22,7 @@ class Subscription extends Request implements SubscriptionInterface, RetrieveInt
     public function create(CustomerInterface $customer, SubscriptionBillingInterface $billing, array $items = [], array $arguments = [], string $key = null): SubscriptionInterface
     {
         $arguments = array_merge($arguments, $billing->getBilling());
-        $arguments['customer'] = $customer->getCustomerId();
+        $arguments['customer'] = $customer->getId();
         $arguments['items'] = $items;
         $this->stripe('create', $arguments, $key);
 

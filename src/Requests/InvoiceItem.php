@@ -24,7 +24,7 @@ class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInter
     public function create(CustomerInterface $customer, InvoiceItemTypeInterface $type, array $arguments = [], string $key = null, string $currency = 'usd'): InvoiceItemInterface
     {
         $arguments = array_merge($arguments, $type->getType());
-        $arguments['customer'] = $customer->getCustomerId();
+        $arguments['customer'] = $customer->getId();
         $arguments['currency'] = $currency;
         $this->stripe('create', $arguments, $key);
 

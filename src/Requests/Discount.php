@@ -13,7 +13,7 @@ class Discount extends Request implements DiscountInterface
 {
     public function deleteCustomerDiscount(CustomerInterface $customer, string $key = null): DiscountInterface
     {
-        $this->customer($customer->getCustomerId(), $key);
+        $this->customer($customer->getId(), $key);
         $this->response->deleteDiscount();
 
         return $this;

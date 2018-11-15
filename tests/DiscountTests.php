@@ -23,7 +23,7 @@ class DiscountTests extends TestCase
     public function testDeleteCustomerDiscountWithNoDiscount()
     {
         $newCustomer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
-        $customer = $this->strype->customer()->retrieve($newCustomer->getCustomerId());
+        $customer = $this->strype->customer()->retrieve($newCustomer->getId());
         $discount = $this->strype->discount()->deleteCustomerDiscount($customer);
     }
 
@@ -36,10 +36,10 @@ class DiscountTests extends TestCase
         $newCustomer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard', [
             'coupon' => $coupon->getId(),
         ]);
-        $customer = $this->strype->customer()->retrieve($newCustomer->getCustomerId());
+        $customer = $this->strype->customer()->retrieve($newCustomer->getId());
         $discount = $this->strype->discount()->deleteCustomerDiscount($customer);
 
-        $customer = $this->strype->customer()->retrieve($newCustomer->getCustomerId());
+        $customer = $this->strype->customer()->retrieve($newCustomer->getId());
         $this->assertEquals($customer->discount, null);
     }
 

@@ -36,16 +36,6 @@ class Customer extends Request implements CustomerInterface, RetrieveInterface, 
         return $this;
     }
 
-    /**
-     * Get customer ID.
-     *
-     * @return string
-     */
-    public function getCustomerId(): string
-    {
-        return $this->id;
-    }
-
     protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Customer::{$method}($arguments, [

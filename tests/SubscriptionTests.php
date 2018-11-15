@@ -36,7 +36,7 @@ class SubscriptionTests extends TestCase
             ]
         );
         $this->assertEquals('subscription', $subscription->object);
-        $this->assertEquals($customer->getCustomerId(), $subscription->customer);
+        $this->assertEquals($customer->getId(), $subscription->customer);
         $this->assertEquals('charge_automatically', $subscription->billing);
     }
 
@@ -59,7 +59,7 @@ class SubscriptionTests extends TestCase
             ]
         );
         $this->assertEquals('subscription', $subscription->object);
-        $this->assertEquals($customer->getCustomerId(), $subscription->customer);
+        $this->assertEquals($customer->getId(), $subscription->customer);
         $this->assertEquals('send_invoice', $subscription->billing);
     }
 
@@ -84,7 +84,7 @@ class SubscriptionTests extends TestCase
 
         $retrieved = $this->strype->subscription()->retrieve($subscription->id);
         $this->assertEquals('subscription', $retrieved->object);
-        $this->assertEquals($customer->getCustomerId(), $retrieved->customer);
+        $this->assertEquals($customer->getId(), $retrieved->customer);
     }
 
     public function testUpdateSubscription()

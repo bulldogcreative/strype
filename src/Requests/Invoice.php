@@ -24,7 +24,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
     public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key = null): InvoiceInterface
     {
         $arguments = array_merge($arguments, $type->getBilling());
-        $arguments['customer'] = $customer->getCustomerId();
+        $arguments['customer'] = $customer->getId();
         $this->stripe('create', $arguments, $key);
 
         return $this;
@@ -86,7 +86,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
 
     public function upcoming(CustomerInterface $customer, array $arguments = []): InvoiceInterface
     {
-        $arguments['customer'] = $customer->getCustomerId();
+        $arguments['customer'] = $customer->getId();
         $this->response = $this->stripe('upcoming', $arguments);
 
         return $this;
@@ -94,7 +94,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
 
     public function retrieveUpcomingLineItems(CustomerInterface $customer, array $arguments = []): InvoiceInterface
     {
-        $this->response = \Stripe\Invoice::upcoming(['customer' => $customer->getCustomerId()])->lines->all($arguments);
+        $this->response = \Stripe\Invoice::upcoming(['customer' => $customer->getId()])->lines->all($arguments);
         $this->setProperties();
 
         return $this;

@@ -20,7 +20,7 @@ class Charge extends Request implements ChargeInterface, RetrieveInterface, Upda
 
     public function create(CustomerInterface $customer, int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): ChargeInterface
     {
-        $arguments['customer'] = $customer->getCustomerId();
+        $arguments['customer'] = $customer->getId();
         $arguments['amount'] = $amount;
         $arguments['currency'] = $currency;
         $this->stripe('create', $arguments, $key);

@@ -29,7 +29,7 @@ class InvoiceTests extends TestCase
             new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
         );
         $this->assertEquals('invoice', $invoice->object);
-        $this->assertEquals($this->customer->getCustomerId(), $invoice->customer);
+        $this->assertEquals($this->customer->getId(), $invoice->customer);
         $this->assertEquals(2500, $invoice->total);
     }
 
@@ -39,7 +39,7 @@ class InvoiceTests extends TestCase
             new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
         );
         $this->assertEquals('invoice', $invoice->object);
-        $this->assertEquals($this->customer->getCustomerId(), $invoice->customer);
+        $this->assertEquals($this->customer->getId(), $invoice->customer);
         $this->assertEquals(2500, $invoice->total);
     }
 
@@ -50,7 +50,7 @@ class InvoiceTests extends TestCase
         );
         $retrieved = $this->strype->invoice()->retrieve($invoice->id);
         $this->assertEquals('invoice', $retrieved->object);
-        $this->assertEquals($this->customer->getCustomerId(), $retrieved->customer);
+        $this->assertEquals($this->customer->getId(), $retrieved->customer);
         $this->assertEquals(2500, $retrieved->total);
     }
 
@@ -63,7 +63,7 @@ class InvoiceTests extends TestCase
             'description' => 'New sled',
         ]);
         $this->assertEquals('invoice', $updated->object);
-        $this->assertEquals($this->customer->getCustomerId(), $updated->customer);
+        $this->assertEquals($this->customer->getId(), $updated->customer);
         $this->assertEquals(2500, $updated->total);
         $this->assertEquals('New sled', $updated->description);
     }

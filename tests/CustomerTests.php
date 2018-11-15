@@ -70,10 +70,10 @@ class CustomerTests extends TestCase
         $this->assertEquals(3, count($customers->getResponse()->data));
     }
 
-    public function testGetCustomerId()
+    public function testgetId()
     {
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
-        $this->assertEquals($customer->getCustomerId(), $customer->getResponse()->id);
+        $this->assertEquals($customer->getId(), $customer->getResponse()->id);
         $this->assertFalse($customer->getResponse()->livemode);
         $customer->getResponse()->delete();
     }

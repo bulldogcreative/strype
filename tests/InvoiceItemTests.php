@@ -26,7 +26,7 @@ class InvoiceItemTests extends TestCase
         );
         $this->assertEquals('invoiceitem', $invoiceItem->object);
         $this->assertEquals(2500, $invoiceItem->amount);
-        $this->assertEquals($this->customer->getCustomerId(), $invoiceItem->customer);
+        $this->assertEquals($this->customer->getId(), $invoiceItem->customer);
         $this->assertEquals('usd', $invoiceItem->currency);
         $this->assertInternalType('int', $invoiceItem->amount);
     }
@@ -38,7 +38,7 @@ class InvoiceItemTests extends TestCase
         );
         $this->assertEquals('invoiceitem', $invoiceItem->object);
         $this->assertEquals(2500, $invoiceItem->amount);
-        $this->assertEquals($this->customer->getCustomerId(), $invoiceItem->customer);
+        $this->assertEquals($this->customer->getId(), $invoiceItem->customer);
         $this->assertEquals('usd', $invoiceItem->currency);
         $this->assertInternalType('int', $invoiceItem->amount);
     }
@@ -51,7 +51,7 @@ class InvoiceItemTests extends TestCase
         $retrieved = $this->strype->invoiceItem()->retrieve($invoiceItem->id);
         $this->assertEquals('invoiceitem', $retrieved->object);
         $this->assertEquals(2500, $retrieved->amount);
-        $this->assertEquals($this->customer->getCustomerId(), $retrieved->customer);
+        $this->assertEquals($this->customer->getId(), $retrieved->customer);
         $this->assertEquals('usd', $retrieved->currency);
         $this->assertInternalType('int', $retrieved->amount);
     }
@@ -66,7 +66,7 @@ class InvoiceItemTests extends TestCase
         ]);
         $this->assertEquals('invoiceitem', $updated->object);
         $this->assertEquals(3500, $updated->amount);
-        $this->assertEquals($this->customer->getCustomerId(), $updated->customer);
+        $this->assertEquals($this->customer->getId(), $updated->customer);
         $this->assertEquals('usd', $updated->currency);
         $this->assertInternalType('int', $updated->amount);
     }
