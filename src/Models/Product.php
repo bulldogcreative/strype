@@ -16,7 +16,7 @@ abstract class Product implements ProductTypeInterface
         $this->arguments = $arguments;
     }
 
-    public function getArguments(): array
+    public function toArray(): array
     {
         $this->arguments['name'] = $this->name;
         $this->arguments['type'] = $this->type;
