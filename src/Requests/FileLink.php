@@ -17,7 +17,7 @@ class FileLink extends Request implements FileLinkInterface, RetrieveInterface, 
 {
     use Retrieve, Update, ListAll;
 
-    public function create(string $id, $arguments = [], $key = null)
+    public function create(string $id, array $arguments = [], string $key = null): FileLinkInterface
     {
         $arguments['file'] = $id;
         $this->stripe('create', $arguments, $key);

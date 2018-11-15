@@ -16,7 +16,7 @@ class File extends Request implements FileInterface, RetrieveInterface, ListAllI
 {
     use Retrieve, ListAll;
 
-    public function create(FilesInterface $file, $arguments = [], $key = null)
+    public function create(FilesInterface $file, array $arguments = [], $key = null): FileInterface
     {
         $arguments['purpose'] = $file->getPurpose();
         $arguments['file'] = $file->getFile();
@@ -26,7 +26,7 @@ class File extends Request implements FileInterface, RetrieveInterface, ListAllI
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\File::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

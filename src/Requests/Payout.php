@@ -17,7 +17,7 @@ class Payout extends Request implements PayoutInterface, RetrieveInterface, List
 {
     use Retrieve, Update, ListAll;
 
-    public function create(int $amount, $arguments = [], $key = null, string $currency = 'usd')
+    public function create(int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): PayoutInterface
     {
         $arguments['amount'] = $amount;
         $arguments['currency'] = $currency;
@@ -26,7 +26,7 @@ class Payout extends Request implements PayoutInterface, RetrieveInterface, List
         return $this;
     }
 
-    public function cancel(string $id)
+    public function cancel(string $id): PayoutInterface
     {
         $this->stripe('retrieve', $id);
         $this->response->cancel();

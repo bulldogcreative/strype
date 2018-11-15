@@ -18,7 +18,7 @@ class Charge extends Request implements ChargeInterface, RetrieveInterface, Upda
 {
     use Retrieve, Update, ListAll;
 
-    public function create(CustomerInterface $customer, int $amount, array $arguments = [], $key = null, string $currency = 'usd')
+    public function create(CustomerInterface $customer, int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): ChargeInterface
     {
         $arguments['customer'] = $customer->getCustomerId();
         $arguments['amount'] = $amount;
@@ -28,7 +28,7 @@ class Charge extends Request implements ChargeInterface, RetrieveInterface, Upda
         return $this;
     }
 
-    public function capture(string $id = null)
+    public function capture(string $id = null): ChargeInterface
     {
         if (!is_null($id)) {
             $this->stripe('retrieve', $id);
@@ -42,7 +42,7 @@ class Charge extends Request implements ChargeInterface, RetrieveInterface, Upda
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Charge::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

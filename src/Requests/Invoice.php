@@ -21,7 +21,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
 {
     use Retrieve, Update, ListAll, Delete;
 
-    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key = null)
+    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key = null): InvoiceInterface
     {
         $arguments = array_merge($arguments, $type->getBilling());
         $arguments['customer'] = $customer->getCustomerId();
@@ -30,7 +30,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function finalizeInvoice(string $invoiceid)
+    public function finalizeInvoice(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
         $this->response = $this->response->finalizeInvoice();
@@ -39,7 +39,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function pay(string $invoiceid)
+    public function pay(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
         $this->response = $this->response->pay();
@@ -48,7 +48,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function sendInvoice(string $invoiceid)
+    public function sendInvoice(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
         $this->response = $this->response->sendInvoice();
@@ -57,7 +57,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function voidInvoice(string $invoiceid)
+    public function voidInvoice(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
         $this->response = $this->response->voidInvoice();
@@ -66,7 +66,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function markUncollectible(string $invoiceid)
+    public function markUncollectible(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
         $this->response = $this->response->markUncollectible();
@@ -75,7 +75,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function retrieveLineItems(string $invoiceid, array $arguments = [])
+    public function retrieveLineItems(string $invoiceid, array $arguments = []): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
         $this->response = $this->lines = $this->response->lines->all($arguments);
@@ -84,7 +84,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function upcoming(CustomerInterface $customer, array $arguments = [])
+    public function upcoming(CustomerInterface $customer, array $arguments = []): InvoiceInterface
     {
         $arguments['customer'] = $customer->getCustomerId();
         $this->response = $this->stripe('upcoming', $arguments);
@@ -92,7 +92,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    public function retrieveUpcomingLineItems(CustomerInterface $customer, array $arguments = [])
+    public function retrieveUpcomingLineItems(CustomerInterface $customer, array $arguments = []): InvoiceInterface
     {
         $this->response = \Stripe\Invoice::upcoming(['customer' => $customer->getCustomerId()])->lines->all($arguments);
         $this->setProperties();
@@ -100,7 +100,7 @@ class Invoice extends Request implements InvoiceInterface, RetrieveInterface, Up
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Invoice::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

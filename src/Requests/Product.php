@@ -20,14 +20,14 @@ class Product extends Request implements ProductInterface, RetrieveInterface, Li
 {
     use Retrieve, Update, ListAll, Delete;
 
-    public function create(ProductTypeInterface $product, $key = null)
+    public function create(ProductTypeInterface $product, string $key = null): ProductInterface
     {
         $this->stripe('create', $product->getArguments(), $key);
 
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Product::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

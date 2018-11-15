@@ -17,7 +17,7 @@ class Dispute extends Request implements DisputeInterface, RetrieveInterface, Up
 {
     use Retrieve, Update, ListAll;
 
-    public function close(string $id)
+    public function close(string $id): DisputeInterface
     {
         $this->stripe('retrieve', $id);
         $this->response->close();

@@ -19,7 +19,7 @@ class SubscriptionItem extends Request implements SubscriptionItemInterface, Ret
 {
     use Retrieve, Update, Delete, ListAll;
 
-    public function create(PlanInterface $plan, SubscriptionInterface $subscription, array $arguments = [], $key = null)
+    public function create(PlanInterface $plan, SubscriptionInterface $subscription, array $arguments = [], string $key = null): SubscriptionItemInterface
     {
         $arguments['plan'] = $plan->getId();
         $arguments['subscription'] = $subscription->getId();

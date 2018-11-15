@@ -27,7 +27,7 @@ class Customer extends Request implements CustomerInterface, RetrieveInterface, 
 {
     use Retrieve, Update, Delete, ListAll;
 
-    public function create(string $email, string $token, $arguments = [], $key = null)
+    public function create(string $email, string $token, array $arguments = [], string $key = null): CustomerInterface
     {
         $arguments['email'] = $email;
         $arguments['source'] = $token;
@@ -46,7 +46,7 @@ class Customer extends Request implements CustomerInterface, RetrieveInterface, 
         return $this->id;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Customer::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

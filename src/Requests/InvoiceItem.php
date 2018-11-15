@@ -21,7 +21,7 @@ class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInter
 {
     use Retrieve, Update, ListAll, Delete;
 
-    public function create(CustomerInterface $customer, InvoiceItemTypeInterface $type, array $arguments = [], $key = null, string $currency = 'usd')
+    public function create(CustomerInterface $customer, InvoiceItemTypeInterface $type, array $arguments = [], string $key = null, string $currency = 'usd'): InvoiceItemInterface
     {
         $arguments = array_merge($arguments, $type->getType());
         $arguments['customer'] = $customer->getCustomerId();
@@ -31,7 +31,7 @@ class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInter
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\InvoiceItem::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

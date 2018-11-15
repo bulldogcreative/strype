@@ -21,7 +21,7 @@ class Coupon extends Request implements CouponInterface, RetrieveInterface, Upda
 {
     use Retrieve, Update, ListAll, Delete;
 
-    public function create(CouponDurationInterface $duration, CouponTypeInterface $type, array $arguments = [], $key = null)
+    public function create(CouponDurationInterface $duration, CouponTypeInterface $type, array $arguments = [], string $key = null): CouponInterface
     {
         $arguments = array_merge($arguments, $duration->getCouponData(), $type->getCouponType());
         $this->stripe('create', $arguments, $key);

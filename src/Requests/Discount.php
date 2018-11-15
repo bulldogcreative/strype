@@ -11,7 +11,7 @@ use Bulldog\Strype\Request;
 
 class Discount extends Request implements DiscountInterface
 {
-    public function deleteCustomerDiscount(CustomerInterface $customer, $key = null)
+    public function deleteCustomerDiscount(CustomerInterface $customer, string $key = null): DiscountInterface
     {
         $this->customer($customer->getCustomerId(), $key);
         $this->response->deleteDiscount();
@@ -19,7 +19,7 @@ class Discount extends Request implements DiscountInterface
         return $this;
     }
 
-    public function deleteSubscriptionDiscount(SubscriptionInterface $subscription)
+    public function deleteSubscriptionDiscount(SubscriptionInterface $subscription): DiscountInterface
     {
         $this->subscription($subscription->getId());
         $this->response->deleteDiscount();
@@ -28,7 +28,7 @@ class Discount extends Request implements DiscountInterface
         return $this;
     }
 
-    protected function customer($id, $idempotencyKey = null): void
+    protected function customer($id, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Customer::retrieve($id, [
             'idempotency_key' => $idempotencyKey,
@@ -36,7 +36,7 @@ class Discount extends Request implements DiscountInterface
         $this->setProperties();
     }
 
-    protected function subscription($id, $idempotencyKey = null): void
+    protected function subscription($id, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Subscription::retrieve($id, [
             'idempotency_key' => $idempotencyKey,

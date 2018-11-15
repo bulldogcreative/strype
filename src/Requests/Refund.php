@@ -18,7 +18,7 @@ class Refund extends Request implements RefundInterface, RetrieveInterface, List
 {
     use Retrieve, Update, ListAll;
 
-    public function create(ChargeInterface $charge, array $arguments = [], $key = null)
+    public function create(ChargeInterface $charge, array $arguments = [], string $key = null): RefundInterface
     {
         $arguments['charge'] = $charge->getId();
         $this->stripe('create', $arguments, $key);
@@ -26,7 +26,7 @@ class Refund extends Request implements RefundInterface, RetrieveInterface, List
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null): void
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Refund::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,
