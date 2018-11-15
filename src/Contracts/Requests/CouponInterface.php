@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bulldog\Strype\Contracts\Requests;
 
 use Bulldog\Strype\Contracts\Models\CouponTypeInterface;
-use Bulldog\Strype\Contracts\Models\DurationsInterface;
+use Bulldog\Strype\Contracts\Models\DurationInterface;
 
 interface CouponInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
