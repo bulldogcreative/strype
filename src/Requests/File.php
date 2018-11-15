@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Contracts\Requests\FileInterface;
 use Bulldog\Strype\Contracts\Models\FileTypeInterface;
+use Bulldog\Strype\Contracts\Requests\FileInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Request;
