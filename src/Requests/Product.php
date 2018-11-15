@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Contracts\Requests\ProductInterface;
-use Bulldog\Strype\Contracts\Resources\ProductTypeInterface;
+use Bulldog\Strype\Contracts\Models\ProductTypeInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
@@ -22,7 +22,7 @@ class Product extends Request implements ProductInterface, RetrieveInterface, Li
 
     public function create(ProductTypeInterface $product, string $key = null): ProductInterface
     {
-        $this->stripe('create', $product->getArguments(), $key);
+        $this->stripe('create', $product->toArray(), $key);
 
         return $this;
     }
