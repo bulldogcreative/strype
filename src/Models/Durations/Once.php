@@ -1,8 +1,8 @@
 <?php
 
-namespace Bulldog\Strype\Models\Duration;
+namespace Bulldog\Strype\Models\Durations;
 
-use Bulldog\Strype\Contracts\Models\DurationInterface;
+use Bulldog\Strype\Contracts\Models\DurationsInterface;
 
 class Once implements DurationInterface
 {

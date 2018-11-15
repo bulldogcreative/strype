@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Contracts\Models\CouponTypeInterface;
-use Bulldog\Strype\Contracts\Models\DurationInterface;
+use Bulldog\Strype\Contracts\Models\DurationsInterface;
 use Bulldog\Strype\Contracts\Requests\CouponInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
