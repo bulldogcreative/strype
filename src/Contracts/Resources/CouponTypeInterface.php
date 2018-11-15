@@ -6,5 +6,5 @@ namespace Bulldog\Strype\Contracts\Resources;
 
 interface CouponTypeInterface
 {
-    public function getCouponType() : array;
+    public function getCouponType(): array;
 }

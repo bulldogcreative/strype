@@ -25,7 +25,10 @@
         "symfony/var-dumper": "^4.1",
         "php-coveralls/php-coveralls": "^2.1"
     },
+    "suggest": {
+        "friendsofphp/php-cs-fixer": "Style your code consistently with ours"
+    },
     "scripts": {
-        "fix": "php-cs-fixer fix ./src --rules=@Symfony && php-cs-fixer fix ./tests --rules=@Symfony"
+        "fix": "php-cs-fixer fix"
     }
 }

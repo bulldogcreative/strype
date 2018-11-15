@@ -22,7 +22,7 @@ class DisputeEvidence implements FilesInterface
         return $this->file;
     }
 
-    public function getPurpose() : string
+    public function getPurpose(): string
     {
         return $this->purpose;
     }

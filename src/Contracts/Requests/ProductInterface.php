@@ -8,5 +8,5 @@ use Bulldog\Strype\Contracts\Resources\ProductTypeInterface;
 
 interface ProductInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
-    public function create(ProductTypeInterface $product);
+    public function create(ProductTypeInterface $product, string $key = null): ProductInterface;
 }

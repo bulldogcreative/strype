@@ -26,7 +26,7 @@ abstract class Request
     /**
      * Set the response data as properties on the class.
      */
-    protected function setProperties() : void
+    protected function setProperties(): void
     {
         // Loop through the response object
         foreach ($this->response->keys() as $key) {

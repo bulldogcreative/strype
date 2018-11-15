@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
+use Bulldog\Strype\Contracts\Requests\BalanceInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Requests\BalanceInterface;
 
 class Balance extends Request implements BalanceInterface, RetrieveInterface
 {
     use Retrieve;
 
-    public function retrieveBalance()
+    public function retrieveBalance(): BalanceInterface
     {
         $this->response = \Stripe\Balance::retrieve();
         $this->setProperties();
@@ -21,7 +21,7 @@ class Balance extends Request implements BalanceInterface, RetrieveInterface
         return $this;
     }
 
-    protected function stripe(string $method, $arguments)
+    protected function stripe(string $method, $arguments): void
     {
         $this->response = \Stripe\BalanceTransaction::{$method}($arguments);
         $this->setProperties();

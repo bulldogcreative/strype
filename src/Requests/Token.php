@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
+use Bulldog\Strype\Contracts\Requests\TokenInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Request;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Requests\TokenInterface;
 
 class Token extends Request implements TokenInterface, RetrieveInterface
 {
     use Retrieve;
 
-    public function createCard($number, int $expMonth, int $expYear, int $cvc, $arguments = [], $key = null)
+    public function createCard($number, int $expMonth, int $expYear, int $cvc, array $arguments = [], string $key = null): TokenInterface
     {
         $arguments['card']['number'] = $number;
         $arguments['card']['exp_month'] = $expMonth;
@@ -25,7 +25,7 @@ class Token extends Request implements TokenInterface, RetrieveInterface
         return $this;
     }
 
-    public function createBankAccount($country, $currency, string $accountHolderName, $accountHolderType, $routingNumber, $accountNumber, $arguments = [], $key = null)
+    public function createBankAccount($country, $currency, string $accountHolderName, $accountHolderType, $routingNumber, $accountNumber, array $arguments = [], string $key = null): TokenInterface
     {
         $arguments['bank_account']['country'] = $country;
         $arguments['bank_account']['currency'] = $currency;
@@ -39,7 +39,7 @@ class Token extends Request implements TokenInterface, RetrieveInterface
         return $this;
     }
 
-    public function createPii($personalIdNumber, $key = null)
+    public function createPii($personalIdNumber, string $key = null): TokenInterface
     {
         $this->stripe('create', [
             'pii' => [
@@ -50,14 +50,14 @@ class Token extends Request implements TokenInterface, RetrieveInterface
         return $this;
     }
 
-    public function createAccount($arguments = [], $key = null)
+    public function createAccount(array $arguments = [], string $key = null): TokenInterface
     {
         $this->stripe('create', $arguments, $key);
 
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null) : void
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Token::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,

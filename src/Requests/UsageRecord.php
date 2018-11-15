@@ -2,13 +2,13 @@
 
 namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Request;
 use Bulldog\Strype\Contracts\Requests\SubscriptionItemInterface;
 use Bulldog\Strype\Contracts\Requests\UsageRecordInterface;
+use Bulldog\Strype\Request;
 
 class UsageRecord extends Request implements UsageRecordInterface
 {
-    public function create(int $quantity, SubscriptionItemInterface $subscriptionItem, int $timestamp, array $arguments = [], string $key = null)
+    public function create(int $quantity, SubscriptionItemInterface $subscriptionItem, int $timestamp, array $arguments = [], string $key = null): UsageRecordInterface
     {
         $arguments['quantity'] = $quantity;
         $arguments['subscription_item'] = $subscriptionItem->getId();
@@ -18,7 +18,7 @@ class UsageRecord extends Request implements UsageRecordInterface
         return $this;
     }
 
-    public function usageRecordSummaries(SubscriptionItemInterface $subscriptionItem, array $arguments = [])
+    public function usageRecordSummaries(SubscriptionItemInterface $subscriptionItem, array $arguments = []): UsageRecordInterface
     {
         $this->response = \Stripe\SubscriptionItem::retrieve($subscriptionItem->getId());
         $this->setProperties();
@@ -27,7 +27,7 @@ class UsageRecord extends Request implements UsageRecordInterface
         return $this;
     }
 
-    protected function stripe(string $method, $arguments, $idempotencyKey = null)
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null)
     {
         $this->response = \Stripe\UsageRecord::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,
