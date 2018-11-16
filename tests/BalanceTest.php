@@ -1,6 +1,6 @@
 <?php
 
-namespace Stripe;
+namespace Strype;
 
 use Bulldog\Strype\Strype;
 use Bulldog\id\ObjectId;

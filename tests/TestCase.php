@@ -1,6 +1,8 @@
 <?php
-namespace Stripe;
 
+namespace Strype;
+
+use Stripe\Stripe;
 use Bulldog\Strype\Strype;
 use Bulldog\id\ObjectId;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
@@ -40,7 +42,7 @@ class TestCase extends PHPUnitTestCase
         // Set up the HTTP client mocker
         $this->clientMock = $this->createMock('\Stripe\HttpClient\ClientInterface');
         // By default, use the real HTTP client
-        ApiRequestor::setHttpClient(HttpClient\CurlClient::instance());
+        \Stripe\ApiRequestor::setHttpClient(\Stripe\HttpClient\CurlClient::instance());
     }
     protected function tearDown()
     {
@@ -76,8 +78,8 @@ class TestCase extends PHPUnitTestCase
         $this->prepareRequestMock($method, $path, $params, $headers, $hasFile, $base)
             ->will($this->returnCallback(
                 function ($method, $absUrl, $headers, $params, $hasFile) {
-                    $curlClient = HttpClient\CurlClient::instance();
-                    ApiRequestor::setHttpClient($curlClient);
+                    $curlClient = \Stripe\HttpClient\CurlClient::instance();
+                    \Stripe\ApiRequestor::setHttpClient($curlClient);
                     return $curlClient->request($method, $absUrl, $headers, $params, $hasFile);
                 }
             ));
@@ -140,7 +142,7 @@ class TestCase extends PHPUnitTestCase
         $hasFile = false,
         $base = null
     ) {
-        ApiRequestor::setHttpClient($this->clientMock);
+        \Stripe\ApiRequestor::setHttpClient($this->clientMock);
         if ($base === null) {
             $base = Stripe::$apiBase;
         }
