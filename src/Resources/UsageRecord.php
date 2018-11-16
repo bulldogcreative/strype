@@ -1,6 +1,6 @@
 <?php
 
-namespace Bulldog\Strype\Requests;
+namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Requests\SubscriptionItemInterface;
 use Bulldog\Strype\Contracts\Requests\UsageRecordInterface;

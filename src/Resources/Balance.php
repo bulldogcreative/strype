@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bulldog\Strype\Requests;
+namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Requests\BalanceInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;

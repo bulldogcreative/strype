@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Bulldog\Strype\Requests;
+namespace Bulldog\Strype\Resources;
 
+use Bulldog\Strype\Contracts\Models\InvoiceItemTypeInterface;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
+use Bulldog\Strype\Contracts\Requests\InvoiceItemInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
@@ -15,22 +17,15 @@ use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 
-/**
- * Class Customer.
- *
- * Also implements:
- * Bulldog\Strype\Contracts\DeleteInterface;
- * Bulldog\Strype\Contracts\RetrieveInterface;
- * Bulldog\Strype\Contracts\UpdateInterface;
- */
-class Customer extends Request implements CustomerInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
+class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
 {
-    use Retrieve, Update, Delete, ListAll;
+    use Retrieve, Update, ListAll, Delete;
 
-    public function create(string $email, string $token, array $arguments = [], string $key = null): CustomerInterface
+    public function create(CustomerInterface $customer, InvoiceItemTypeInterface $type, array $arguments = [], string $key = null, string $currency = 'usd'): InvoiceItemInterface
     {
-        $arguments['email'] = $email;
-        $arguments['source'] = $token;
+        $arguments = array_merge($arguments, $type->toArray());
+        $arguments['customer'] = $customer->getId();
+        $arguments['currency'] = $currency;
         $this->stripe('create', $arguments, $key);
 
         return $this;
@@ -38,7 +33,7 @@ class Customer extends Request implements CustomerInterface, RetrieveInterface, 
 
     protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
-        $this->response = \Stripe\Customer::{$method}($arguments, [
+        $this->response = \Stripe\InvoiceItem::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,
         ]);
         $this->setProperties();

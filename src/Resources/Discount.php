@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bulldog\Strype\Requests;
+namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 use Bulldog\Strype\Contracts\Requests\DiscountInterface;

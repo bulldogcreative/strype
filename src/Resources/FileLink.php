@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Bulldog\Strype\Requests;
+namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Requests\PayoutInterface;
+use Bulldog\Strype\Contracts\Requests\FileLinkInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
@@ -13,30 +13,21 @@ use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 
-class Payout extends Request implements PayoutInterface, RetrieveInterface, ListAllInterface, UpdateInterface
+class FileLink extends Request implements FileLinkInterface, RetrieveInterface, ListAllInterface, UpdateInterface
 {
     use Retrieve, Update, ListAll;
 
-    public function create(int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): PayoutInterface
+    public function create(string $id, array $arguments = [], string $key = null): FileLinkInterface
     {
-        $arguments['amount'] = $amount;
-        $arguments['currency'] = $currency;
+        $arguments['file'] = $id;
         $this->stripe('create', $arguments, $key);
-
-        return $this;
-    }
-
-    public function cancel(string $id): PayoutInterface
-    {
-        $this->stripe('retrieve', $id);
-        $this->response->cancel();
 
         return $this;
     }
 
     protected function stripe(string $method, $arguments, $idempotencyKey = null): void
     {
-        $this->response = \Stripe\Payout::{$method}($arguments, [
+        $this->response = \Stripe\FileLink::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,
         ]);
         $this->setProperties();

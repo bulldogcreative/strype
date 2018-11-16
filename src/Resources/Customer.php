@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Bulldog\Strype\Requests;
+namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Models\InvoiceItemTypeInterface;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
-use Bulldog\Strype\Contracts\Requests\InvoiceItemInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
@@ -17,15 +15,22 @@ use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 
-class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
+/**
+ * Class Customer.
+ *
+ * Also implements:
+ * Bulldog\Strype\Contracts\DeleteInterface;
+ * Bulldog\Strype\Contracts\RetrieveInterface;
+ * Bulldog\Strype\Contracts\UpdateInterface;
+ */
+class Customer extends Request implements CustomerInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
 {
-    use Retrieve, Update, ListAll, Delete;
+    use Retrieve, Update, Delete, ListAll;
 
-    public function create(CustomerInterface $customer, InvoiceItemTypeInterface $type, array $arguments = [], string $key = null, string $currency = 'usd'): InvoiceItemInterface
+    public function create(string $email, string $token, array $arguments = [], string $key = null): CustomerInterface
     {
-        $arguments = array_merge($arguments, $type->toArray());
-        $arguments['customer'] = $customer->getId();
-        $arguments['currency'] = $currency;
+        $arguments['email'] = $email;
+        $arguments['source'] = $token;
         $this->stripe('create', $arguments, $key);
 
         return $this;
@@ -33,7 +38,7 @@ class InvoiceItem extends Request implements InvoiceItemInterface, RetrieveInter
 
     protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
-        $this->response = \Stripe\InvoiceItem::{$method}($arguments, [
+        $this->response = \Stripe\Customer::{$method}($arguments, [
             'idempotency_key' => $idempotencyKey,
         ]);
         $this->setProperties();
