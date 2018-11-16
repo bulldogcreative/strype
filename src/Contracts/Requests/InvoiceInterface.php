@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Contracts\Requests;
 
-use Bulldog\Strype\Contracts\Resources\SubscriptionBillingInterface;
+use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 
 interface InvoiceInterface extends \Bulldog\Strype\Contracts\RequestInterface
 {
-    public function create(CustomerInterface $customer, SubscriptionBillingInterface $type, array $arguments = [], ?string $key = null): InvoiceInterface;
+    public function create(CustomerInterface $customer, SubscriptionBillingTypeInterface $type, array $arguments = [], ?string $key = null): InvoiceInterface;
 
     public function finalizeInvoice(string $invoiceid): InvoiceInterface;
 
