@@ -1,4 +1,7 @@
 <?php
+
+require '../vendor/autoload.php';
+
 define("MOCK_MINIMUM_VERSION", "0.35.0");
 define("MOCK_PORT", getenv("STRIPE_MOCK_PORT") ?: 12111);
 // Send a request to stripe-mock
