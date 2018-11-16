@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Contracts\Requests;
 
-interface DiscountInterface extends \Bulldog\Strype\Contracts\RequestInterface
+interface DiscountInterface extends \Bulldog\Strype\Contracts\ResourceInterface
 {
     public function deleteCustomerDiscount(CustomerInterface $customer, string $key = null): DiscountInterface;
 

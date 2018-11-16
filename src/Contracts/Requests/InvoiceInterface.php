@@ -6,7 +6,7 @@ namespace Bulldog\Strype\Contracts\Requests;
 
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 
-interface InvoiceInterface extends \Bulldog\Strype\Contracts\RequestInterface
+interface InvoiceInterface extends \Bulldog\Strype\Contracts\ResourceInterface
 {
     public function create(CustomerInterface $customer, SubscriptionBillingTypeInterface $type, array $arguments = [], ?string $key = null): InvoiceInterface;
 

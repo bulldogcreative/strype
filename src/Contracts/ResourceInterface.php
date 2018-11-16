@@ -2,7 +2,7 @@
 
 namespace Bulldog\Strype\Contracts;
 
-interface RequestInterface
+interface ResourceInterface
 {
     public function getId(): string;
 }
