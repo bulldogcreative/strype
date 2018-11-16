@@ -3,6 +3,66 @@
         <testsuite name="Strype PHP Test Suite">
             <directory suffix="Test.php">tests</directory>
         </testsuite>
+        <testsuite name="Balance">
+            <file>tests/BalanceTest.php</file>
+        </testsuite>
+        <testsuite name="Charge">
+            <file>tests/ChargeTest.php</file>
+        </testsuite>
+        <testsuite name="Customer">
+            <file>tests/CustomerTest.php</file>
+        </testsuite>
+        <testsuite name="Dispute">
+            <file>tests/DisputeTest.php</file>
+        </testsuite>
+        <testsuite name="Event">
+            <file>tests/EventTest.php</file>
+        </testsuite>
+        <testsuite name="File">
+            <file>tests/FileTest.php</file>
+        </testsuite>
+        <testsuite name="FileLink">
+            <file>tests/FileLinkTest.php</file>
+        </testsuite>
+        <testsuite name="Payout">
+            <file>tests/PayoutTest.php</file>
+        </testsuite>
+        <testsuite name="Product">
+            <file>tests/ProductTest.php</file>
+        </testsuite>
+        <testsuite name="Refund">
+            <file>tests/RefundTest.php</file>
+        </testsuite>
+        <testsuite name="Trait">
+            <file>tests/TraitTest.php</file>
+        </testsuite>
+        <testsuite name="Token">
+            <file>tests/TokenTest.php</file>
+        </testsuite>
+        <testsuite name="Coupon">
+            <file>tests/CouponTest.php</file>
+        </testsuite>
+        <testsuite name="Discount">
+            <file>tests/DiscountTest.php</file>
+        </testsuite>
+        <testsuite name="Subscription">
+            <file>tests/SubscriptionTest.php</file>
+        </testsuite>
+        <testsuite name="InvoiceItem">
+            <file>tests/InvoiceItemTest.php</file>
+        </testsuite>
+        <testsuite name="Invoice">
+            <file>tests/InvoiceTest.php</file>
+        </testsuite>
+        <testsuite name="Plan">
+            <file>tests/PlanTest.php</file>
+        </testsuite>
+        <testsuite name="SubscriptionItem">
+            <file>tests/SubscriptionItemTest.php</file>
+        </testsuite>
+        <testsuite name="UsageRecord">
+            <file>tests/UsageRecordTest.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist>
