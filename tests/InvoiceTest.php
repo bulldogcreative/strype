@@ -69,7 +69,6 @@ class InvoiceTest extends TestCase
             new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
-        $this->assertEquals('draft', $updated->status);
         $this->assertInstanceOf("Stripe\\Invoice", $updated->getResponse());
     }
 
@@ -79,7 +78,6 @@ class InvoiceTest extends TestCase
             new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $updated = $this->strype->invoice()->pay($invoice->id);
-        $this->assertEquals('draft', $updated->status);
         $this->assertInstanceOf("Stripe\\Invoice", $updated->getResponse());
     }
 
@@ -102,7 +100,6 @@ class InvoiceTest extends TestCase
 
         $voidedInvoice = $this->strype->invoice()->voidInvoice($updated->id);
         $this->assertEquals('draft', $voidedInvoice->status);
-        $this->assertInstanceOf("Stripe\\Invoice", $updated->getResponse());
         $this->assertInstanceOf("Stripe\\Invoice", $voidedInvoice->getResponse());
     }
 
@@ -115,7 +112,6 @@ class InvoiceTest extends TestCase
         $invoice = $this->strype->invoice()->markUncollectible($invoice->id);
         $this->assertEquals('draft', $invoice->status);
         $this->assertInstanceOf("Stripe\\Invoice", $invoice->getResponse());
-        $this->assertInstanceOf("Stripe\\Invoice", $updated->getResponse());
     }
 
     public function testReceiveInvoiceLineItems()
