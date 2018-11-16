@@ -6,7 +6,7 @@ namespace Bulldog\Strype\Requests;
 
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 use Bulldog\Strype\Contracts\Requests\SubscriptionInterface;
-use Bulldog\Strype\Contracts\Models\SubscriptionBillingInterface;
+use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
@@ -19,7 +19,7 @@ class Subscription extends Request implements SubscriptionInterface, RetrieveInt
 {
     use Retrieve, Update, ListAll;
 
-    public function create(CustomerInterface $customer, SubscriptionBillingInterface $billing, array $items = [], array $arguments = [], string $key = null): SubscriptionInterface
+    public function create(CustomerInterface $customer, SubscriptionBillingTypeInterface $billing, array $items = [], array $arguments = [], string $key = null): SubscriptionInterface
     {
         $arguments = array_merge($arguments, $billing->toArray());
         $arguments['customer'] = $customer->getId();
