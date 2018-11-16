@@ -30,7 +30,7 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically(),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically(),
             [
                 ['plan' => $plan->id],
             ]
@@ -53,7 +53,7 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\SendInvoice(12),
             [
                 ['plan' => $plan->id],
             ]
@@ -76,7 +76,7 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\SendInvoice(12),
             [
                 ['plan' => $plan->id],
             ]
@@ -100,7 +100,7 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\SendInvoice(12),
             [
                 ['plan' => $plan->id],
             ]
@@ -125,7 +125,7 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\SendInvoice(12),
             [
                 ['plan' => $plan->id],
             ]
