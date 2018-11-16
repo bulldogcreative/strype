@@ -2,18 +2,18 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Models\InvoiceItemTypeInterface;
-use Bulldog\Strype\Contracts\Resources\CustomerInterface;
-use Bulldog\Strype\Contracts\Resources\InvoiceItemInterface;
-use Bulldog\Strype\Contracts\Traits\DeleteInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Delete;
+use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Traits\Update;
+use Bulldog\Strype\Contracts\Traits\DeleteInterface;
+use Bulldog\Strype\Contracts\Traits\UpdateInterface;
+use Bulldog\Strype\Contracts\Traits\ListAllInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
+use Bulldog\Strype\Contracts\Resources\CustomerInterface;
+use Bulldog\Strype\Contracts\Resources\InvoiceItemInterface;
+use Bulldog\Strype\Contracts\Models\InvoiceItemTypeInterface;
 
 class InvoiceItem extends Resource implements InvoiceItemInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
 {

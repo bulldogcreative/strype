@@ -2,14 +2,14 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Resources\PayoutInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Resource;
+use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Traits\Update;
+use Bulldog\Strype\Contracts\Traits\UpdateInterface;
+use Bulldog\Strype\Contracts\Traits\ListAllInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
+use Bulldog\Strype\Contracts\Resources\PayoutInterface;
 
 class Payout extends Resource implements PayoutInterface, RetrieveInterface, ListAllInterface, UpdateInterface
 {

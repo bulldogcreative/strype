@@ -2,26 +2,26 @@
 
 namespace Bulldog\Strype;
 
-use Bulldog\Strype\Contracts\Requests\CustomerInterface;
-use Bulldog\Strype\Resources\Balance;
+use Bulldog\Strype\Resources\File;
+use Bulldog\Strype\Resources\Plan;
+use Bulldog\Strype\Resources\Event;
+use Bulldog\Strype\Resources\Token;
 use Bulldog\Strype\Resources\Charge;
 use Bulldog\Strype\Resources\Coupon;
+use Bulldog\Strype\Resources\Payout;
+use Bulldog\Strype\Resources\Refund;
+use Bulldog\Strype\Resources\Balance;
+use Bulldog\Strype\Resources\Dispute;
+use Bulldog\Strype\Resources\Invoice;
+use Bulldog\Strype\Resources\Product;
 use Bulldog\Strype\Resources\Customer;
 use Bulldog\Strype\Resources\Discount;
-use Bulldog\Strype\Resources\Dispute;
-use Bulldog\Strype\Resources\Event;
-use Bulldog\Strype\Resources\File;
 use Bulldog\Strype\Resources\FileLink;
-use Bulldog\Strype\Resources\Invoice;
 use Bulldog\Strype\Resources\InvoiceItem;
-use Bulldog\Strype\Resources\Payout;
-use Bulldog\Strype\Resources\Plan;
-use Bulldog\Strype\Resources\Product;
-use Bulldog\Strype\Resources\Refund;
+use Bulldog\Strype\Resources\UsageRecord;
 use Bulldog\Strype\Resources\Subscription;
 use Bulldog\Strype\Resources\SubscriptionItem;
-use Bulldog\Strype\Resources\Token;
-use Bulldog\Strype\Resources\UsageRecord;
+use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 
 /**
  * Class Strype.

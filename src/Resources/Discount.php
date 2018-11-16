@@ -2,10 +2,10 @@
 
 namespace Bulldog\Strype\Resources;
 
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 use Bulldog\Strype\Contracts\Resources\DiscountInterface;
 use Bulldog\Strype\Contracts\Resources\SubscriptionInterface;
-use Bulldog\Strype\Resource;
 
 class Discount extends Resource implements DiscountInterface
 {

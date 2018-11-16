@@ -2,12 +2,12 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Resources\EventInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
+use Bulldog\Strype\Contracts\Traits\ListAllInterface;
+use Bulldog\Strype\Contracts\Resources\EventInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
 class Event extends Resource implements EventInterface, RetrieveInterface, ListAllInterface
 {

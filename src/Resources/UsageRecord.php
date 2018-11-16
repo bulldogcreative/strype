@@ -2,9 +2,9 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Resources\SubscriptionItemInterface;
-use Bulldog\Strype\Contracts\Resources\UsageRecordInterface;
 use Bulldog\Strype\Resource;
+use Bulldog\Strype\Contracts\Resources\UsageRecordInterface;
+use Bulldog\Strype\Contracts\Resources\SubscriptionItemInterface;
 
 class UsageRecord extends Resource implements UsageRecordInterface
 {

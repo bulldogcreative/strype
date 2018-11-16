@@ -2,13 +2,13 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Models\FileTypeInterface;
-use Bulldog\Strype\Contracts\Resources\FileInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
+use Bulldog\Strype\Contracts\Resources\FileInterface;
+use Bulldog\Strype\Contracts\Traits\ListAllInterface;
+use Bulldog\Strype\Contracts\Models\FileTypeInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
 class File extends Resource implements FileInterface, RetrieveInterface, ListAllInterface
 {

@@ -2,10 +2,10 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Resources\TokenInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Retrieve;
+use Bulldog\Strype\Contracts\Resources\TokenInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
 class Token extends Resource implements TokenInterface, RetrieveInterface
 {
