@@ -2,7 +2,7 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Requests\TokenInterface;
+use Bulldog\Strype\Contracts\Resources\TokenInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Retrieve;

@@ -2,8 +2,8 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Requests\ChargeInterface;
-use Bulldog\Strype\Contracts\Requests\RefundInterface;
+use Bulldog\Strype\Contracts\Resources\ChargeInterface;
+use Bulldog\Strype\Contracts\Resources\RefundInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;

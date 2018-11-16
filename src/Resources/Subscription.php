@@ -3,8 +3,8 @@
 namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
-use Bulldog\Strype\Contracts\Requests\CustomerInterface;
-use Bulldog\Strype\Contracts\Requests\SubscriptionInterface;
+use Bulldog\Strype\Contracts\Resources\CustomerInterface;
+use Bulldog\Strype\Contracts\Resources\SubscriptionInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;

@@ -3,7 +3,7 @@
 namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Models\ProductTypeInterface;
-use Bulldog\Strype\Contracts\Requests\ProductInterface;
+use Bulldog\Strype\Contracts\Resources\ProductInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;

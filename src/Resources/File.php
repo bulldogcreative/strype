@@ -3,7 +3,7 @@
 namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Models\FileTypeInterface;
-use Bulldog\Strype\Contracts\Requests\FileInterface;
+use Bulldog\Strype\Contracts\Resources\FileInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Resource;

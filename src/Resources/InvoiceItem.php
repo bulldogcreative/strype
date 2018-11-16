@@ -3,8 +3,8 @@
 namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Models\InvoiceItemTypeInterface;
-use Bulldog\Strype\Contracts\Requests\CustomerInterface;
-use Bulldog\Strype\Contracts\Requests\InvoiceItemInterface;
+use Bulldog\Strype\Contracts\Resources\CustomerInterface;
+use Bulldog\Strype\Contracts\Resources\InvoiceItemInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;

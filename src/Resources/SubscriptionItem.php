@@ -2,9 +2,9 @@
 
 namespace Bulldog\Strype\Resources;
 
-use Bulldog\Strype\Contracts\Requests\PlanInterface;
-use Bulldog\Strype\Contracts\Requests\SubscriptionInterface;
-use Bulldog\Strype\Contracts\Requests\SubscriptionItemInterface;
+use Bulldog\Strype\Contracts\Resources\PlanInterface;
+use Bulldog\Strype\Contracts\Resources\SubscriptionInterface;
+use Bulldog\Strype\Contracts\Resources\SubscriptionItemInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
