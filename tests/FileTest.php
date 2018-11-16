@@ -11,6 +11,8 @@ use Bulldog\Strype\Models\Files\TaxDocumentUserUpload;
 
 class FileTest extends TestCase
 {
+    const TEST_RESOURCE_ID = 'file_123';
+
     public function testCreateBusinessLogoFile()
     {
         $fp = fopen('./tests/files/Blank.jpg', 'r');
@@ -19,54 +21,54 @@ class FileTest extends TestCase
         $this->assertInstanceOf('Bulldog\Strype\Models\Files\BusinessLogo', $logo);
     }
 
-    // public function testCreateCustomerSignatureFile()
-    // {
-    //     $fp = fopen('./tests/files/Blank.jpg', 'r');
-    //     $logo = new CustomerSignature($fp);
-    //     $file = $this->strype->file()->create($logo, [], $this->id->get(12));
-    //     $this->assertEquals('customer_signature', $file->purpose);
-    // }
+    public function testCreateCustomerSignatureFile()
+    {
+        $fp = fopen('./tests/files/Blank.jpg', 'r');
+        $logo = new CustomerSignature($fp);
+        $this->assertEquals('customer_signature', $logo->getPurpose());
+        $this->assertInstanceOf('Bulldog\Strype\Models\Files\CustomerSignature', $logo);
+    }
 
-    // public function testCreateDisputeEvidenceFile()
-    // {
-    //     $fp = fopen('./tests/files/Blank.jpg', 'r');
-    //     $logo = new DisputeEvidence($fp);
-    //     $file = $this->strype->file()->create($logo, [], $this->id->get(12));
-    //     $this->assertEquals('dispute_evidence', $file->purpose);
-    // }
+    public function testCreateDisputeEvidenceFile()
+    {
+        $fp = fopen('./tests/files/Blank.jpg', 'r');
+        $logo = new DisputeEvidence($fp);
+        $this->assertEquals('dispute_evidence', $logo->getPurpose());
+        $this->assertInstanceOf('Bulldog\Strype\Models\Files\DisputeEvidence', $logo);
+    }
 
-    // public function testCreateIdentityDocumentFile()
-    // {
-    //     $fp = fopen('./tests/files/Blank.jpg', 'r');
-    //     $logo = new IdentityDocument($fp);
-    //     $file = $this->strype->file()->create($logo, [], $this->id->get(12));
-    //     $this->assertEquals('identity_document', $file->purpose);
-    // }
+    public function testCreateIdentityDocumentFile()
+    {
+        $fp = fopen('./tests/files/Blank.jpg', 'r');
+        $logo = new IdentityDocument($fp);
+        $this->assertEquals('identity_document', $logo->getPurpose());
+        $this->assertInstanceOf('Bulldog\Strype\Models\Files\IdentityDocument', $logo);
+    }
 
-    // public function testCreatePciDocumentFile()
-    // {
-    //     $fp = fopen('./tests/files/download.pdf', 'r');
-    //     $logo = new PciDocument($fp);
-    //     $file = $this->strype->file()->create($logo, [], $this->id->get(12));
-    //     $this->assertEquals('pci_document', $file->purpose);
-    // }
+    public function testCreatePciDocumentFile()
+    {
+        $fp = fopen('./tests/files/Blank.jpg', 'r');
+        $logo = new PciDocument($fp);
+        $this->assertEquals('pci_document', $logo->getPurpose());
+        $this->assertInstanceOf('Bulldog\Strype\Models\Files\PciDocument', $logo);
+    }
 
-    // public function testCreateTaxDocumentUserUploadFile()
-    // {
-    //     $fp = fopen('./tests/files/Blank.jpg', 'r');
-    //     $logo = new TaxDocumentUserUpload($fp);
-    //     $file = $this->strype->file()->create($logo, [], $this->id->get(12));
-    //     $this->assertEquals('tax_document_user_upload', $file->purpose);
-    // }
+    public function testCreateTaxDocumentUserUploadFile()
+    {
+        $fp = fopen('./tests/files/Blank.jpg', 'r');
+        $logo = new TaxDocumentUserUpload($fp);
+        $this->assertEquals('tax_document_user_upload', $logo->getPurpose());
+        $this->assertInstanceOf('Bulldog\Strype\Models\Files\TaxDocumentUserUpload', $logo);
+    }
 
-    // public function testRetrieveFile()
-    // {
-    //     $fp = fopen('./tests/files/Blank.jpg', 'r');
-    //     $logo = new TaxDocumentUserUpload($fp);
-    //     $file = $this->strype->file()->create($logo, [], $this->id->get(12));
-    //     $retrieved = $this->strype->file()->retrieve($file->getId());
-    //     $this->assertEquals($file->size, $retrieved->size);
-    // }
+    public function testRetrieveFile()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/files/' . self::TEST_RESOURCE_ID
+        );
+        $resource = $this->strype->file()->retrieve(self::TEST_RESOURCE_ID);
+    }
 
     public function testListAll()
     {
