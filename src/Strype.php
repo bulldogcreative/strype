@@ -21,7 +21,7 @@ use Bulldog\Strype\Resources\InvoiceItem;
 use Bulldog\Strype\Resources\UsageRecord;
 use Bulldog\Strype\Resources\Subscription;
 use Bulldog\Strype\Resources\SubscriptionItem;
-use Bulldog\Strype\Contracts\Requests\CustomerInterface;
+use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 
 /**
  * Class Strype.
