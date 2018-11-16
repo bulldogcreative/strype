@@ -41,7 +41,7 @@ class UsageRecordTests extends TestCase
         ]);
         $subscription = $this->strype->subscription()->create(
             $this->strype->customer()->create('levi@example.com', 'tok_mastercard'),
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically(),
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically(),
             [
                 ['plan' => $plan->id],
             ]
