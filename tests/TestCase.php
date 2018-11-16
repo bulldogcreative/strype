@@ -1,6 +1,8 @@
 <?php
 namespace Stripe;
 
+use Bulldog\Strype\Strype;
+use Bulldog\id\ObjectId;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
 class TestCase extends PHPUnitTestCase
@@ -27,10 +29,14 @@ class TestCase extends PHPUnitTestCase
         $this->origAccountId = Stripe::getAccountId();
         // Set up host and credentials for stripe-mock
         Stripe::$apiBase = "http://localhost:" . MOCK_PORT;
-        Stripe::setApiKey("sk_test_123");
+        //Stripe::setApiKey("sk_test_123");
         Stripe::setClientId("ca_123");
         Stripe::setApiVersion(null);
         Stripe::setAccountId(null);
+
+        $this->strype = new Strype("sk_test_123");
+        $this->id = new ObjectId();
+
         // Set up the HTTP client mocker
         $this->clientMock = $this->createMock('\Stripe\HttpClient\ClientInterface');
         // By default, use the real HTTP client
