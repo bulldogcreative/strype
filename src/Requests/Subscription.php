@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
+use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 use Bulldog\Strype\Contracts\Requests\SubscriptionInterface;
-use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Bulldog\Strype\Requests;
 
-use Bulldog\Strype\Contracts\Requests\ProductInterface;
 use Bulldog\Strype\Contracts\Models\ProductTypeInterface;
+use Bulldog\Strype\Contracts\Requests\ProductInterface;
 use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
