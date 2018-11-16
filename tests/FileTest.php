@@ -75,4 +75,12 @@ class FileTest extends TestCase
         $files = $this->strype->file()->listAll(['limit' => 1]);
         $this->assertEquals(1, count($files->data));
     }
+
+    public function testGetFile()
+    {
+        $fp = fopen('./tests/files/Blank.jpg', 'r');
+        $logo = new TaxDocumentUserUpload($fp);
+        $file = $logo->getFile();
+        $this->assertTrue(is_resource($file));
+    }
 }
