@@ -63,6 +63,9 @@
         <testsuite name="UsageRecord">
             <file>tests/UsageRecordTest.php</file>
         </testsuite>
+        <testsuite name="Model">
+            <file>tests/ModelTest.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist>
