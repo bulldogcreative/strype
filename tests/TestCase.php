@@ -38,6 +38,7 @@ class TestCase extends PHPUnitTestCase
 
         $this->strype = new Strype("sk_test_123");
         $this->id = new ObjectId();
+        $this->customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
 
         // Set up the HTTP client mocker
         $this->clientMock = $this->createMock('\Stripe\HttpClient\ClientInterface');
