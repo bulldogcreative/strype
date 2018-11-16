@@ -1,81 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="tests/boot.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="Balance">
-            <file>tests/BalanceTests.php</file>
-        </testsuite>
-        <testsuite name="Charge">
-            <file>tests/ChargeTests.php</file>
-        </testsuite>
-        <testsuite name="Customer">
-            <file>tests/CustomerTests.php</file>
-        </testsuite>
-        <testsuite name="Dispute">
-            <file>tests/DisputeTests.php</file>
-        </testsuite>
-        <testsuite name="Event">
-            <file>tests/EventTests.php</file>
-        </testsuite>
-        <testsuite name="File">
-            <file>tests/FileTests.php</file>
-        </testsuite>
-        <testsuite name="FileLink">
-            <file>tests/FileLinkTests.php</file>
-        </testsuite>
-        <testsuite name="Payout">
-            <file>tests/PayoutTests.php</file>
-        </testsuite>
-        <testsuite name="Product">
-            <file>tests/ProductTests.php</file>
-        </testsuite>
-        <testsuite name="Refund">
-            <file>tests/RefundTests.php</file>
-        </testsuite>
-        <testsuite name="Trait">
-            <file>tests/TraitTests.php</file>
-        </testsuite>
-        <testsuite name="Token">
-            <file>tests/TokenTests.php</file>
-        </testsuite>
-        <testsuite name="Coupon">
-            <file>tests/CouponTests.php</file>
-        </testsuite>
-        <testsuite name="Discount">
-            <file>tests/DiscountTests.php</file>
-        </testsuite>
-        <testsuite name="Subscription">
-            <file>tests/SubscriptionTests.php</file>
-        </testsuite>
-        <testsuite name="InvoiceItem">
-            <file>tests/InvoiceItemTests.php</file>
-        </testsuite>
-        <testsuite name="Invoice">
-            <file>tests/InvoiceTests.php</file>
-        </testsuite>
-        <testsuite name="Plan">
-            <file>tests/PlanTests.php</file>
-        </testsuite>
-        <testsuite name="SubscriptionItem">
-            <file>tests/SubscriptionItemTests.php</file>
-        </testsuite>
-        <testsuite name="UsageRecord">
-            <file>tests/UsageRecordTests.php</file>
-        </testsuite>
-        <testsuite name="Mock">
-            <file>tests/MockTests.php</file>
+        <testsuite name="Strype PHP Test Suite">
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
+        <whitelist>
+            <directory>lib</directory>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>
