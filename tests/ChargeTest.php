@@ -4,55 +4,61 @@ namespace Strype;
 
 class ChargeTest extends TestCase
 {
+    const TEST_RESOURCE_ID = 'ch_123';
+
     public function testCreateCharge()
     {
-        $charge = $this->strype->chargeCustomer($this->customer, 100, [], $this->id->get(12));
+        $this->expectsRequest(
+            'post',
+            '/v1/charges'
+        );
+        $charge = $this->strype->charge()->create($this->customer, 100, [], $this->id->get(12));
         $this->assertEquals(100, $charge->amount);
-        $this->assertEquals($this->customer->getId(), 'cus_Dw9uU13WgIF6Q4');
     }
 
     public function testRetrieveCharge()
     {
-        $charge = $this->strype->chargeCustomer($this->customer, 100, [], $this->id->get(12));
-        $retrieved = $this->strype->charge()->retrieve($charge->getId());
-        $this->assertEquals($charge->balance_transaction, $retrieved->getResponse()->balance_transaction);
+        $this->expectsRequest(
+            'get',
+            '/v1/charges/' . self::TEST_RESOURCE_ID
+        );
+
+        $retrieved = $this->strype->charge()->retrieve('ch_123');
+        $this->assertInstanceOf("Stripe\\Charge", $retrieved->getResponse());
     }
 
     public function testUpdateCharge()
     {
-        $charge = $this->strype->chargeCustomer($this->customer, 100, [], $this->id->get(12));
-        $retrieved = $this->strype->charge()->retrieve($charge->getId());
-        $retrieved->getResponse()->description = 'My First Test Charge (created for API docs)';
-        $retrieved->getResponse()->save();
-        $ch = $this->strype->charge()->retrieve($charge->getId());
-        $this->assertEquals('My First Test Charge (created for API docs)', $ch->description);
+        $this->expectsRequest(
+            'get',
+            '/v1/charges/' . self::TEST_RESOURCE_ID
+        );
+        $resource = $this->strype->charge()->update(self::TEST_RESOURCE_ID, [
+            'metadata' => [
+                'key' => 'value',
+            ]
+        ]);
+
+        $this->assertEquals('My First Test Charge (created for API docs)', $resource->description);
+        $this->assertInstanceOf("Stripe\\Charge", $resource->getResponse());
     }
 
     public function testCaptureCharge()
     {
-        $charge = $this->strype->charge()->create($this->customer, 100, [
-            'capture' => false,
-        ], $this->id->get(12));
-        $retrieved = $this->strype->charge()->retrieve($charge->getId());
-        $this->assertFalse($retrieved->captured);
-        $retrieved->capture($charge->getId());
-
-        $retrieved = $this->strype->charge()->retrieve($charge->getId());
-        $this->assertFalse($retrieved->captured);
-
-        $charge = $this->strype->charge()->create($this->customer, 100, [
-            'capture' => false,
-        ], $this->id->get(12));
-        $retrieved = $this->strype->charge()->retrieve($charge->getId());
-        $this->assertFalse($retrieved->captured);
-        $retrieved->capture();
-        $retrieved = $this->strype->charge()->retrieve($charge->getId());
-        $this->assertFalse($retrieved->captured);
+        $resource = $this->strype->charge()->capture(self::TEST_RESOURCE_ID);
+        $this->assertEquals('succeeded', $resource->status);
+        $this->assertInstanceOf("Stripe\\Charge", $resource->getResponse());
     }
 
     public function testListAllCharges()
     {
-        $charges = $this->strype->charge()->listAll(['limit' => 1]);
-        $this->assertEquals(1, count($charges->getResponse()->data));
+        $this->expectsRequest(
+            'get',
+            '/v1/charges'
+        );
+        $resource = $this->strype->charge()->listAll(['limit' => 1]);
+        $this->assertTrue(is_array($resource->data));
+        $this->assertEquals(1, count($resource->getResponse()->data));
+        $this->assertInstanceOf("Stripe\\Charge", $resource->getResponse()->data[0]);
     }
 }
