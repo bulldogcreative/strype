@@ -30,13 +30,13 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically(),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically(),
             [
                 ['plan' => $plan->id],
             ]
         );
         $this->assertEquals('subscription', $subscription->object);
-        $this->assertEquals($customer->getCustomerId(), $subscription->customer);
+        $this->assertEquals($customer->getId(), $subscription->customer);
         $this->assertEquals('charge_automatically', $subscription->billing);
     }
 
@@ -53,13 +53,13 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\SendInvoice(12),
             [
                 ['plan' => $plan->id],
             ]
         );
         $this->assertEquals('subscription', $subscription->object);
-        $this->assertEquals($customer->getCustomerId(), $subscription->customer);
+        $this->assertEquals($customer->getId(), $subscription->customer);
         $this->assertEquals('send_invoice', $subscription->billing);
     }
 
@@ -76,7 +76,7 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\SendInvoice(12),
             [
                 ['plan' => $plan->id],
             ]
@@ -84,7 +84,7 @@ class SubscriptionTests extends TestCase
 
         $retrieved = $this->strype->subscription()->retrieve($subscription->id);
         $this->assertEquals('subscription', $retrieved->object);
-        $this->assertEquals($customer->getCustomerId(), $retrieved->customer);
+        $this->assertEquals($customer->getId(), $retrieved->customer);
     }
 
     public function testUpdateSubscription()
@@ -100,7 +100,7 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\SendInvoice(12),
             [
                 ['plan' => $plan->id],
             ]
@@ -125,7 +125,7 @@ class SubscriptionTests extends TestCase
             'id' => 'gold-special'.$this->id->get(12),
         ]);
         $subscription = $this->strype->subscription()->create(
-            $customer, new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(12),
+            $customer, new \Bulldog\Strype\Models\Subscriptions\SendInvoice(12),
             [
                 ['plan' => $plan->id],
             ]

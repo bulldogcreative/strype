@@ -19,51 +19,51 @@ class InvoiceTests extends TestCase
         $this->customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $this->id = new ObjectId();
         $this->invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
         );
     }
 
     public function testCreateInvoiceAndChargeAutomatically()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $this->assertEquals('invoice', $invoice->object);
-        $this->assertEquals($this->customer->getCustomerId(), $invoice->customer);
+        $this->assertEquals($this->customer->getId(), $invoice->customer);
         $this->assertEquals(2500, $invoice->total);
     }
 
     public function testCreateInvoiceAndSend()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
+            new \Bulldog\Strype\Models\Subscriptions\SendInvoice(30)
         );
         $this->assertEquals('invoice', $invoice->object);
-        $this->assertEquals($this->customer->getCustomerId(), $invoice->customer);
+        $this->assertEquals($this->customer->getId(), $invoice->customer);
         $this->assertEquals(2500, $invoice->total);
     }
 
     public function testRetrieveInvoice()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
+            new \Bulldog\Strype\Models\Subscriptions\SendInvoice(30)
         );
         $retrieved = $this->strype->invoice()->retrieve($invoice->id);
         $this->assertEquals('invoice', $retrieved->object);
-        $this->assertEquals($this->customer->getCustomerId(), $retrieved->customer);
+        $this->assertEquals($this->customer->getId(), $retrieved->customer);
         $this->assertEquals(2500, $retrieved->total);
     }
 
     public function testUpdateInvoice()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
+            new \Bulldog\Strype\Models\Subscriptions\SendInvoice(30)
         );
         $updated = $this->strype->invoice()->update($invoice->id, [
             'description' => 'New sled',
         ]);
         $this->assertEquals('invoice', $updated->object);
-        $this->assertEquals($this->customer->getCustomerId(), $updated->customer);
+        $this->assertEquals($this->customer->getId(), $updated->customer);
         $this->assertEquals(2500, $updated->total);
         $this->assertEquals('New sled', $updated->description);
     }
@@ -71,7 +71,7 @@ class InvoiceTests extends TestCase
     public function testDeleteInvoice()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $invoice = $this->strype->invoice()->delete($invoice->id);
         $this->assertTrue($invoice->deleted);
@@ -80,7 +80,7 @@ class InvoiceTests extends TestCase
     public function testFinalizeInvoice()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
         $this->assertEquals('open', $updated->status);
@@ -89,7 +89,7 @@ class InvoiceTests extends TestCase
     public function testPayInvoice()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $updated = $this->strype->invoice()->pay($invoice->id);
         $this->assertEquals('paid', $updated->status);
@@ -98,7 +98,7 @@ class InvoiceTests extends TestCase
     public function testSendInvoiceForManualPayment()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\SendInvoice(30)
+            new \Bulldog\Strype\Models\Subscriptions\SendInvoice(30)
         );
         $updated = $this->strype->invoice()->sendInvoice($invoice->id);
         $this->assertEquals('invoice', $updated->object);
@@ -107,7 +107,7 @@ class InvoiceTests extends TestCase
     public function testVoidInvoice()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
 
@@ -118,7 +118,7 @@ class InvoiceTests extends TestCase
     public function testMarkInvoiceAsUncollectable()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
         $invoice = $this->strype->invoice()->markUncollectible($invoice->id);
@@ -128,7 +128,7 @@ class InvoiceTests extends TestCase
     public function testReceiveInvoiceLineItems()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically()
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
 
         $lineItems = $this->strype->invoice()->retrieveLineItems($invoice->id);

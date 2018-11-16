@@ -5,8 +5,8 @@ include 'boot.php';
 use PHPUnit\Framework\TestCase;
 use Bulldog\Strype\Strype;
 use Bulldog\id\ObjectId;
-use Bulldog\Strype\Resources\Products\Good;
-use Bulldog\Strype\Resources\Products\Service;
+use Bulldog\Strype\Models\Products\Good;
+use Bulldog\Strype\Models\Products\Service;
 
 class ProductTests extends TestCase
 {
@@ -27,7 +27,6 @@ class ProductTests extends TestCase
         $this->assertEquals('Blue', $product->description);
         $this->assertEquals('Sweater', $product->name);
         $this->assertEquals('good', $product->type);
-        $this->assertEquals('Sweater', $good->getName());
         $product->getResponse()->delete();
     }
 
@@ -38,7 +37,6 @@ class ProductTests extends TestCase
         $this->assertEquals('product', $product->object);
         $this->assertEquals('Sweater Repair', $product->name);
         $this->assertEquals('service', $product->type);
-        $this->assertEquals('Sweater Repair', $service->getName());
         $product->getResponse()->delete();
     }
 

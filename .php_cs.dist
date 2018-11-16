@@ -6,7 +6,9 @@ return PhpCsFixer\Config::create()
     ->setRules(array(
         '@Symfony' => true,
         'array_syntax' => array('syntax' => 'short'),
-        'ordered_imports' => true,
+        'ordered_imports' => [
+            'sort_algorithm' => 'length'
+        ],
         'protected_to_private' => false
     ))
     ->setRiskyAllowed(true)
