@@ -1,5 +1,10 @@
 <?php
+
 namespace Stripe;
+
+use Bulldog\Strype\Strype;
+use Bulldog\id\ObjectId;
+
 class BalanceTest extends TestCase
 {
     public function testIsRetrievable()
@@ -8,7 +13,9 @@ class BalanceTest extends TestCase
             'get',
             '/v1/balance'
         );
-        $resource = Balance::retrieve();
+        $resource = $this->strype->balance()->retrieveBalance()->getResponse();
         $this->assertInstanceOf("Stripe\\Balance", $resource);
+        $this->assertFalse($resource->livemode);
+        $this->assertEquals('balance', $resource->object);
     }
 }
