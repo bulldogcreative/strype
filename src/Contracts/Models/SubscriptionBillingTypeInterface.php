@@ -4,6 +4,6 @@ namespace Bulldog\Strype\Contracts\Models;
 
 use Bulldog\Strype\Contracts\Support\Arrayable;
 
-interface SubscriptionTypeBillingInterface extends Arrayable
+interface SubscriptionBillingTypeInterface extends Arrayable
 {
 }
