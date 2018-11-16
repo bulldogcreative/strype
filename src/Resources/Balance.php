@@ -6,10 +6,10 @@ namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Requests\BalanceInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Retrieve;
 
-class Balance extends Request implements BalanceInterface, RetrieveInterface
+class Balance extends Resource implements BalanceInterface, RetrieveInterface
 {
     use Retrieve;
 

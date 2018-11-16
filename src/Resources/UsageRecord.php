@@ -4,9 +4,9 @@ namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Requests\SubscriptionItemInterface;
 use Bulldog\Strype\Contracts\Requests\UsageRecordInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 
-class UsageRecord extends Request implements UsageRecordInterface
+class UsageRecord extends Resource implements UsageRecordInterface
 {
     public function create(int $quantity, SubscriptionItemInterface $subscriptionItem, int $timestamp, array $arguments = [], string $key = null): UsageRecordInterface
     {

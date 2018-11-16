@@ -9,21 +9,13 @@ use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Delete;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 
-/**
- * Class Customer.
- *
- * Also implements:
- * Bulldog\Strype\Contracts\DeleteInterface;
- * Bulldog\Strype\Contracts\RetrieveInterface;
- * Bulldog\Strype\Contracts\UpdateInterface;
- */
-class Customer extends Request implements CustomerInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
+class Customer extends Resource implements CustomerInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
 {
     use Retrieve, Update, Delete, ListAll;
 

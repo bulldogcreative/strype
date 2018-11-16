@@ -9,13 +9,13 @@ use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Delete;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 
-class SubscriptionItem extends Request implements SubscriptionItemInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
+class SubscriptionItem extends Resource implements SubscriptionItemInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
 {
     use Retrieve, Update, Delete, ListAll;
 

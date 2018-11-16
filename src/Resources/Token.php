@@ -6,10 +6,10 @@ namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Requests\TokenInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Retrieve;
 
-class Token extends Request implements TokenInterface, RetrieveInterface
+class Token extends Resource implements TokenInterface, RetrieveInterface
 {
     use Retrieve;
 

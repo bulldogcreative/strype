@@ -9,12 +9,12 @@ use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 
-class Charge extends Request implements ChargeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
+class Charge extends Resource implements ChargeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
 {
     use Retrieve, Update, ListAll;
 

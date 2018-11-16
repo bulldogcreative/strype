@@ -7,9 +7,9 @@ namespace Bulldog\Strype\Resources;
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;
 use Bulldog\Strype\Contracts\Requests\DiscountInterface;
 use Bulldog\Strype\Contracts\Requests\SubscriptionInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 
-class Discount extends Request implements DiscountInterface
+class Discount extends Resource implements DiscountInterface
 {
     public function deleteCustomerDiscount(CustomerInterface $customer, string $key = null): DiscountInterface
     {

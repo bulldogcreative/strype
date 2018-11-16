@@ -7,13 +7,13 @@ use Bulldog\Strype\Contracts\Traits\DeleteInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Delete;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 
-class Plan extends Request implements PlanInterface, RetrieveInterface, ListAllInterface, UpdateInterface, DeleteInterface
+class Plan extends Resource implements PlanInterface, RetrieveInterface, ListAllInterface, UpdateInterface, DeleteInterface
 {
     use Retrieve, Update, ListAll, Delete;
 

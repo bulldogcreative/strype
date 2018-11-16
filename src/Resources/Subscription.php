@@ -10,12 +10,12 @@ use Bulldog\Strype\Contracts\Requests\SubscriptionInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Traits\Update;
 
-class Subscription extends Request implements SubscriptionInterface, RetrieveInterface, UpdateInterface, ListAllInterface
+class Subscription extends Resource implements SubscriptionInterface, RetrieveInterface, UpdateInterface, ListAllInterface
 {
     use Retrieve, Update, ListAll;
 

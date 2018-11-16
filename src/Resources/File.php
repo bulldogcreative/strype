@@ -8,11 +8,11 @@ use Bulldog\Strype\Contracts\Models\FileTypeInterface;
 use Bulldog\Strype\Contracts\Requests\FileInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
-use Bulldog\Strype\Request;
+use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 
-class File extends Request implements FileInterface, RetrieveInterface, ListAllInterface
+class File extends Resource implements FileInterface, RetrieveInterface, ListAllInterface
 {
     use Retrieve, ListAll;
 
