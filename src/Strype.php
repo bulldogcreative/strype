@@ -36,6 +36,7 @@ class Strype
     public function __construct(string $apikey)
     {
         \Stripe\Stripe::setApiKey($apikey);
+        \Stripe\Stripe::setAppInfo("Bulldog\Strype", "0.5.0", "https://github.com/bulldogcreative/strype");
     }
 
     public function balance()
