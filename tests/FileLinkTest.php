@@ -20,16 +20,17 @@ class FileLinkTest extends TestCase
         $this->assertInstanceOf("Stripe\\FileLink", $fileLink->getResponse());
     }
 
-    // public function testRetrieveLink()
-    // {
-    //     $fp = fopen('./tests/files/Blank.jpg', 'r');
-    //     $logo = new BusinessLogo($fp);
-    //     $file = $this->strype->file()->create($logo, [], $this->id->get(12));
-    //     $fileLink = $this->strype->fileLink()->create($file->getId(), [], $this->id->get(12));
+    public function testRetrieveLink()
+    {
+        $this->expectsRequest(
+            'get',
+            '/v1/file_links/' . self::TEST_RESOURCE_ID
+        );
 
-    //     $link = $this->strype->fileLink()->retrieve($fileLink->getId());
-    //     $this->assertEquals($fileLink->url, $link->url);
-    // }
+        $link = $this->strype->fileLink()->retrieve(self::TEST_RESOURCE_ID);
+        $this->assertEquals('file_link', $link->object);
+        $this->assertInstanceOf("Stripe\\FileLink", $link->getResponse());
+    }
 
     // public function testUpdateLink()
     // {
