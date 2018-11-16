@@ -46,9 +46,9 @@ class FileLinkTest extends TestCase
         $this->assertInstanceOf("Stripe\\FileLink", $link->getResponse());
     }
 
-    // public function testListAll()
-    // {
-    //     $all = $this->strype->fileLink()->listAll(['limit' => 1]);
-    //     $this->assertEquals(1, count($all->data));
-    // }
+    public function testListAll()
+    {
+        $all = $this->strype->fileLink()->listAll(['limit' => 1]);
+        $this->assertEquals(1, count($all->data));
+    }
 }
