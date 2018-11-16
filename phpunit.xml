@@ -1,78 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
+<phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
+        <testsuite name="Strype PHP Test Suite">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
         <testsuite name="Balance">
-            <file>tests/BalanceTests.php</file>
+            <file>tests/BalanceTest.php</file>
         </testsuite>
         <testsuite name="Charge">
-            <file>tests/ChargeTests.php</file>
+            <file>tests/ChargeTest.php</file>
         </testsuite>
         <testsuite name="Customer">
-            <file>tests/CustomerTests.php</file>
+            <file>tests/CustomerTest.php</file>
         </testsuite>
         <testsuite name="Dispute">
-            <file>tests/DisputeTests.php</file>
+            <file>tests/DisputeTest.php</file>
         </testsuite>
         <testsuite name="Event">
-            <file>tests/EventTests.php</file>
+            <file>tests/EventTest.php</file>
         </testsuite>
         <testsuite name="File">
-            <file>tests/FileTests.php</file>
+            <file>tests/FileTest.php</file>
         </testsuite>
         <testsuite name="FileLink">
-            <file>tests/FileLinkTests.php</file>
+            <file>tests/FileLinkTest.php</file>
         </testsuite>
         <testsuite name="Payout">
-            <file>tests/PayoutTests.php</file>
+            <file>tests/PayoutTest.php</file>
         </testsuite>
         <testsuite name="Product">
-            <file>tests/ProductTests.php</file>
+            <file>tests/ProductTest.php</file>
         </testsuite>
         <testsuite name="Refund">
-            <file>tests/RefundTests.php</file>
+            <file>tests/RefundTest.php</file>
         </testsuite>
         <testsuite name="Trait">
-            <file>tests/TraitTests.php</file>
+            <file>tests/TraitTest.php</file>
         </testsuite>
         <testsuite name="Token">
-            <file>tests/TokenTests.php</file>
+            <file>tests/TokenTest.php</file>
         </testsuite>
         <testsuite name="Coupon">
-            <file>tests/CouponTests.php</file>
+            <file>tests/CouponTest.php</file>
         </testsuite>
         <testsuite name="Discount">
-            <file>tests/DiscountTests.php</file>
+            <file>tests/DiscountTest.php</file>
         </testsuite>
         <testsuite name="Subscription">
-            <file>tests/SubscriptionTests.php</file>
+            <file>tests/SubscriptionTest.php</file>
         </testsuite>
         <testsuite name="InvoiceItem">
-            <file>tests/InvoiceItemTests.php</file>
+            <file>tests/InvoiceItemTest.php</file>
         </testsuite>
         <testsuite name="Invoice">
-            <file>tests/InvoiceTests.php</file>
+            <file>tests/InvoiceTest.php</file>
         </testsuite>
         <testsuite name="Plan">
-            <file>tests/PlanTests.php</file>
+            <file>tests/PlanTest.php</file>
         </testsuite>
         <testsuite name="SubscriptionItem">
-            <file>tests/SubscriptionItemTests.php</file>
+            <file>tests/SubscriptionItemTest.php</file>
         </testsuite>
         <testsuite name="UsageRecord">
-            <file>tests/UsageRecordTests.php</file>
+            <file>tests/UsageRecordTest.php</file>
+        </testsuite>
+        <testsuite name="Model">
+            <file>tests/ModelTest.php</file>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
+        <whitelist>
+            <directory>src</directory>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>

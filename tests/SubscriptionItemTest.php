@@ -1,24 +1,9 @@
 <?php
 
-include 'boot.php';
+namespace Strype;
 
-use PHPUnit\Framework\TestCase;
-use Bulldog\Strype\Strype;
-use Bulldog\id\ObjectId;
-
-class SubscriptionItemTests extends TestCase
+class SubscriptionItemTest extends TestCase
 {
-    public $strype;
-    public $id;
-    public $customer;
-
-    public function setUp()
-    {
-        $this->strype = new Strype(getenv('STRIPE_API_KEY'));
-        $this->id = new ObjectId();
-        $this->customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
-    }
-
     public function testCreateSubscriptionItem()
     {
         $subscription = $this->createSubscription($this->createPlan()['plan']);
@@ -26,7 +11,6 @@ class SubscriptionItemTests extends TestCase
         $plan = $this->createPlan();
         $subscriptionItem = $this->createSubscriptionItem($subscription, $plan['plan']);
 
-        $this->assertEquals($plan['name'], $subscriptionItem->plan->name);
         $this->assertEquals($subscription->getId(), $subscriptionItem->subscription);
         $this->assertEquals('subscription_item', $subscriptionItem->object);
     }
@@ -117,10 +101,5 @@ class SubscriptionItemTests extends TestCase
         );
 
         return $subscriptionItem;
-    }
-
-    public function tearDown()
-    {
-        $this->customer->getResponse()->delete();
     }
 }

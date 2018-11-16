@@ -1,22 +1,9 @@
 <?php
 
-include 'boot.php';
+namespace Strype;
 
-use PHPUnit\Framework\TestCase;
-use Bulldog\Strype\Strype;
-use Bulldog\id\ObjectId;
-
-class TokenTests extends TestCase
+class TokenTest extends TestCase
 {
-    public $strype;
-    public $id;
-
-    public function setUp()
-    {
-        $this->strype = new Strype(getenv('STRIPE_API_KEY'));
-        $this->id = new ObjectId();
-    }
-
     public function testCreateCard()
     {
         $token = $this->strype->token()->createCard(
