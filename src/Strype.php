@@ -1,29 +1,27 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Bulldog\Strype;
 
-use Bulldog\Strype\Contracts\Requests\CustomerInterface;
-use Bulldog\Strype\Requests\Balance;
-use Bulldog\Strype\Requests\Charge;
-use Bulldog\Strype\Requests\Coupon;
-use Bulldog\Strype\Requests\Customer;
-use Bulldog\Strype\Requests\Discount;
-use Bulldog\Strype\Requests\Dispute;
-use Bulldog\Strype\Requests\Event;
-use Bulldog\Strype\Requests\File;
-use Bulldog\Strype\Requests\FileLink;
-use Bulldog\Strype\Requests\Invoice;
-use Bulldog\Strype\Requests\InvoiceItem;
-use Bulldog\Strype\Requests\Payout;
-use Bulldog\Strype\Requests\Plan;
-use Bulldog\Strype\Requests\Product;
-use Bulldog\Strype\Requests\Refund;
-use Bulldog\Strype\Requests\Subscription;
-use Bulldog\Strype\Requests\SubscriptionItem;
-use Bulldog\Strype\Requests\Token;
-use Bulldog\Strype\Requests\UsageRecord;
+use Bulldog\Strype\Resources\File;
+use Bulldog\Strype\Resources\Plan;
+use Bulldog\Strype\Resources\Event;
+use Bulldog\Strype\Resources\Token;
+use Bulldog\Strype\Resources\Charge;
+use Bulldog\Strype\Resources\Coupon;
+use Bulldog\Strype\Resources\Payout;
+use Bulldog\Strype\Resources\Refund;
+use Bulldog\Strype\Resources\Balance;
+use Bulldog\Strype\Resources\Dispute;
+use Bulldog\Strype\Resources\Invoice;
+use Bulldog\Strype\Resources\Product;
+use Bulldog\Strype\Resources\Customer;
+use Bulldog\Strype\Resources\Discount;
+use Bulldog\Strype\Resources\FileLink;
+use Bulldog\Strype\Resources\InvoiceItem;
+use Bulldog\Strype\Resources\UsageRecord;
+use Bulldog\Strype\Resources\Subscription;
+use Bulldog\Strype\Resources\SubscriptionItem;
+use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 
 /**
  * Class Strype.
@@ -38,6 +36,7 @@ class Strype
     public function __construct(string $apikey)
     {
         \Stripe\Stripe::setApiKey($apikey);
+        \Stripe\Stripe::setAppInfo("Bulldog\Strype", "0.5.0", "https://github.com/bulldogcreative/strype");
     }
 
     public function balance()

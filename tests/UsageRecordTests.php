@@ -41,7 +41,7 @@ class UsageRecordTests extends TestCase
         ]);
         $subscription = $this->strype->subscription()->create(
             $this->strype->customer()->create('levi@example.com', 'tok_mastercard'),
-            new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically(),
+            new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically(),
             [
                 ['plan' => $plan->id],
             ]
@@ -56,7 +56,7 @@ class UsageRecordTests extends TestCase
 
     public function testCreateUsageRecord()
     {
-        $usageRecord = $this->strype->usageRecord()->create(100, $this->subscriptionItem, time());
+        $usageRecord = $this->strype->usageRecord()->create(100, $this->subscriptionItem, strtotime("+2 weeks"));
         $this->assertStringStartsWith('mbur_', $usageRecord->id);
         $this->assertEquals('usage_record', $usageRecord->object);
     }

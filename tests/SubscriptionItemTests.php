@@ -96,7 +96,7 @@ class SubscriptionItemTests extends TestCase
     public function createSubscription($plan)
     {
         $subscription = $this->strype->subscription()->create(
-            $this->customer, new \Bulldog\Strype\Resources\Subscriptions\ChargeAutomatically(),
+            $this->customer, new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically(),
             [
                 ['plan' => $plan->id],
             ]

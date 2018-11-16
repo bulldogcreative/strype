@@ -24,7 +24,7 @@ class ChargeTests extends TestCase
         $id = new ObjectId();
         $charge = $this->strype->chargeCustomer($this->customer, 5000, [], $id->get(12));
         $this->assertEquals(5000, $charge->amount);
-        $this->assertEquals($this->customer->getCustomerId(), $charge->customer);
+        $this->assertEquals($this->customer->getId(), $charge->customer);
     }
 
     public function testRetrieveCharge()

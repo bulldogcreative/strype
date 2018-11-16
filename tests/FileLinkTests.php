@@ -4,7 +4,7 @@ include 'boot.php';
 
 use PHPUnit\Framework\TestCase;
 use Bulldog\Strype\Strype;
-use Bulldog\Strype\Resources\Files\BusinessLogo;
+use Bulldog\Strype\Models\Files\BusinessLogo;
 use Bulldog\id\ObjectId;
 
 class FileLinkTests extends TestCase
