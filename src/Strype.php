@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Bulldog\Strype;
 
 use Bulldog\Strype\Contracts\Requests\CustomerInterface;

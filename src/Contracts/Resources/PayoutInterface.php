@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Bulldog\Strype\Contracts\Resources;
 
 interface PayoutInterface extends \Bulldog\Strype\Contracts\ResourceInterface

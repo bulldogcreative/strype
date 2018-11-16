@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Bulldog\Strype\Traits;
 
 trait Update

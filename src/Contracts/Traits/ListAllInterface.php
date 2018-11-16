@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Bulldog\Strype\Contracts\Traits;
 
 interface ListAllInterface

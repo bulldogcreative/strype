@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Contracts\Models\FileTypeInterface;

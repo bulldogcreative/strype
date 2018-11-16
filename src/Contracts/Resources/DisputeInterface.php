@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Bulldog\Strype\Contracts\Resources;
 
 interface DisputeInterface extends \Bulldog\Strype\Contracts\ResourceInterface

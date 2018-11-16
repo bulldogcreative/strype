@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Bulldog\Strype\Contracts\Resources;
 
 interface DiscountInterface extends \Bulldog\Strype\Contracts\ResourceInterface

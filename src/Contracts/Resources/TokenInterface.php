@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace Bulldog\Strype\Contracts\Resources;
 
 interface TokenInterface extends \Bulldog\Strype\Contracts\ResourceInterface
