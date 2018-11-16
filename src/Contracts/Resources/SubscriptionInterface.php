@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bulldog\Strype\Contracts\Requests;
+namespace Bulldog\Strype\Contracts\Resources;
 
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 

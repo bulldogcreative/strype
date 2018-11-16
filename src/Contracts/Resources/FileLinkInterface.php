@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bulldog\Strype\Contracts\Requests;
+namespace Bulldog\Strype\Contracts\Resources;
 
 interface FileLinkInterface extends \Bulldog\Strype\Contracts\ResourceInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bulldog\Strype\Contracts\Requests;
+namespace Bulldog\Strype\Contracts\Resources;
 
 interface BalanceInterface extends \Bulldog\Strype\Contracts\ResourceInterface
 {
