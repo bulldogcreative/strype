@@ -30,7 +30,7 @@ class FileCreationTest extends TestCase
             'post',
             '/v1/files',
             null,
-            ['Content-Type: multipart/form-data'],
+            [],
             true,
             \Stripe\Stripe::$apiUploadBase
         );
