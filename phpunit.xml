@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
+         bootstrap="tests/boot.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -68,6 +68,9 @@
         </testsuite>
         <testsuite name="UsageRecord">
             <file>tests/UsageRecordTests.php</file>
+        </testsuite>
+        <testsuite name="Mock">
+            <file>tests/MockTests.php</file>
         </testsuite>
     </testsuites>
     <filter>
