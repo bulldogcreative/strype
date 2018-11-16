@@ -19,7 +19,7 @@ class InvoiceTests extends TestCase
         $this->customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $this->id = new ObjectId();
         $this->invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Resources\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
         );
     }
 
