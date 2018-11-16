@@ -32,7 +32,7 @@ class TestCase extends PHPUnitTestCase
         Stripe::setApiVersion(null);
         Stripe::setAccountId(null);
         // Set up the HTTP client mocker
-        $this->clientMock = $this->getMock('\Stripe\HttpClient\ClientInterface');
+        $this->clientMock = $this->createMock('\Stripe\HttpClient\ClientInterface');
         // By default, use the real HTTP client
         ApiRequestor::setHttpClient(HttpClient\CurlClient::instance());
     }
