@@ -1,8 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Bulldog\Strype\Resources\Subscriptions;
+namespace Bulldog\Strype\Models\Subscriptions;
 
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 
