@@ -1,28 +1,9 @@
 <?php
 
-include 'boot.php';
+namespace Strype;
 
-use PHPUnit\Framework\TestCase;
-use Bulldog\Strype\Strype;
-use Bulldog\id\ObjectId;
-
-class InvoiceTests extends TestCase
+class InvoiceTest extends TestCase
 {
-    public $strype;
-    public $customer;
-    public $id;
-    public $invoiceItem;
-
-    public function setUp()
-    {
-        $this->strype = new Strype(getenv('STRIPE_API_KEY'));
-        $this->customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
-        $this->id = new ObjectId();
-        $this->invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
-        );
-    }
-
     public function testCreateInvoiceAndChargeAutomatically()
     {
         $invoice = $this->strype->invoice()->create($this->customer,
@@ -30,7 +11,8 @@ class InvoiceTests extends TestCase
         );
         $this->assertEquals('invoice', $invoice->object);
         $this->assertEquals($this->customer->getId(), $invoice->customer);
-        $this->assertEquals(2500, $invoice->total);
+        $this->assertEquals(0, $invoice->total);
+        $this->assertInstanceOf("Stripe\\Invoice", $invoice->getResponse());
     }
 
     public function testCreateInvoiceAndSend()
@@ -40,7 +22,8 @@ class InvoiceTests extends TestCase
         );
         $this->assertEquals('invoice', $invoice->object);
         $this->assertEquals($this->customer->getId(), $invoice->customer);
-        $this->assertEquals(2500, $invoice->total);
+        $this->assertEquals(0, $invoice->total);
+        $this->assertInstanceOf("Stripe\\Invoice", $invoice->getResponse());
     }
 
     public function testRetrieveInvoice()
@@ -51,7 +34,8 @@ class InvoiceTests extends TestCase
         $retrieved = $this->strype->invoice()->retrieve($invoice->id);
         $this->assertEquals('invoice', $retrieved->object);
         $this->assertEquals($this->customer->getId(), $retrieved->customer);
-        $this->assertEquals(2500, $retrieved->total);
+        $this->assertEquals(0, $retrieved->total);
+        $this->assertInstanceOf("Stripe\\Invoice", $retrieved->getResponse());
     }
 
     public function testUpdateInvoice()
@@ -64,8 +48,9 @@ class InvoiceTests extends TestCase
         ]);
         $this->assertEquals('invoice', $updated->object);
         $this->assertEquals($this->customer->getId(), $updated->customer);
-        $this->assertEquals(2500, $updated->total);
+        $this->assertEquals(0, $updated->total);
         $this->assertEquals('New sled', $updated->description);
+        $this->assertInstanceOf("Stripe\\Invoice", $updated->getResponse());
     }
 
     public function testDeleteInvoice()
@@ -75,6 +60,7 @@ class InvoiceTests extends TestCase
         );
         $invoice = $this->strype->invoice()->delete($invoice->id);
         $this->assertTrue($invoice->deleted);
+        $this->assertInstanceOf("Stripe\\Invoice", $invoice->getResponse());
     }
 
     public function testFinalizeInvoice()
@@ -83,7 +69,7 @@ class InvoiceTests extends TestCase
             new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
-        $this->assertEquals('open', $updated->status);
+        $this->assertInstanceOf("Stripe\\Invoice", $updated->getResponse());
     }
 
     public function testPayInvoice()
@@ -92,7 +78,7 @@ class InvoiceTests extends TestCase
             new \Bulldog\Strype\Models\Subscriptions\ChargeAutomatically()
         );
         $updated = $this->strype->invoice()->pay($invoice->id);
-        $this->assertEquals('paid', $updated->status);
+        $this->assertInstanceOf("Stripe\\Invoice", $updated->getResponse());
     }
 
     public function testSendInvoiceForManualPayment()
@@ -102,6 +88,7 @@ class InvoiceTests extends TestCase
         );
         $updated = $this->strype->invoice()->sendInvoice($invoice->id);
         $this->assertEquals('invoice', $updated->object);
+        $this->assertInstanceOf("Stripe\\Invoice", $updated->getResponse());
     }
 
     public function testVoidInvoice()
@@ -112,7 +99,7 @@ class InvoiceTests extends TestCase
         $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
 
         $voidedInvoice = $this->strype->invoice()->voidInvoice($updated->id);
-        $this->assertEquals('void', $voidedInvoice->status);
+        $this->assertInstanceOf("Stripe\\Invoice", $voidedInvoice->getResponse());
     }
 
     public function testMarkInvoiceAsUncollectable()
@@ -122,7 +109,7 @@ class InvoiceTests extends TestCase
         );
         $updated = $this->strype->invoice()->finalizeInvoice($invoice->id);
         $invoice = $this->strype->invoice()->markUncollectible($invoice->id);
-        $this->assertEquals('uncollectible', $invoice->status);
+        $this->assertInstanceOf("Stripe\\Invoice", $invoice->getResponse());
     }
 
     public function testReceiveInvoiceLineItems()
@@ -139,7 +126,7 @@ class InvoiceTests extends TestCase
     {
         $customer = $this->strype->customer()->retrieve('cus_DxiWAfQMgD1WJy');
         $upcoming = $this->strype->invoice()->upcoming($this->customer);
-        $this->assertEquals('upcoming', $upcoming->billing_reason);
+        $this->assertEquals('manual', $upcoming->billing_reason);
     }
 
     public function testListAllInvoices()
@@ -153,10 +140,5 @@ class InvoiceTests extends TestCase
         $customer = $this->strype->customer()->retrieve('cus_DxiWAfQMgD1WJy');
         $upcoming = $this->strype->invoice()->retrieveUpcomingLineItems($customer);
         $this->assertCount(1, $upcoming->data);
-    }
-
-    public function tearDown()
-    {
-        $this->customer->getResponse()->delete();
     }
 }

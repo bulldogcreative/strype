@@ -1,30 +1,15 @@
 <?php
 
-include 'boot.php';
+namespace Strype;
 
-use PHPUnit\Framework\TestCase;
-use Bulldog\Strype\Strype;
-use Bulldog\id\ObjectId;
-
-class DiscountTests extends TestCase
+class DiscountTest extends TestCase
 {
-    public $strype;
-    public $id;
-
-    public function setUp()
-    {
-        $this->strype = new Strype(getenv('STRIPE_API_KEY'));
-        $this->id = new ObjectId();
-    }
-
-    /**
-     * @expectedException \Stripe\Error\InvalidRequest
-     */
     public function testDeleteCustomerDiscountWithNoDiscount()
     {
         $newCustomer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
         $customer = $this->strype->customer()->retrieve($newCustomer->getId());
         $discount = $this->strype->discount()->deleteCustomerDiscount($customer);
+        $this->assertInstanceOf("Stripe\\Customer", $discount->getResponse());
     }
 
     public function testDeleteCustomerDiscount()

@@ -54,13 +54,6 @@ class Strype
         return new Charge();
     }
 
-    public function chargeCustomer(CustomerInterface $customer, int $amount, $key = null)
-    {
-        $charge = new Charge();
-
-        return $charge->create($customer, $amount, $key);
-    }
-
     public function dispute()
     {
         return new Dispute();

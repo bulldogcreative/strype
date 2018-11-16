@@ -1,21 +1,10 @@
 <?php
 
-include 'boot.php';
+namespace Strype;
 
-use PHPUnit\Framework\TestCase;
-use Bulldog\Strype\Strype;
-use Bulldog\id\ObjectId;
-
-class DisputeTests extends TestCase
+class DisputeTest extends TestCase
 {
-    public $strype;
-    public $id;
-
-    public function setUp()
-    {
-        $this->strype = new Strype(getenv('STRIPE_API_KEY'));
-        $this->id = new ObjectId();
-    }
+    const TEST_RESOURCE_ID = 'dp_123';
 
     public function testListAllDisputes()
     {
@@ -23,12 +12,15 @@ class DisputeTests extends TestCase
         $this->assertTrue(is_array($disputes->data));
     }
 
-    /**
-     * @expectedException \Stripe\Error\InvalidRequest
-     */
     public function testRetrieveDistpute()
     {
-        $dispute = $this->strype->dispute()->retrieve('abc123');
+        $this->expectsRequest(
+            'get',
+            '/v1/disputes/' . self::TEST_RESOURCE_ID
+        );
+
+        $dispute = $this->strype->dispute()->retrieve(self::TEST_RESOURCE_ID);
+        $this->assertInstanceOf("Stripe\\Dispute", $dispute->getResponse());
     }
 
     public function testCloseDispute()
@@ -47,17 +39,7 @@ class DisputeTests extends TestCase
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_createDispute');
         $charge = $this->strype->charge()->create($customer, 500, [], $this->id->get(12));
         $disputes = $this->strype->dispute()->listAll();
-
-        // Was randomly getting errors during testing on Travis-CI. So we loop
-        // through the disputes to find one that needs a response, then we use
-        // that dispute for the remainder of this test.
-        //
-        // https://github.com/bulldogcreative/strype/issues/6
-        foreach ($disputes->data as $data) {
-            if ('needs_response' == $data->status) {
-                $dispute = $data;
-            }
-        }
+        $dispute = $disputes->data[0];
 
         $updated = $this->strype->dispute()->update($dispute->id, [
             'evidence' => [
@@ -65,21 +47,5 @@ class DisputeTests extends TestCase
             ],
         ]);
         $this->assertEquals('reindeer tracks', $updated->evidence['product_description']);
-    }
-
-    /**
-     * @expectedException \Stripe\Error\InvalidRequest
-     */
-    public function testCloseDisputeWithException()
-    {
-        $dispute = $this->strype->dispute()->close('abc123');
-    }
-
-    /**
-     * @expectedException \Stripe\Error\InvalidRequest
-     */
-    public function testUpdateDisputeWithException()
-    {
-        $this->strype->dispute()->update('abc123', ['description' => 'Santa']);
     }
 }

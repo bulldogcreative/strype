@@ -1,22 +1,9 @@
 <?php
 
-include 'boot.php';
+namespace Strype;
 
-use PHPUnit\Framework\TestCase;
-use Bulldog\Strype\Strype;
-use Bulldog\id\ObjectId;
-
-class SubscriptionTests extends TestCase
+class SubscriptionTest extends TestCase
 {
-    public $strype;
-    public $id;
-
-    public function setUp()
-    {
-        $this->strype = new Strype(getenv('STRIPE_API_KEY'));
-        $this->id = new ObjectId();
-    }
-
     public function testCreateSubscriptionAndChargeAutomatically()
     {
         $customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
@@ -132,15 +119,15 @@ class SubscriptionTests extends TestCase
         );
 
         $cancelled = $this->strype->subscription()->cancel($subscription->id);
-        $this->assertEquals('canceled', $cancelled->status);
+        $this->assertInstanceOf('Stripe\Subscription', $cancelled->getResponse());
     }
 
     public function testListAllSubscriptions()
     {
-        $subscriptions = $this->strype->subscription()->listAll(['limit' => 3]);
+        $subscriptions = $this->strype->subscription()->listAll(['limit' => 1]);
         foreach ($subscriptions->data as $subscription) {
             $this->assertEquals('subscription', $subscription->object);
         }
-        $this->assertEquals(3, count($subscriptions->data));
+        $this->assertEquals(1, count($subscriptions->data));
     }
 }

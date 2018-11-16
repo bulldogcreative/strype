@@ -1,31 +1,16 @@
 <?php
 
-include 'boot.php';
+namespace Strype;
 
-use PHPUnit\Framework\TestCase;
-use Bulldog\Strype\Strype;
-use Bulldog\id\ObjectId;
-
-class InvoiceItemTests extends TestCase
+class InvoiceItemTest extends TestCase
 {
-    public $strype;
-    public $customer;
-    public $id;
-
-    public function setUp()
-    {
-        $this->strype = new Strype(getenv('STRIPE_API_KEY'));
-        $this->customer = $this->strype->customer()->create('levi@example.com', 'tok_mastercard');
-        $this->id = new ObjectId();
-    }
-
     public function testCreateInvoiceItemWithAmount()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(1000)
         );
         $this->assertEquals('invoiceitem', $invoiceItem->object);
-        $this->assertEquals(2500, $invoiceItem->amount);
+        $this->assertEquals(1000, $invoiceItem->amount);
         $this->assertEquals($this->customer->getId(), $invoiceItem->customer);
         $this->assertEquals('usd', $invoiceItem->currency);
         $this->assertInternalType('int', $invoiceItem->amount);
@@ -37,7 +22,7 @@ class InvoiceItemTests extends TestCase
             new \Bulldog\Strype\Models\InvoiceItems\Quantity(5, 500)
         );
         $this->assertEquals('invoiceitem', $invoiceItem->object);
-        $this->assertEquals(2500, $invoiceItem->amount);
+        $this->assertEquals(1000, $invoiceItem->amount);
         $this->assertEquals($this->customer->getId(), $invoiceItem->customer);
         $this->assertEquals('usd', $invoiceItem->currency);
         $this->assertInternalType('int', $invoiceItem->amount);
@@ -46,11 +31,11 @@ class InvoiceItemTests extends TestCase
     public function testRetrieveInvoiceItem()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(1000)
         );
         $retrieved = $this->strype->invoiceItem()->retrieve($invoiceItem->id);
         $this->assertEquals('invoiceitem', $retrieved->object);
-        $this->assertEquals(2500, $retrieved->amount);
+        $this->assertEquals(1000, $retrieved->amount);
         $this->assertEquals($this->customer->getId(), $retrieved->customer);
         $this->assertEquals('usd', $retrieved->currency);
         $this->assertInternalType('int', $retrieved->amount);
@@ -59,7 +44,7 @@ class InvoiceItemTests extends TestCase
     public function testUpdateInvoiceItem()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(1000)
         );
         $updated = $this->strype->invoiceItem()->update($invoiceItem->id, [
             'amount' => 3500,
@@ -74,7 +59,7 @@ class InvoiceItemTests extends TestCase
     public function testDeleteInvoiceItem()
     {
         $invoiceItem = $this->strype->invoiceItem()->create($this->customer,
-            new \Bulldog\Strype\Models\InvoiceItems\Amount(2500)
+            new \Bulldog\Strype\Models\InvoiceItems\Amount(1000)
         );
         $deleted = $this->strype->invoiceItem()->delete($invoiceItem->id);
         $this->assertEquals('invoiceitem', $deleted->object);
@@ -83,15 +68,10 @@ class InvoiceItemTests extends TestCase
 
     public function testListAllInvoiceItems()
     {
-        $items = $this->strype->invoiceItem()->listAll(['limit' => 3]);
+        $items = $this->strype->invoiceItem()->listAll(['limit' => 1]);
         foreach ($items->data as $item) {
             $this->assertEquals('invoiceitem', $item->object);
         }
-        $this->assertCount(3, $items->data);
-    }
-
-    public function tearDown()
-    {
-        $this->customer->getResponse()->delete();
+        $this->assertCount(1, $items->data);
     }
 }
