@@ -7,7 +7,7 @@ namespace Bulldog\Strype;
 /**
  * Class Resource.
  */
-abstract class Request
+abstract class Resource
 {
     public $id;
 
