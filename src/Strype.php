@@ -21,7 +21,6 @@ use Bulldog\Strype\Resources\InvoiceItem;
 use Bulldog\Strype\Resources\UsageRecord;
 use Bulldog\Strype\Resources\Subscription;
 use Bulldog\Strype\Resources\SubscriptionItem;
-use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 
 /**
  * Class Strype.
@@ -36,7 +35,7 @@ class Strype
     public function __construct(string $apikey)
     {
         \Stripe\Stripe::setApiKey($apikey);
-        \Stripe\Stripe::setAppInfo("Bulldog\Strype", "0.5.0", "https://github.com/bulldogcreative/strype");
+        \Stripe\Stripe::setAppInfo("Bulldog\Strype", '0.5.0', 'https://github.com/bulldogcreative/strype');
     }
 
     public function balance()
