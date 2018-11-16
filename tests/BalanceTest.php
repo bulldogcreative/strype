@@ -2,9 +2,6 @@
 
 namespace Strype;
 
-use Bulldog\Strype\Strype;
-use Bulldog\id\ObjectId;
-
 class BalanceTest extends TestCase
 {
     public function testIsRetrievable()
