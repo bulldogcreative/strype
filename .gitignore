@@ -62,3 +62,4 @@ $RECYCLE.BIN/
 index.php
 
 .php_cs.cache
+clover.xml
