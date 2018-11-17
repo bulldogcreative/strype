@@ -15,10 +15,31 @@ use Bulldog\Strype\Contracts\Resources\CouponInterface;
 use Bulldog\Strype\Contracts\Models\CouponTypeInterface;
 use Bulldog\Strype\Contracts\Models\DurationTypeInterface;
 
+/**
+ * Class Coupon.
+ *
+ * @see https://stripe.com/docs/api/coupons
+ */
 class Coupon extends Resource implements CouponInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
 {
     use Retrieve, Update, ListAll, Delete;
 
+    /**
+     * Create a coupon.
+     *
+     * You can create coupons easily via the coupon management page of the Stripe
+     * dashboard. Coupon creation is also accessible via the API if you need to
+     * create coupons on the fly.
+     *
+     * @see https://stripe.com/docs/api/coupons/create
+     *
+     * @param DurationTypeInterface $duration
+     * @param CouponTypeInterface   $type
+     * @param array                 $arguments
+     * @param string|null           $key
+     *
+     * @return CouponInterface
+     */
     public function create(DurationTypeInterface $duration, CouponTypeInterface $type, array $arguments = [], string $key = null): CouponInterface
     {
         $arguments = array_merge($arguments, $duration->toArray(), $type->toArray());
