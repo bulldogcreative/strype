@@ -13,10 +13,29 @@ use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 
+/**
+ * Class Customer.
+ *
+ * @see https://stripe.com/docs/api/customers
+ */
 class Customer extends Resource implements CustomerInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
 {
     use Retrieve, Update, Delete, ListAll;
 
+    /**
+     * Create a customer.
+     *
+     * Creates a new customer object.
+     *
+     * @see https://stripe.com/docs/api/customers/create
+     *
+     * @param string      $email
+     * @param string      $token
+     * @param array       $arguments
+     * @param string|null $key
+     *
+     * @return CustomerInterface
+     */
     public function create(string $email, string $token, array $arguments = [], string $key = null): CustomerInterface
     {
         $arguments['email'] = $email;
