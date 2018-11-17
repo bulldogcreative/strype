@@ -66,6 +66,9 @@
         <testsuite name="Model">
             <file>tests/ModelTest.php</file>
         </testsuite>
+        <testsuite name="FileCreation">
+            <file>tests/FileCreationTest.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist>
