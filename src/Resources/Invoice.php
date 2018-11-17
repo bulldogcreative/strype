@@ -27,8 +27,9 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     /**
      * Create an invoice.
      *
-     * This endpoint creates a draft invoice for a given customer. The draft invoice created pulls in all pending invoice
-     * items on that customer, including prorations.
+     * This endpoint creates a draft invoice for a given customer. The draft
+     * invoice created pulls in all pending invoice items on that customer,
+     * including prorations.
      *
      * @see https://stripe.com/docs/api/invoices/create
      *
@@ -48,6 +49,19 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
         return $this;
     }
 
+    /**
+     * Finalize an invoice.
+     *
+     * Stripe automatically finalizes drafts before sending and attempting payment
+     * on invoices. However, if you’d like to finalize a draft invoice manually,
+     * you can do so using this method.
+     *
+     * @see https://stripe.com/docs/api/invoices/finalize
+     *
+     * @param string $invoiceid
+     *
+     * @return InvoiceInterface
+     */
     public function finalizeInvoice(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
@@ -57,6 +71,20 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
         return $this;
     }
 
+    /**
+     * Pay an invoice.
+     *
+     * Stripe automatically creates and then attempts to collect payment on
+     * invoices for customers on subscriptions according to your subscriptions
+     * settings. However, if you’d like to attempt payment on an invoice out of
+     * the normal collection schedule or for some other reason, you can do so.
+     *
+     * @see https://stripe.com/docs/api/invoices/pay
+     *
+     * @param string $invoiceid
+     *
+     * @return InvoiceInterface
+     */
     public function pay(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
@@ -66,6 +94,21 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
         return $this;
     }
 
+    /**
+     * Send an invoice for manual payment.
+     *
+     * Stripe will automatically send invoices to customers according to your
+     * subscriptions settings. However, if you’d like to manually send an invoice
+     * to your customer out of the normal schedule, you can do so. When sending
+     * invoices that have already been paid, there will be no reference to the
+     * payment in the email.
+     *
+     * @see https://stripe.com/docs/api/invoices/send
+     *
+     * @param string $invoiceid
+     *
+     * @return InvoiceInterface
+     */
     public function sendInvoice(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
@@ -75,6 +118,19 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
         return $this;
     }
 
+    /**
+     * Void an invoice.
+     *
+     * Mark a finalized invoice as void. This cannot be undone. Voiding an invoice
+     * is similar to deletion, however it only applies to finalized invoices and
+     * maintains a papertrail where the invoice can still be found.
+     *
+     * @see https://stripe.com/docs/api/invoices/void
+     *
+     * @param string $invoiceid
+     *
+     * @return InvoiceInterface
+     */
     public function voidInvoice(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
