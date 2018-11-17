@@ -11,10 +11,28 @@ use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\FileLinkInterface;
 
+/**
+ * FileLink class.
+ *
+ * @see https://stripe.com/docs/api/file_links
+ */
 class FileLink extends Resource implements FileLinkInterface, RetrieveInterface, ListAllInterface, UpdateInterface
 {
     use Retrieve, Update, ListAll;
 
+    /**
+     * Create a file link.
+     *
+     * Creates a new file link object.
+     *
+     * @see https://stripe.com/docs/api/file_links/create
+     *
+     * @param string $id
+     * @param array  $arguments
+     * @param string $key
+     *
+     * @return FileLinkInterface
+     */
     public function create(string $id, array $arguments = [], string $key = null): FileLinkInterface
     {
         $arguments['file'] = $id;
