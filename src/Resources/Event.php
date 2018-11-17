@@ -9,6 +9,11 @@ use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Resources\EventInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
+/**
+ * Event class
+ * 
+ * @see https://stripe.com/docs/api/events
+ */
 class Event extends Resource implements EventInterface, RetrieveInterface, ListAllInterface
 {
     use Retrieve, ListAll;
