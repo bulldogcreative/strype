@@ -38,7 +38,7 @@ class Balance extends Resource implements BalanceInterface
      *
      * @see https://stripe.com/docs/api/balance/balance_transaction_retrieve
      *
-     * @param string $id the ID of the desired balance transaction
+     * @param string $id
      *
      * @return BalanceInterface
      */
