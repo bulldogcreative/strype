@@ -6,5 +6,5 @@ use Bulldog\Strype\Contracts\Models\FileTypeInterface;
 
 interface FileInterface extends \Bulldog\Strype\Contracts\ResourceInterface
 {
-    public function create(FileTypeInterface $file, array $arguments = [], $key = null): FileInterface;
+    public function create(FileTypeInterface $file, array $arguments = [], string $key = null): FileInterface;
 }

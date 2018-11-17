@@ -26,11 +26,11 @@ class File extends Resource implements FileInterface, RetrieveInterface, ListAll
      *
      * @param FileTypeInterface $file
      * @param array             $arguments
-     * @param [type]            $key
+     * @param string|null       $key
      *
      * @return FileInterface
      */
-    public function create(FileTypeInterface $file, array $arguments = [], $key = null): FileInterface
+    public function create(FileTypeInterface $file, array $arguments = [], string $key = null): FileInterface
     {
         $arguments['purpose'] = $file->getPurpose();
         $arguments['file'] = $file->getFile();
