@@ -4,14 +4,16 @@ namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\BalanceInterface;
 
-class Balance extends Resource implements BalanceInterface, RetrieveInterface
+/**
+ * Class Balance.
+ *
+ * @see https://stripe.com/docs/api/balance
+ */
+class Balance extends Resource implements BalanceInterface
 {
-    use Retrieve;
-
-    public function retrieveBalance(): BalanceInterface
+    public function retrieve(): BalanceInterface
     {
         $this->response = \Stripe\Balance::retrieve();
         $this->setProperties();
@@ -19,9 +21,11 @@ class Balance extends Resource implements BalanceInterface, RetrieveInterface
         return $this;
     }
 
-    protected function stripe(string $method, $arguments): void
+    public function retrieveBalanceTransaction(string $id): BalanceInterface
     {
-        $this->response = \Stripe\BalanceTransaction::{$method}($arguments);
+        $this->response = \Stripe\BalanceTransaction::retrieve($id);
         $this->setProperties();
+
+        return $this;
     }
 }
