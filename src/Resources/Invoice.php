@@ -15,10 +15,30 @@ use Bulldog\Strype\Contracts\Resources\InvoiceInterface;
 use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 
+/**
+ * Invoice class.
+ *
+ * @see https://stripe.com/docs/api/invoices
+ */
 class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
 {
     use Retrieve, Update, ListAll, Delete;
 
+    /**
+     * Create an invoice.
+     *
+     * This endpoint creates a draft invoice for a given customer. The draft invoice created pulls in all pending invoice
+     * items on that customer, including prorations.
+     *
+     * @see https://stripe.com/docs/api/invoices/create
+     *
+     * @param CustomerInterface                $customer
+     * @param SubscriptionBillingTypeInterface $type
+     * @param array                            $arguments
+     * @param string|null                      $key
+     *
+     * @return InvoiceInterface
+     */
     public function create(CustomerInterface $customer, SubscriptionBillingTypeInterface $type, array $arguments = [], ?string $key = null): InvoiceInterface
     {
         $arguments = array_merge($arguments, $type->toArray());
