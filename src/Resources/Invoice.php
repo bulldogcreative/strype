@@ -140,6 +140,18 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
         return $this;
     }
 
+    /**
+     * Mark an invoice as uncollectible.
+     *
+     * Marking an invoice as uncollectible is useful for keeping track of bad
+     * debts that can be written off for accounting purposes.
+     *
+     * @see https://stripe.com/docs/api/invoices/mark_uncollectible
+     *
+     * @param string $invoiceid
+     *
+     * @return InvoiceInterface
+     */
     public function markUncollectible(string $invoiceid): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
@@ -149,6 +161,21 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
         return $this;
     }
 
+    /**
+     * Retrieve an invoice's line items.
+     *
+     * When retrieving an invoice, you’ll get a lines property containing the
+     * total count of line items and the first handful of those items. There
+     * is also a URL where you can retrieve the full (paginated) list of
+     * line items.
+     *
+     * @see https://stripe.com/docs/api/invoices/invoice_lines
+     *
+     * @param string $invoiceid
+     * @param array  $arguments
+     *
+     * @return InvoiceInterface
+     */
     public function retrieveLineItems(string $invoiceid, array $arguments = []): InvoiceInterface
     {
         $this->stripe('retrieve', $invoiceid);
@@ -158,6 +185,21 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
         return $this;
     }
 
+    /**
+     * Retrieve an upcoming invoice.
+     *
+     * At any time, you can preview the upcoming invoice for a customer. This will
+     * show you all the charges that are pending, including subscription renewal
+     * charges, invoice item charges, etc. It will also show you any discount
+     * that is applicable to the customer.
+     *
+     * @see https://stripe.com/docs/api/invoices/upcoming
+     *
+     * @param CustomerInterface $customer
+     * @param array             $arguments
+     *
+     * @return InvoiceInterface
+     */
     public function upcoming(CustomerInterface $customer, array $arguments = []): InvoiceInterface
     {
         $arguments['customer'] = $customer->getId();
@@ -166,6 +208,20 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
         return $this;
     }
 
+    /**
+     * Retrieve an upcoming invoice's line items.
+     *
+     * When retrieving an upcoming invoice, you’ll get a lines property containing
+     * the total count of line items and the first handful of those items. There is
+     * also a URL where you can retrieve the full (paginated) list of line items.
+     *
+     * @see https://stripe.com/docs/api/invoices/upcoming_invoice_lines
+     *
+     * @param CustomerInterface $customer
+     * @param array             $arguments
+     *
+     * @return InvoiceInterface
+     */
     public function retrieveUpcomingLineItems(CustomerInterface $customer, array $arguments = []): InvoiceInterface
     {
         $this->response = \Stripe\Invoice::upcoming(['customer' => $customer->getId()])->lines->all($arguments);
