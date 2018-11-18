@@ -10,6 +10,9 @@ use Bulldog\Strype\Contracts\Resources\SubscriptionInterface;
 /**
  * Discount class.
  *
+ * A discount represents the actual application of a coupon to a particular customer.
+ * It contains information about when the discount began and when it will end.
+ *
  * @see https://stripe.com/docs/api/discounts
  */
 class Discount extends Resource implements DiscountInterface

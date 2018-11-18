@@ -14,6 +14,11 @@ use Bulldog\Strype\Contracts\Resources\DisputeInterface;
 /**
  * Dispute class.
  *
+ * A dispute occurs when a customer questions your charge with their card issuer.
+ * When this happens, you're given the opportunity to respond to the dispute with
+ * evidence that shows that the charge is legitimate. You can find more information
+ * about the dispute process in our Disputes and Fraud documentation.
+ *
  * @see https://stripe.com/docs/api/disputes
  */
 class Dispute extends Resource implements DisputeInterface, RetrieveInterface, UpdateInterface, ListAllInterface

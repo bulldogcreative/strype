@@ -18,6 +18,11 @@ use Bulldog\Strype\Contracts\Models\DurationTypeInterface;
 /**
  * Class Coupon.
  *
+ * A coupon contains information about a percent-off or amount-off discount you
+ * might want to apply to a customer. Coupons may be applied to invoices or orders.
+ * Coupons do not work with conventional one-off charges, but you can implement a
+ * custom coupon system in your application.
+ *
  * @see https://stripe.com/docs/api/coupons
  */
 class Coupon extends Resource implements CouponInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface

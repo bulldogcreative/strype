@@ -18,6 +18,9 @@ use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 /**
  * Invoice class.
  *
+ * Invoices are statements of amounts owed by a customer, and are either generated
+ * one-off, or generated periodically from a subscription.
+ *
  * @see https://stripe.com/docs/api/invoices
  */
 class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface

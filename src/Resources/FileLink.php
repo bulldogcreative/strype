@@ -14,6 +14,10 @@ use Bulldog\Strype\Contracts\Resources\FileLinkInterface;
 /**
  * FileLink class.
  *
+ * To share the contents of a File object with non-Stripe users, you can create
+ * a FileLink. FileLinks contain a URL that can be used to retrieve the contents
+ * of the file without authentication.
+ *
  * @see https://stripe.com/docs/api/file_links
  */
 class FileLink extends Resource implements FileLinkInterface, RetrieveInterface, ListAllInterface, UpdateInterface
