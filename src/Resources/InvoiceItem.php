@@ -15,6 +15,16 @@ use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 use Bulldog\Strype\Contracts\Resources\InvoiceItemInterface;
 use Bulldog\Strype\Contracts\Models\InvoiceItemTypeInterface;
 
+/**
+ * InvoiceItem class.
+ *
+ * Sometimes you want to add a charge or credit to a customer, but actually charge
+ * or credit the customer's card only at the end of a regular billing cycle. This
+ * is useful for combining several charges (to minimize per-transaction fees), or
+ * for having Stripe tabulate your usage-based billing totals.
+ *
+ * @see https://stripe.com/docs/api/invoiceitems
+ */
 class InvoiceItem extends Resource implements InvoiceItemInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
 {
     use Retrieve, Update, ListAll, Delete;
