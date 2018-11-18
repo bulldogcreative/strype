@@ -2,14 +2,19 @@
 
 namespace Bulldog\Strype\Traits;
 
+/**
+ * Retrieve.
+ */
 trait Retrieve
 {
     /**
-     * Get a customer by their ID.
+     * Get a resource by the ID.
+     *
+     * Retrieve a resource by an ID.
      *
      * @param string $id
      *
-     * @return $this
+     * @return self
      */
     public function retrieve(string $id)
     {
