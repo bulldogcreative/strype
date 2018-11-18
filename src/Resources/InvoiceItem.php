@@ -29,6 +29,20 @@ class InvoiceItem extends Resource implements InvoiceItemInterface, RetrieveInte
 {
     use Retrieve, Update, ListAll, Delete;
 
+    /**
+     * Create an invoice item.
+     *
+     * Creates an item to be added to a draft invoice. If no invoice is specified,
+     * the item will be on the next invoice created for the customer specified.
+     *
+     * @param CustomerInterface        $customer
+     * @param InvoiceItemTypeInterface $type
+     * @param array                    $arguments
+     * @param string                   $key
+     * @param string                   $currency
+     *
+     * @return InvoiceItemInterface
+     */
     public function create(CustomerInterface $customer, InvoiceItemTypeInterface $type, array $arguments = [], string $key = null, string $currency = 'usd'): InvoiceItemInterface
     {
         $arguments = array_merge($arguments, $type->toArray());
