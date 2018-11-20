@@ -17,7 +17,7 @@ use Bulldog\Strype\Contracts\Resources\CustomerInterface;
  *
  * To charge a credit or a debit card, you create a Charge object. You can retrieve
  * and refund individual charges as well as list all charges. Charges are identified
- * by a unique, random ID.
+ * by a unique, random ID. adf
  *
  * @see https://stripe.com/docs/api/charges
  */
