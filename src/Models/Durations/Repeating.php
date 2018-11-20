@@ -4,6 +4,9 @@ namespace Bulldog\Strype\Models\Durations;
 
 use Bulldog\Strype\Contracts\Models\DurationTypeInterface;
 
+/**
+ * Duration repeats every X months.
+ */
 class Repeating implements DurationTypeInterface
 {
     protected $duration;

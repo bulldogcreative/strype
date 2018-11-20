@@ -4,6 +4,9 @@ namespace Bulldog\Strype\Models;
 
 use Bulldog\Strype\Contracts\Models\ProductTypeInterface;
 
+/**
+ * Base Product class.
+ */
 abstract class Product implements ProductTypeInterface
 {
     protected $name;

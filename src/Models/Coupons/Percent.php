@@ -5,7 +5,7 @@ namespace Bulldog\Strype\Models\Coupons;
 use Bulldog\Strype\Contracts\Models\CouponTypeInterface;
 
 /**
- * A percent object.
+ * A Percent object only requires the percentage.
  */
 class Percent implements CouponTypeInterface
 {

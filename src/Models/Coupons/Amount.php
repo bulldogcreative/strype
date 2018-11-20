@@ -5,7 +5,7 @@ namespace Bulldog\Strype\Models\Coupons;
 use Bulldog\Strype\Contracts\Models\CouponTypeInterface;
 
 /**
- * Amount class.
+ * An amount object requires the amount off, and the currency.
  */
 class Amount implements CouponTypeInterface
 {

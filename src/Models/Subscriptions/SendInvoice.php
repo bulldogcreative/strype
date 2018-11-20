@@ -4,6 +4,9 @@ namespace Bulldog\Strype\Models\Subscriptions;
 
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 
+/**
+ * Send an invoice for the subscription.
+ */
 class SendInvoice implements SubscriptionBillingTypeInterface
 {
     protected $daysUntilDue;
