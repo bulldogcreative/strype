@@ -68,6 +68,13 @@ class Charge extends Resource implements ChargeInterface, RetrieveInterface, Upd
         return $this;
     }
 
+    /**
+     * Call the Stripe API.
+     *
+     * @param string $method
+     * @param mixed  $arguments
+     * @param string $idempotencyKey
+     */
     protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
     {
         $this->response = \Stripe\Charge::{$method}($arguments, [

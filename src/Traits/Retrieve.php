@@ -10,8 +10,6 @@ trait Retrieve
     /**
      * Get a resource by the ID.
      *
-     * Retrieve a resource by an ID.
-     *
      * @param string $id
      *
      * @return self

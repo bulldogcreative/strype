@@ -22,7 +22,7 @@ abstract class Resource
     protected $response;
 
     /**
-     * Returns the unique identifier for that resource.
+     * Returns the unique identifier for this resource.
      *
      * @return string
      */
