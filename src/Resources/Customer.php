@@ -7,10 +7,6 @@ use Bulldog\Strype\Traits\Delete;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\DeleteInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 
 /**
@@ -21,7 +17,7 @@ use Bulldog\Strype\Contracts\Resources\CustomerInterface;
  *
  * @see https://stripe.com/docs/api/customers
  */
-class Customer extends Resource implements CustomerInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
+class Customer extends Resource implements CustomerInterface
 {
     use Retrieve, Update, Delete, ListAll;
 

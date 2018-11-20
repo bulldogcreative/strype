@@ -7,11 +7,7 @@ use Bulldog\Strype\Traits\Delete;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\DeleteInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Contracts\Resources\PlanInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
 /**
  * Plans define the base price, currency, and billing cycle for subscriptions.
@@ -20,7 +16,7 @@ use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
  *
  * @see https://stripe.com/docs/api/plans
  */
-class Plan extends Resource implements PlanInterface, RetrieveInterface, ListAllInterface, UpdateInterface, DeleteInterface
+class Plan extends Resource implements PlanInterface
 {
     use Retrieve, Update, ListAll, Delete;
 

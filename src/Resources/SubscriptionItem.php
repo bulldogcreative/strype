@@ -7,11 +7,7 @@ use Bulldog\Strype\Traits\Delete;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\DeleteInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
 use Bulldog\Strype\Contracts\Resources\PlanInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\SubscriptionInterface;
 use Bulldog\Strype\Contracts\Resources\SubscriptionItemInterface;
 
@@ -21,7 +17,7 @@ use Bulldog\Strype\Contracts\Resources\SubscriptionItemInterface;
  *
  * @see https://stripe.com/docs/api/subscription_items
  */
-class SubscriptionItem extends Resource implements SubscriptionItemInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
+class SubscriptionItem extends Resource implements SubscriptionItemInterface
 {
     use Retrieve, Update, Delete, ListAll;
 

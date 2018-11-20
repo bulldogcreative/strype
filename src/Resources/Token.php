@@ -5,7 +5,6 @@ namespace Bulldog\Strype\Resources;
 use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Contracts\Resources\TokenInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
 /**
  * Tokenization is the process Stripe uses to collect sensitive card or bank account
@@ -17,7 +16,7 @@ use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
  *
  * @see https://stripe.com/docs/api/tokens
  */
-class Token extends Resource implements TokenInterface, RetrieveInterface
+class Token extends Resource implements TokenInterface
 {
     use Retrieve;
 

@@ -7,10 +7,6 @@ use Bulldog\Strype\Traits\Delete;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\DeleteInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\ProductInterface;
 use Bulldog\Strype\Contracts\Models\ProductTypeInterface;
 
@@ -20,7 +16,7 @@ use Bulldog\Strype\Contracts\Models\ProductTypeInterface;
  *
  * @see https://stripe.com/docs/api/service_products
  */
-class Product extends Resource implements ProductInterface, RetrieveInterface, ListAllInterface, UpdateInterface, DeleteInterface
+class Product extends Resource implements ProductInterface
 {
     use Retrieve, Update, ListAll, Delete;
 

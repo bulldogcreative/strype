@@ -6,9 +6,6 @@ use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\DisputeInterface;
 
 /**
@@ -19,7 +16,7 @@ use Bulldog\Strype\Contracts\Resources\DisputeInterface;
  *
  * @see https://stripe.com/docs/api/disputes
  */
-class Dispute extends Resource implements DisputeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
+class Dispute extends Resource implements DisputeInterface
 {
     use Retrieve, Update, ListAll;
 

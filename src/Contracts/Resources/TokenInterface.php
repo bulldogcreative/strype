@@ -2,7 +2,10 @@
 
 namespace Bulldog\Strype\Contracts\Resources;
 
-interface TokenInterface extends \Bulldog\Strype\Contracts\ResourceInterface
+use Bulldog\Strype\Contracts\ResourceInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
+
+interface TokenInterface extends ResourceInterface, RetrieveInterface
 {
     public function createCard(int $number, int $expMonth, int $expYear, int $cvc, array $arguments = [], string $key = null): TokenInterface;
 

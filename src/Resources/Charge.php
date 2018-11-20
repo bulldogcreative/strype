@@ -6,9 +6,6 @@ use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\ChargeInterface;
 use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 
@@ -19,7 +16,7 @@ use Bulldog\Strype\Contracts\Resources\CustomerInterface;
  *
  * @see https://stripe.com/docs/api/charges
  */
-class Charge extends Resource implements ChargeInterface, RetrieveInterface, UpdateInterface, ListAllInterface
+class Charge extends Resource implements ChargeInterface
 {
     use Retrieve, Update, ListAll;
 
