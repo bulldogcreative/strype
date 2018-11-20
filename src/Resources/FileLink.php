@@ -11,10 +11,28 @@ use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\FileLinkInterface;
 
+/**
+ * To share the contents of a File object with non-Stripe users, you can create
+ * a FileLink. FileLinks contain a URL that can be used to retrieve the contents
+ * of the file without authentication.
+ *
+ * @see https://stripe.com/docs/api/file_links
+ */
 class FileLink extends Resource implements FileLinkInterface, RetrieveInterface, ListAllInterface, UpdateInterface
 {
     use Retrieve, Update, ListAll;
 
+    /**
+     * Creates a new file link object.
+     *
+     * @see https://stripe.com/docs/api/file_links/create
+     *
+     * @param string $id
+     * @param array  $arguments
+     * @param string $key
+     *
+     * @return FileLinkInterface
+     */
     public function create(string $id, array $arguments = [], string $key = null): FileLinkInterface
     {
         $arguments['file'] = $id;

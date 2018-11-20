@@ -8,5 +8,5 @@ interface SubscriptionInterface extends \Bulldog\Strype\Contracts\ResourceInterf
 {
     public function create(CustomerInterface $customer, SubscriptionBillingTypeInterface $billing, array $items = [], array $arguments = [], string $key = null): SubscriptionInterface;
 
-    public function cancel($id): SubscriptionInterface;
+    public function cancel(string $id): SubscriptionInterface;
 }

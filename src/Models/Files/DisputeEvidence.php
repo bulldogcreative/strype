@@ -4,6 +4,9 @@ namespace Bulldog\Strype\Models\Files;
 
 use Bulldog\Strype\Models\File;
 
+/**
+ * Dispute Evidence.
+ */
 class DisputeEvidence extends File
 {
     public function __construct($file)
