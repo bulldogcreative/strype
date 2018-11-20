@@ -13,10 +13,29 @@ use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 use Bulldog\Strype\Contracts\Resources\SubscriptionInterface;
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 
+/**
+ * Subscriptions allow you to charge a customer on a recurring basis. A subscription
+ * ties a customer to a particular plan you've created.
+ *
+ * @see https://stripe.com/docs/api/subscriptions
+ */
 class Subscription extends Resource implements SubscriptionInterface, RetrieveInterface, UpdateInterface, ListAllInterface
 {
     use Retrieve, Update, ListAll;
 
+    /**
+     * Creates a new subscription on an existing customer.
+     *
+     * @see https://stripe.com/docs/api/subscriptions/create
+     *
+     * @param CustomerInterface                $customer
+     * @param SubscriptionBillingTypeInterface $billing
+     * @param array                            $items
+     * @param array                            $arguments
+     * @param string                           $key
+     *
+     * @return SubscriptionInterface
+     */
     public function create(CustomerInterface $customer, SubscriptionBillingTypeInterface $billing, array $items = [], array $arguments = [], string $key = null): SubscriptionInterface
     {
         $arguments = array_merge($arguments, $billing->toArray());
@@ -27,7 +46,17 @@ class Subscription extends Resource implements SubscriptionInterface, RetrieveIn
         return $this;
     }
 
-    public function cancel($id): SubscriptionInterface
+    /**
+     * Cancels a customer’s subscription immediately. The customer will not be
+     * charged again for the subscription.
+     *
+     * @see https://stripe.com/docs/api/subscriptions/cancel
+     *
+     * @param string $id
+     *
+     * @return SubscriptionInterface
+     */
+    public function cancel(string $id): SubscriptionInterface
     {
         $this->stripe('retrieve', $id);
         $this->response = $this->response->cancel();

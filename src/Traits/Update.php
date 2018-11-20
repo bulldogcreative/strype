@@ -2,15 +2,18 @@
 
 namespace Bulldog\Strype\Traits;
 
+/**
+ * Update.
+ */
 trait Update
 {
     /**
-     * Update a customer.
+     * Update a resource.
      *
      * @param string $id
      * @param array  $data
      *
-     * @return $this
+     * @return self
      */
     public function update(string $id, array $data)
     {

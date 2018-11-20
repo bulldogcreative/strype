@@ -11,10 +11,31 @@ use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\PayoutInterface;
 
+/**
+ * A Payout object is created when you receive funds from Stripe, or when you
+ * initiate a payout to either a bank account or debit card of a connected
+ * Stripe account. You can retrieve individual payouts, as well as list all
+ * payouts. Payouts are made on varying schedules, depending on your country
+ * and industry.
+ *
+ * @see https://stripe.com/docs/api/payouts
+ */
 class Payout extends Resource implements PayoutInterface, RetrieveInterface, ListAllInterface, UpdateInterface
 {
     use Retrieve, Update, ListAll;
 
+    /**
+     * To send funds to your own bank account, you create a new payout object.
+     * Your Stripe balance must be able to cover the payout amount, or you’ll
+     * receive an “Insufficient Funds” error.
+     *
+     * @param int    $amount
+     * @param array  $arguments
+     * @param string $key
+     * @param string $currency
+     *
+     * @return PayoutInterface
+     */
     public function create(int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): PayoutInterface
     {
         $arguments['amount'] = $amount;
@@ -24,6 +45,15 @@ class Payout extends Resource implements PayoutInterface, RetrieveInterface, Lis
         return $this;
     }
 
+    /**
+     * A previously created payout can be canceled if it has not yet been paid
+     * out. Funds will be refunded to your available balance. You may not cancel
+     * automatic Stripe payouts.
+     *
+     * @param string $id the identifier of the payout to be canceled
+     *
+     * @return PayoutInterface
+     */
     public function cancel(string $id): PayoutInterface
     {
         $this->stripe('retrieve', $id);

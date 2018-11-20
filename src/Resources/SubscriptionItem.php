@@ -15,10 +15,26 @@ use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\SubscriptionInterface;
 use Bulldog\Strype\Contracts\Resources\SubscriptionItemInterface;
 
+/**
+ * Subscription items allow you to create customer subscriptions with more than
+ * one plan, making it easy to represent complex billing relationships.
+ *
+ * @see https://stripe.com/docs/api/subscription_items
+ */
 class SubscriptionItem extends Resource implements SubscriptionItemInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
 {
     use Retrieve, Update, Delete, ListAll;
 
+    /**
+     * Adds a new item to an existing subscription. No existing items will be changed or replaced.
+     *
+     * @param PlanInterface         $plan
+     * @param SubscriptionInterface $subscription
+     * @param array                 $arguments
+     * @param string                $key
+     *
+     * @return SubscriptionItemInterface
+     */
     public function create(PlanInterface $plan, SubscriptionInterface $subscription, array $arguments = [], string $key = null): SubscriptionItemInterface
     {
         $arguments['plan'] = $plan->getId();

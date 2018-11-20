@@ -4,13 +4,16 @@ namespace Strype;
 
 class BalanceTest extends TestCase
 {
+    const TEST_RESOURCE_ID = 'txn_123';
+
     public function testIsRetrievable()
     {
         $this->expectsRequest(
             'get',
             '/v1/balance'
         );
-        $resource = $this->strype->balance()->retrieveBalance()->getResponse();
+
+        $resource = $this->strype->balance()->retrieve()->getResponse();
         $this->assertInstanceOf("Stripe\\Balance", $resource);
         $this->assertFalse($resource->livemode);
         $this->assertEquals('balance', $resource->object);
@@ -18,9 +21,13 @@ class BalanceTest extends TestCase
 
     public function testRetrieveBalanceTransaction()
     {
-        $customer = $this->strype->customer()->create('levi@example.com', 'tok_visa', [], $this->id->get(12));
-        $charge = $this->strype->charge()->create($customer, 100, [], $this->id->get(12));
-        $balance = $this->strype->balance()->retrieve($charge->balance_transaction);
+        $this->expectsRequest(
+            'get',
+            '/v1/balance/history/' . self::TEST_RESOURCE_ID
+        );
+
+        $balance = $this->strype->balance()->retrieveBalanceTransaction(self::TEST_RESOURCE_ID);
         $this->assertEquals(100, $balance->amount);
+        $this->assertInstanceOf("Stripe\\BalanceTransaction", $balance->getResponse());
     }
 }
