@@ -7,10 +7,6 @@ use Bulldog\Strype\Traits\Delete;
 use Bulldog\Strype\Traits\Update;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
-use Bulldog\Strype\Contracts\Traits\DeleteInterface;
-use Bulldog\Strype\Contracts\Traits\UpdateInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\InvoiceInterface;
 use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
@@ -21,7 +17,7 @@ use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
  *
  * @see https://stripe.com/docs/api/invoices
  */
-class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
+class Invoice extends Resource implements InvoiceInterface
 {
     use Retrieve, Update, ListAll, Delete;
 

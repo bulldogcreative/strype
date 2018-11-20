@@ -2,7 +2,12 @@
 
 namespace Bulldog\Strype\Contracts\Resources;
 
-interface DisputeInterface extends \Bulldog\Strype\Contracts\ResourceInterface
+use Bulldog\Strype\Contracts\ResourceInterface;
+use Bulldog\Strype\Contracts\Traits\UpdateInterface;
+use Bulldog\Strype\Contracts\Traits\ListAllInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
+
+interface DisputeInterface extends ResourceInterface, RetrieveInterface, UpdateInterface, ListAllInterface
 {
     public function close(string $id): DisputeInterface;
 }

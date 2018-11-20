@@ -6,9 +6,7 @@ use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Contracts\Resources\FileInterface;
-use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Models\FileTypeInterface;
-use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
 /**
  * This is an object representing a file hosted on Stripe's servers. The file may
@@ -18,7 +16,7 @@ use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
  *
  * @see https://stripe.com/docs/api/files
  */
-class File extends Resource implements FileInterface, RetrieveInterface, ListAllInterface
+class File extends Resource implements FileInterface
 {
     use Retrieve, ListAll;
 

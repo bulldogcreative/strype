@@ -2,9 +2,14 @@
 
 namespace Bulldog\Strype\Contracts\Resources;
 
+use Bulldog\Strype\Contracts\ResourceInterface;
+use Bulldog\Strype\Contracts\Traits\DeleteInterface;
+use Bulldog\Strype\Contracts\Traits\UpdateInterface;
+use Bulldog\Strype\Contracts\Traits\ListAllInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 
-interface InvoiceInterface extends \Bulldog\Strype\Contracts\ResourceInterface
+interface InvoiceInterface extends ResourceInterface, RetrieveInterface, UpdateInterface, ListAllInterface, DeleteInterface
 {
     public function create(CustomerInterface $customer, SubscriptionBillingTypeInterface $type, array $arguments = [], ?string $key = null): InvoiceInterface;
 
