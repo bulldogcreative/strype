@@ -6,6 +6,8 @@
 
 A wrapper for the Stripe SDK that utilizes non-static methods.
 
+[Strype API docs](https://docs.bulldog.cloud/strype/v0.8.0/).
+
 ## Development
 
 This is still under active development and the API may change without notice.
