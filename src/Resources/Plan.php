@@ -13,18 +13,24 @@ use Bulldog\Strype\Contracts\Resources\PlanInterface;
 use Bulldog\Strype\Contracts\Traits\ListAllInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
+/**
+ * Plans define the base price, currency, and billing cycle for subscriptions.
+ * For example, you might have a $5/month plan that provides limited access to
+ * your products, and a $15/month plan that allows full access.
+ *
+ * @see https://stripe.com/docs/api/plans
+ */
 class Plan extends Resource implements PlanInterface, RetrieveInterface, ListAllInterface, UpdateInterface, DeleteInterface
 {
     use Retrieve, Update, ListAll, Delete;
 
     /**
-     * Creating a plan has complicated requirements. So for now, it'll accept an
-     * array.
-     *
-     * @TODO redo
+     * You can create plans using the API, or in the Stripe Dashboard.
      *
      * @param array  $arguments
      * @param string $key
+     *
+     * @return PlanInterface
      */
     public function create(array $arguments, string $key = null): PlanInterface
     {
