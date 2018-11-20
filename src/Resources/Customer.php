@@ -14,8 +14,6 @@ use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 
 /**
- * Class Customer.
- *
  * Customer objects allow you to perform recurring charges, and to track multiple
  * charges, that are associated with the same customer. The API allows you to
  * create, delete, and update your customers. You can retrieve individual
@@ -29,8 +27,6 @@ class Customer extends Resource implements CustomerInterface, RetrieveInterface,
 
     /**
      * Create a customer.
-     *
-     * Creates a new customer object.
      *
      * @see https://stripe.com/docs/api/customers/create
      *

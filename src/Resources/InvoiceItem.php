@@ -16,8 +16,6 @@ use Bulldog\Strype\Contracts\Resources\InvoiceItemInterface;
 use Bulldog\Strype\Contracts\Models\InvoiceItemTypeInterface;
 
 /**
- * InvoiceItem class.
- *
  * Sometimes you want to add a charge or credit to a customer, but actually charge
  * or credit the customer's card only at the end of a regular billing cycle. This
  * is useful for combining several charges (to minimize per-transaction fees), or
@@ -30,8 +28,6 @@ class InvoiceItem extends Resource implements InvoiceItemInterface, RetrieveInte
     use Retrieve, Update, ListAll, Delete;
 
     /**
-     * Create an invoice item.
-     *
      * Creates an item to be added to a draft invoice. If no invoice is specified,
      * the item will be on the next invoice created for the customer specified.
      *

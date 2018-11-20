@@ -16,8 +16,6 @@ use Bulldog\Strype\Contracts\Resources\CustomerInterface;
 use Bulldog\Strype\Contracts\Models\SubscriptionBillingTypeInterface;
 
 /**
- * Invoice class.
- *
  * Invoices are statements of amounts owed by a customer, and are either generated
  * one-off, or generated periodically from a subscription.
  *
@@ -28,8 +26,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     use Retrieve, Update, ListAll, Delete;
 
     /**
-     * Create an invoice.
-     *
      * This endpoint creates a draft invoice for a given customer. The draft
      * invoice created pulls in all pending invoice items on that customer,
      * including prorations.
@@ -53,8 +49,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     }
 
     /**
-     * Finalize an invoice.
-     *
      * Stripe automatically finalizes drafts before sending and attempting payment
      * on invoices. However, if you’d like to finalize a draft invoice manually,
      * you can do so using this method.
@@ -75,8 +69,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     }
 
     /**
-     * Pay an invoice.
-     *
      * Stripe automatically creates and then attempts to collect payment on
      * invoices for customers on subscriptions according to your subscriptions
      * settings. However, if you’d like to attempt payment on an invoice out of
@@ -98,8 +90,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     }
 
     /**
-     * Send an invoice for manual payment.
-     *
      * Stripe will automatically send invoices to customers according to your
      * subscriptions settings. However, if you’d like to manually send an invoice
      * to your customer out of the normal schedule, you can do so. When sending
@@ -122,8 +112,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     }
 
     /**
-     * Void an invoice.
-     *
      * Mark a finalized invoice as void. This cannot be undone. Voiding an invoice
      * is similar to deletion, however it only applies to finalized invoices and
      * maintains a papertrail where the invoice can still be found.
@@ -144,8 +132,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     }
 
     /**
-     * Mark an invoice as uncollectible.
-     *
      * Marking an invoice as uncollectible is useful for keeping track of bad
      * debts that can be written off for accounting purposes.
      *
@@ -165,8 +151,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     }
 
     /**
-     * Retrieve an invoice's line items.
-     *
      * When retrieving an invoice, you’ll get a lines property containing the
      * total count of line items and the first handful of those items. There
      * is also a URL where you can retrieve the full (paginated) list of
@@ -189,8 +173,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     }
 
     /**
-     * Retrieve an upcoming invoice.
-     *
      * At any time, you can preview the upcoming invoice for a customer. This will
      * show you all the charges that are pending, including subscription renewal
      * charges, invoice item charges, etc. It will also show you any discount
@@ -212,8 +194,6 @@ class Invoice extends Resource implements InvoiceInterface, RetrieveInterface, U
     }
 
     /**
-     * Retrieve an upcoming invoice's line items.
-     *
      * When retrieving an upcoming invoice, you’ll get a lines property containing
      * the total count of line items and the first handful of those items. There is
      * also a URL where you can retrieve the full (paginated) list of line items.

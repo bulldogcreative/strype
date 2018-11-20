@@ -12,8 +12,6 @@ use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 use Bulldog\Strype\Contracts\Resources\DisputeInterface;
 
 /**
- * Dispute class.
- *
  * A dispute occurs when a customer questions your charge with their card issuer.
  * When this happens, you're given the opportunity to respond to the dispute with
  * evidence that shows that the charge is legitimate. You can find more information
@@ -26,8 +24,6 @@ class Dispute extends Resource implements DisputeInterface, RetrieveInterface, U
     use Retrieve, Update, ListAll;
 
     /**
-     * Close a dispute.
-     *
      * Closing the dispute for a charge indicates that you do not have any evidence to submit and are essentially
      * dismissing the dispute, acknowledging it as lost.
      *

@@ -10,8 +10,6 @@ use Bulldog\Strype\Contracts\Resources\EventInterface;
 use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
 /**
- * Event class.
- *
  * Events are our way of letting you know when something interesting happens in
  * your account. When an interesting event occurs, we create a new Event object.
  * For example, when a charge succeeds, we create a charge.succeeded event; and
