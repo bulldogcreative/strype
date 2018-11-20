@@ -13,8 +13,6 @@ use Bulldog\Strype\Contracts\Resources\BalanceInterface;
  * You can also retrieve the balance history, which contains a list of transactions
  * that contributed to the balance (charges, payouts, and so forth).
  *
- * {@inheritDoc}
- *
  * @see https://stripe.com/docs/api/balance
  */
 class Balance extends Resource implements BalanceInterface
