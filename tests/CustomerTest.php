@@ -19,6 +19,18 @@ class CustomerTest extends TestCase
         $customer->getResponse()->delete();
     }
 
+    public function testCreateCustomerWithoutToken()
+    {
+        $this->expectsRequest(
+            'post',
+            '/v1/customers'
+        );
+        $customer = $this->strype->customer()->createWithoutToken('levi@example.com');
+        $this->assertEquals($customer->getId(), $customer->getResponse()->id);
+        $this->assertFalse($customer->getResponse()->livemode);
+        $customer->getResponse()->delete();
+    }
+
     public function testCreateCustomerWithIdempotentRequest()
     {
         $this->expectsRequest(

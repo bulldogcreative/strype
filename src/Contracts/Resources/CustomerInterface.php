@@ -11,4 +11,6 @@ use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 interface CustomerInterface extends ResourceInterface, RetrieveInterface, UpdateInterface, DeleteInterface, ListAllInterface
 {
     public function create(string $email, string $token, array $arguments = [], string $key = null): CustomerInterface;
+
+    public function createWithoutToken(string $email, array $arguments = [], string $key = null): CustomerInterface;
 }
