@@ -6,4 +6,4 @@
 
 A wrapper for the Stripe SDK that utilizes non-static methods.
 
-[Strype API docs](https://docs.bulldog.cloud/strype/v1.0.0/).
+[Strype API docs](https://docs.bulldog.cloud/strype/v1.1.0/).
