@@ -1,6 +1,6 @@
 <?php
 
-namespace Bulldog\Strype\Contracts;
+namespace Bulldog\Strype\Contracts\Support;
 
 interface Identifiable
 {
