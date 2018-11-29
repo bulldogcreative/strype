@@ -72,6 +72,9 @@
         <testsuite name="General">
             <file>tests/GeneralTest.php</file>
         </testsuite>
+        <testsuite name="PaymentIntent">
+            <file>tests/PaymentIntentTest.php</file>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist>
