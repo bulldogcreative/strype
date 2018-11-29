@@ -2,7 +2,8 @@
 
 namespace Bulldog\Strype\Contracts;
 
-interface ResourceInterface
+use Bulldog\Strype\Contracts\Support\Identifiable;
+
+interface ResourceInterface extends Identifiable
 {
-    public function getId(): string;
 }
