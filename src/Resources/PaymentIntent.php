@@ -3,7 +3,6 @@
 namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Resource;
-use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Contracts\Resources\PaymentIntentInterface;
 
 /**
@@ -11,5 +10,4 @@ use Bulldog\Strype\Contracts\Resources\PaymentIntentInterface;
  */
 class Balance extends Resource implements PaymentIntentInterface
 {
-
 }
