@@ -3,8 +3,9 @@
 namespace Bulldog\Strype\Contracts\Resources;
 
 use Bulldog\Strype\Contracts\ResourceInterface;
+use Bulldog\Strype\Contracts\Traits\RetrieveInterface;
 
-interface PaymentIntentInterface extends ResourceInterface
+interface PaymentIntentInterface extends ResourceInterface, RetrieveInterface
 {
     public function create(array $allowedSourceTypes, int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): PaymentIntentInterface;
 
