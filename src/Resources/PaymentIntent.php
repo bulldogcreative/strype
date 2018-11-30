@@ -4,6 +4,7 @@ namespace Bulldog\Strype\Resources;
 
 use Bulldog\Strype\Resource;
 use Bulldog\Strype\Traits\Update;
+use Bulldog\Strype\Traits\ListAll;
 use Bulldog\Strype\Traits\Retrieve;
 use Bulldog\Strype\Contracts\Resources\PaymentIntentInterface;
 
@@ -12,7 +13,7 @@ use Bulldog\Strype\Contracts\Resources\PaymentIntentInterface;
  */
 class PaymentIntent extends Resource implements PaymentIntentInterface
 {
-    use Retrieve, Update;
+    use Retrieve, Update, ListAll;
 
     public function create(array $allowedSourceTypes, int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): PaymentIntentInterface
     {
