@@ -80,4 +80,10 @@ class PaymentIntentTest extends TestCase
         $this->assertEquals('succeeded', $response->status);
         $this->assertEquals('description', 'description');
     }
+
+    public function testListAllPaymentIntent()
+    {
+        $pi = $this->strype->paymentIntent()->listAll(['limit' => 1]);
+        $this->assertCount(1, $pi->data);
+    }
 }
