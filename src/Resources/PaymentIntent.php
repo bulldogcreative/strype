@@ -25,7 +25,7 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
         return $this;
     }
 
-    public function confirm(string $id): PaymentIntentInterface
+    public function confirm(string $id, array $arguments): PaymentIntentInterface
     {
 
     }
