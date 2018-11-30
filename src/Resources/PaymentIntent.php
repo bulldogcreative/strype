@@ -27,7 +27,10 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
 
     public function confirm(string $id, array $arguments): PaymentIntentInterface
     {
+        $this->stripe('retrieve', $id);
+        $this->response->confirm($arguments);
 
+        return $this;
     }
 
     public function capture(string $id): PaymentIntentInterface
