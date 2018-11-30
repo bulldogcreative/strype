@@ -45,6 +45,8 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
     {
         $this->stripe('retrieve', $id);
         $this->response->cancel($arguments);
+
+        return $this;
     }
 
     protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
