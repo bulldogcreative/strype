@@ -26,4 +26,19 @@ class PaymentIntentTest extends TestCase
         $this->assertEquals('payment_intent', $response->object);
         $this->assertEquals('succeeded', $response->status);
     }
+
+    public function testUpdatePaymentIntent()
+    {
+        $pi = $this->strype->paymentIntent()->create(
+            ['card'],
+            9999
+        );
+
+        $response = $pi->update($pi->id, [
+            'description' => 'description',
+        ]);
+        $this->assertEquals('payment_intent', $response->object);
+        $this->assertEquals('succeeded', $response->status);
+        $this->assertEquals('description', 'description');
+    }
 }
