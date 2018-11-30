@@ -12,7 +12,13 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
 {
     public function create(array $allowedSourceTypes, int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): PaymentIntentInterface
     {
+        $arguments['allowed_source_types'] = $allowedSourceTypes;
+        $arguments['amount'] = $amount;
+        $arguments['currency'] = $currency;
 
+        $this->stripe('create', $arguments, $key);
+
+        return $this;
     }
 
     public function confirm(string $id): PaymentIntentInterface
