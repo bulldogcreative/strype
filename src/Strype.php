@@ -21,6 +21,7 @@ use Bulldog\Strype\Resources\InvoiceItem;
 use Bulldog\Strype\Resources\UsageRecord;
 use Bulldog\Strype\Resources\Subscription;
 use Bulldog\Strype\Resources\SubscriptionItem;
+use Bulldog\Strype\Resources\PaymentIntent;
 
 /**
  * Class Strype.
@@ -131,5 +132,10 @@ class Strype
     public function usageRecord()
     {
         return new UsageRecord();
+    }
+
+    public function paymentIntent()
+    {
+        return new PaymentIntent();
     }
 }
