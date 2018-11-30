@@ -25,11 +25,12 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
      *
      * @see https://stripe.com/docs/api/payment_intents/create
      *
-     * @param array $allowedSourceTypes
-     * @param integer $amount
-     * @param array $arguments
+     * @param array  $allowedSourceTypes
+     * @param int    $amount
+     * @param array  $arguments
      * @param string $key
      * @param string $currency
+     *
      * @return PaymentIntentInterface
      */
     public function create(array $allowedSourceTypes, int $amount, array $arguments = [], string $key = null, string $currency = 'usd'): PaymentIntentInterface
@@ -50,7 +51,8 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
      * @see https://stripe.com/docs/api/payment_intents/confirm
      *
      * @param string $id
-     * @param array $arguments
+     * @param array  $arguments
+     *
      * @return PaymentIntentInterface
      */
     public function confirm(string $id, array $arguments = []): PaymentIntentInterface
@@ -68,7 +70,8 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
      * @see https://stripe.com/docs/api/payment_intents/capture
      *
      * @param string $id
-     * @param array $arguments
+     * @param array  $arguments
+     *
      * @return PaymentIntentInterface
      */
     public function capture(string $id, array $arguments = []): PaymentIntentInterface
@@ -87,7 +90,8 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
      * @see https://stripe.com/docs/api/payment_intents/cancel
      *
      * @param string $id
-     * @param array $arguments
+     * @param array  $arguments
+     *
      * @return PaymentIntentInterface
      */
     public function cancel(string $id, array $arguments = []): PaymentIntentInterface
