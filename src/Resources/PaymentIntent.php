@@ -33,7 +33,7 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
         return $this;
     }
 
-    public function capture(string $id): PaymentIntentInterface
+    public function capture(string $id, array $arguments = []): PaymentIntentInterface
     {
 
     }
