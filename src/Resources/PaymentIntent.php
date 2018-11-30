@@ -35,7 +35,10 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
 
     public function capture(string $id, array $arguments = []): PaymentIntentInterface
     {
+        $this->stripe('retrieve', $id);
+        $this->response->capture($arguments);
 
+        return $this;
     }
 
     public function cancel(string $id): PaymentIntentInterface
