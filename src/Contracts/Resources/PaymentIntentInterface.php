@@ -14,5 +14,5 @@ interface PaymentIntentInterface extends ResourceInterface, RetrieveInterface, U
 
     public function capture(string $id, array $arguments = []): PaymentIntentInterface;
 
-    public function cancel(string $id): PaymentIntentInterface;
+    public function cancel(string $id, array $arguments = []): PaymentIntentInterface;
 }

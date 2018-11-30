@@ -41,7 +41,7 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
         return $this;
     }
 
-    public function cancel(string $id): PaymentIntentInterface
+    public function cancel(string $id, array $arguments = []): PaymentIntentInterface
     {
 
     }
