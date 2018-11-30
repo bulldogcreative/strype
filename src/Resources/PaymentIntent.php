@@ -29,4 +29,12 @@ class PaymentIntent extends Resource implements PaymentIntentInterface
     {
 
     }
+
+    protected function stripe(string $method, $arguments, string $idempotencyKey = null): void
+    {
+        $this->response = \Stripe\PaymentIntent::{$method}($arguments, [
+            'idempotency_key' => $idempotencyKey,
+        ]);
+        $this->setProperties();
+    }
 }
