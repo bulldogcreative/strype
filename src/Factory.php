@@ -2,6 +2,7 @@
 
 namespace Bulldog\Strype;
 
+use Bulldog\Strype\Contracts\Models\CouponTypeInterface;
 use Bulldog\Strype\Models\Coupons\Amount as CouponAmount;
 use Bulldog\Strype\Models\Coupons\Percent as CouponPercent;
 use Bulldog\Strype\Models\Durations\Forever as DurationForever;
@@ -12,7 +13,7 @@ use Bulldog\Strype\Models\Files\CustomerSignature as FileCustomerSignature;
 
 class Factory
 {
-    public function couponAmount(int $amount, string $currency = 'usd')
+    public function couponAmount(int $amount, string $currency = 'usd'): CouponTypeInterface
     {
         return new CouponAmount($amount, $currency);
     }
