@@ -2,11 +2,19 @@
 
 namespace Bulldog\Strype;
 
+use Bulldog\Strype\Models\Coupons\Amount as CouponAmount;
+use Bulldog\Strype\Models\Coupons\Percent as CouponPercent;
+use Bulldog\Strype\Models\Durations\Forever as DurationForever;
+use Bulldog\Strype\Models\Durations\Once as DurationOnce;
+use Bulldog\Strype\Models\Durations\Repeating as DurationRepeating;
+use Bulldog\Strype\Models\Files\BusinessLogo as FileBusinessLogo;
+use Bulldog\Strype\Models\Files\CustomerSignature as FileCustomerSignature;
+
 class Factory
 {
-    public function couponAmount()
+    public function couponAmount(int $amount, string $currency = 'usd')
     {
-
+        return new CouponAmount($amount, $currency);
     }
 
     public function couponPercent()
